@@ -1,7 +1,6 @@
-viscomp
-=======
+## Visual Computing Slides -- Transformations
 
-*Visual Computing* slides for the course of the same name given at [National University of Colombia](http://www.disi.unal.edu.co/) by [Jean Pierre Charalambos](http://otrolado.info) and [Andres Colubri](http://codeanticode.wordpress.com/).
+Part of the *Visual Computing* course given at [National University of Colombia](http://www.disi.unal.edu.co/) by [Jean Pierre Charalambos](http://otrolado.info) and [Andres Colubri](http://codeanticode.wordpress.com/).
 
 Powered by [reveal](https://github.com/hakimel/reveal.js).
 
@@ -9,28 +8,23 @@ Made possible thanks to...
 
 <!--- a long list of students and links to their pages. To come ;) -->
 
+## Setup
+
+ ```sh
+ $ git clone https://github.com/VisualComputing/Transformations.git
+ $ git checkout gh-pages
+ ```
+
 ## Folder Structure
 
     |-- css/
     |-- js/
     |-- plugin/
     |-- lib/
-    |-- lectures/
-    |   |-- 1
-    |       |-- fig/
-    |       |-- index.html
-    |       |-- source.md
-    |   |-- ...
-    |       |-- fig/
-    |       |-- index.html
-    |       |-- source.md
-    |   |-- template
-    |       |-- fig/
-    |       |-- index.html
-    |       |-- source.md
+    |-- fig/
+    |-- source.md
     
 Refer to the [reveal folder structure](https://github.com/hakimel/reveal.js#folder-structure) for more details, and to the *Setup* below.
-
 
 ## Setup
 
@@ -40,16 +34,10 @@ External markdown and speaker notes, require that presentations run from a local
 
 2. Install [Grunt](http://gruntjs.com/getting-started#installing-the-cli)
 
-3. Clone the VisComp repository
+3. Navigate to the presentation folder
 
  ```sh
- $ git clone https://github.com/nakednous/viscomp.git
- ```
-
-4. Navigate to the viscomp folder
-
- ```sh
- $ cd viscomp
+ $ cd Transformations
  ```
 
 5. Install dependencies
@@ -58,18 +46,7 @@ External markdown and speaker notes, require that presentations run from a local
  $ npm install
  ```
 
-6. Create a presentation
-
- ```sh
- # replace *n* with the number of the presentation to be created:
- $ cp -r lectures/template/ lectures/n
- # uncomment lines 49-55 (section block) and edit line 50 to reflect *n* above:
- $ nano lectures/n/index.html
- # edit the presentation source using markdown:
- $ nano lectures/n/source.md
- $ ln -s lectures/n/index.html index.html
- ```
- *Note:* `lectures/1` followed the aforementioned method.
+6. Edit the presentation contents using markdown in the `source.md` and adding figures as needed to the `fig/` folder.
 
 7. Serve the presentation and monitor source files for changes
 
