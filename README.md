@@ -58,9 +58,12 @@ External markdown and speaker notes, require that presentations run from a local
 
  You can change the port by using `grunt serve --port 8001`.
 
+<!---
+
 9. Update to upstream
 
  ```sh
  $ git remote add reveal.js https://github.com/hakimel/reveal.js.git
  $ git pull reveal.js master
  ```
+-->
