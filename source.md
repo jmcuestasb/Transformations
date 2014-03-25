@@ -1,9 +1,9 @@
 ## Index
 
  1. Shaders <!-- .element: class="fragment" data-fragment-index="1"-->
- 2. Traslation, rotation, scaling and sheared --> 2d, nonlinear,.. <!-- .element: class="fragment" data-fragment-index="2" -->
+ 2. Translation, rotation, scaling and sheared --> 2d, nonlinear,.. <!-- .element: class="fragment" data-fragment-index="2" -->
  3. Homogeneous space <!-- .element: class="fragment" data-fragment-index="3" -->
- 4.  Traslation, rotation(Euler), scaling and sheared --> 3d, linear,.. <!-- .element: class="fragment" data-fragment-index="4" -->
+ 4.  Translation, rotation(Euler), scaling and shearing --> 3d, linear,.. <!-- .element: class="fragment" data-fragment-index="4" -->
  5.  Orthogonal Matrix Rotations <!-- .element: class="fragment" data-fragment-index="5" -->
  6. Quaternion Rotations <!-- .element: class="fragment" data-fragment-index="6" -->
  7. Modeling Transformations <!-- .element: class="fragment" data-fragment-index="7" -->
@@ -57,7 +57,7 @@ void main(){
 
 ## Two-dimensional transformations
 
-<p align ="left"><font color="yellow">Traslation</font></p>
+<p align ="left"><font color="yellow">Translation</font></p>
 <img height="400" src="fig/image4.JPG" align ="left">
 <p align ="right">Vectorially we get:</p>
 </br>
@@ -166,11 +166,11 @@ $\boxed {y'= xsin \beta + ycos \beta}$
 
 
 ## Two-dimensional transformations
-<p align ="left"><font color="red">Rotation</font></p>
+<p align ="left"><font color="red">Shearing</font></p>
 <img height="250" src="fig/image8.JPG">
 <p align ="left">We have </p>
 $x' = x + h *y, y'=y$
-<p align ="left">,where h is the sheared parameter, to obtain:</p>
+<p align ="left">, where h is the shearing parameter, to obtain:</p>
 <font size ="5" color="yellow">
 $
 D_x=\begin{bmatrix} 
@@ -179,7 +179,7 @@ D_x=\begin{bmatrix}
 D_y=\begin{bmatrix} 
 1 & 0 \cr 
 h & 1 \end{bmatrix}
-P'= {D_x \above 1.5pt D_y} * P
+P'= {D_x} * P
 $
 </font>
 
@@ -230,7 +230,7 @@ $
 </table> 
 
 <p align ="left"><font color="blue">Trasformations Summary</font></p>
-<p align ="left"><font color="yellow" size ="6">Traslation</font></p>
+<p align ="left"><font color="yellow" size ="6">Translation</font></p>
 <p align ="left"><font size ="6" color="yellow">
 $P' = P+T$
 </font></p>
@@ -242,9 +242,9 @@ $P' = S\ast P$
 <p align ="left"><font size ="6">
 $P' = R\ast P$
 </font></p>
-<p align ="left"><font color="red"size ="6">Sheared</font></p>
+<p align ="left"><font color="red"size ="6">Shearing</font></p>
 <p align ="left"><font size ="6" color="red">
-$P'= {D_x \above 1.5pt D_y} * P$
+$P'=D{}_{(x/y)}*P$
 </font></p>
 
 
@@ -254,17 +254,17 @@ $P'= {D_x \above 1.5pt D_y} * P$
 <p align ="left"><font color="#00FFFF">1. Linear</font></p>
 <p align ="left">
 $
-F(a+b)= F(a)+ F(b)
+F(a+b)= F(a)+ F(b), 
 $
 $
 F(\lambda a) = \lambda F(a)\rightarrow F(0) = 0
 $
-, Thus is a nonlinear transformation
+, Thus translation is a nonlinear transformation
 </p>
 <p align ="center"><font color="yellow">Note:</font> Matrix multiplication is always linear</p>
-<p align ="left"><font color="#00FFFF">2. Related</font></p>
+<p align ="left"><font color="#00FFFF">2. Affine</font></p>
 <p align ="center">
-Linear $+$ Traslation $\rightarrow p' = M\ast p + b $
+Linear $+$ Translation $\rightarrow p' = M\ast p + b $
 </p>
 <p align ="left"><font color="#00FFFF">3. Invertibles</font></p>
 <p align ="center"> 
@@ -381,7 +381,7 @@ y \cr
 1\end{bmatrix}
 $
 </font></p>
-<p align ="left"><font color="yellow" size ="5">Traslation</font></p>
+<p align ="left"><font color="yellow" size ="5">Translation</font></p>
 <p align ="left"><font size ="5" color="yellow">
 $P' = T(d_x,d_y)\ast P $
 </font></p>
@@ -393,9 +393,9 @@ $P' = T(s_x,s_y)\ast P$
 <p align ="left"><font size ="5">
 $P' = R(\beta)\ast P$
 </font></p>
-<p align ="left"><font color="red"size ="5">Sheared</font></p>
+<p align ="left"><font color="red"size ="5">Shearing</font></p>
 <p align ="left"><font size ="5" color="red">
-$P'= {D_x \above 1.5pt D_y} * P$
+$P'=D_x*P$
 </font></p>
 
 
@@ -475,7 +475,7 @@ y \cr
 1\end{bmatrix}
 $
 </font></p>
-<p align ="left"><font color="yellow" size ="5">Traslation</font></p>
+<p align ="left"><font color="yellow" size ="5">Translation</font></p>
 <p align ="left"><font size ="5" color="yellow">
 $P' = T(d_x,d_y)\ast P $
 </font></p>
@@ -554,7 +554,7 @@ $P'$
 <td>
 <font color="yellow" size ="6">
 <div style="width:150px;height:50px;border:6px outset yellow;">
-Traslation
+Translation
 </div>
 </font>
 </td>
@@ -574,7 +574,7 @@ $\overrightarrow{\hspace0.5in}$
 <td>
 <font color="yellow" size ="6">
 <div style="width:150px;height:50px;border:6px outset yellow;">
-Traslation
+Translation
 </div>
 </font>
 </td>
@@ -793,11 +793,11 @@ s_1 cos^2\beta + s_2 sin^2\beta & (s_2-s_1)cos\beta sin\beta & 0  \cr
 
 
 
-## Traslations
+## Translations
 <img src="fig/image15.JPG">
 
 
-## Traslations
+## Translations
 <p align ="left"><font color="yellow">Specification</font></p>
 <img height="400" src="fig/image16.JPG" align ="left">
 <p align ="left"><font size="5">Vectorially we get:</font></p>
@@ -1493,7 +1493,7 @@ between spatial orientations</font>.</p>
 </tr>
 <tr>
 <td>
-<p align ="left"><font size ="5">Consider the traslation:</font></p>
+<p align ="left"><font size ="5">Consider the translation:</font></p>
 </td>
 </tr>
 <tr>
@@ -1601,7 +1601,7 @@ $
 
 ##Modeling Transformations
 <p align ="left"><font size ="5">Transformations between coordinates systems/ Orthogonal Matrix method</font></p>
-<p align ="left"><font size ="5">Coordinate transformation involve 1 traslation and 3 rotations: $\space R \bullet$<font color ="yellow"> $T$</font></font></p>
+<p align ="left"><font size ="5">Coordinate transformation involve 1 translation and 3 rotations: $\space R \bullet$<font color ="yellow"> $T$</font></font></p>
 <p align ="left"><font size ="5">Alternative way to calculate the composed rotation matrix: $R$</font></p>
 
 <img width ="400" height="400" src="fig/image33.JPG" align ="right">
@@ -1652,9 +1652,6 @@ $
 
 <img width ="600" height="350" src="fig/image43.JPG" align ="left">
 <img src="fig/image45.JPG" align ="right">
-
-
-
 
 
 
