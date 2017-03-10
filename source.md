@@ -1,14 +1,247 @@
+<section id="themes">
+	<h2>Themes</h2>
+		<p>
+			Set your presentation theme: <br>
+			<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
+                        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
+			<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
+			<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
+			<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
+			<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
+			<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
+			<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
+			<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
+			<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
+			<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
+			<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+		</p>
+</section>
+
+H:
+
+# Transformations
+
+Jean Pierre Charalambos
+
+H:
+
 ## Index
 
- 1. Shaders <!-- .element: class="fragment" data-fragment-index="1"-->
- 2. Translation, rotation, scaling and sheared --> 2d, nonlinear,.. <!-- .element: class="fragment" data-fragment-index="2" -->
- 3. Homogeneous space <!-- .element: class="fragment" data-fragment-index="3" -->
- 4.  Translation, rotation(Euler), scaling and shearing --> 3d, linear,.. <!-- .element: class="fragment" data-fragment-index="4" -->
- 5.  Orthogonal Matrix Rotations <!-- .element: class="fragment" data-fragment-index="5" -->
- 6. Quaternion Rotations <!-- .element: class="fragment" data-fragment-index="6" -->
- 7. Modeling Transformations <!-- .element: class="fragment" data-fragment-index="7" -->
+ 1. Intro<!-- .element: class="fragment" data-fragment-index="1"-->
+    * Shaders
+    * Active vs pasive transformations
+ 2. Linear transformations<!-- .element: class="fragment" data-fragment-index="2"-->
+    * Rotation, scaling & Shearing
+ 3. Affine transformations<!-- .element: class="fragment" data-fragment-index="3"-->
+    * Homogeneous space
+    * Translation
+    * Rotation, scaling & shearing revisited
+    * Matrix operations: concatenating, inverting, stack
+ 
+V:
 
+## Index (part 2)
 
+ 4. Projections<!-- .element: class="fragment" data-fragment-index="1"-->
+    * Orthogonal
+    * Perspective
+ 5. Modelling<!-- .element: class="fragment" data-fragment-index="2"-->
+
+H:
+
+## Intro: Shaders
+
+<div class="ulist">
+    <img src="fig/pipeline.png" alt="pipeline" width="55%" style="float: right">
+    <ul style="width: 30%;">
+        <p class="fragment" data-fragment-index="1">Vertex shader</p>
+        <p class="fragment" data-fragment-index="2">Fragment shader</p>
+    </ul>
+</div>
+
+V:
+
+## Intro: Shaders
+### Vertex shader: pseudo code
+
+```glsl
+for (int i = 0; i < vertexCount; i++) {
+  output = vertexShader(vertex[i]);
+}
+```
+
+V:
+
+## Intro: Shaders
+### Vertex shader: glsl code
+
+```glsl
+uniform mat4 transform;
+attribute vec4 vertex;
+attribute vec4 color;
+varying vec4 vertColor;
+
+void main(){
+   gl_Position = transform * vertex;
+   vertColor = color;
+}
+```
+
+V:
+
+## Intro: Shaders
+### Fragment shader: pseudo code
+
+```glsl
+for (int i = 0; i < fragmentCount; i++) {
+  screenBuffer[fragment[i].xy] = fragmentShader(fragment[i]);
+}
+
+function fragmentShader(fragment) {
+  return fragment.litColor;
+}
+```
+
+V:
+
+## Intro: Shaders
+### Fragment shader: glsl code
+
+```glsl
+varying vec4 vertColor;
+
+void main(){
+  gl_FragColor = vertColor;
+}
+```
+
+V:
+
+## Intro: Active vs pasive transformations
+
+<font color="yellow"> Active Transformation (Standard Basis) vs Passive Transformation (change of basis)</font>
+
+<img height='300' src='fig/image3.JPG'/>
+
+H:
+
+## Linear transformations: Notion
+
+<p align ="left"><font color="#00FFFF">1. Linear</font></p>
+<p align ="left">
+$
+F(a+b)= F(a)+ F(b), 
+$
+$
+F(\lambda a) = \lambda F(a)\rightarrow F(0) = 0
+$
+, Thus translation is a nonlinear transformation
+</p>
+<p align ="center"><font color="yellow">Note:</font> Matrix multiplication is always linear</p>
+
+V:
+
+## Linear transformations: Rotation
+### Euler angles
+
+V:
+
+## Linear transformations: Scaling
+
+V:
+
+## Linear transformations: Shearing
+
+H:
+
+## Affine transformations: Notion
+
+<p align ="left"><font color="#00FFFF">2. Affine</font></p>
+<p align ="center">
+Linear $+$ Translation $\rightarrow p' = M\ast p + b $
+</p>
+
+V:
+
+## Affine transformations: Homogeneous space
+
+V:
+
+## Affine transformations: Translation
+
+V:
+
+## Affine transformations: Rotation revisited
+### Euler angles
+
+V:
+
+## Affine transformations: Rotation
+### Orthogonal matrix
+
+V:
+
+## Affine transformations: Rotation
+### Quaternions
+
+V:
+
+## Affine transformations: Scaling revisited
+
+V:
+
+## Affine transformations: Shearing revisited
+
+V:
+
+## Affine transformations: Matrix operations
+### Concatenating
+
+V:
+
+## Affine transformations: Matrix operations
+### Inverting
+
+<p align ="left"><font color="#00FFFF">3. Invertibles</font></p>
+<p align ="center"> 
+Lets take a look at <font color="red">$M^{-1}$ </font>, the inverse matrix of the general transformation matrix <font color="red">$M$</font>
+</p>
+$
+P'= M\ast P,\space \space \space \space \space \space \space  M^{-1}P' = M^{-1}M P
+$
+
+V:
+
+## Affine transformations: Matrix operations
+### Matrix stack
+
+H:
+
+## Projections: Orthogonal
+
+V:
+
+## Projections: Perspective
+
+H:
+
+## Modelling
+
+H:
+
+## References
+
+* [Math primer for graphics and game development](https://tfetimes.com/wp-content/uploads/2015/04/F.Dunn-I.Parberry-3D-Math-Primer-for-Graphics-and-Game-Development.pdf)
+* [Processing transformations tutorial](https://www.processing.org/tutorials/transform2d/)
+* [Processing shaders tutorial](https://www.processing.org/tutorials/pshader/)
+
+H:
+
+## Credits
+
+* Jean Pierre Alfonso, for the initial draft of the presentation which included the [mathjax](https://www.mathjax.org/) formulas
+
+H:
 
 ## PIPELINE
 
@@ -35,11 +268,12 @@ void main(){
 }
 ```
 
-
+H:
 
 ## Two-dimensional transformations 
 <img height="500" src="fig/image1.JPG">
 
+H:
 
 ## Two-dimensional transformations 
 
@@ -47,6 +281,7 @@ void main(){
 
 <img height="400" src="fig/image2.JPG">
 
+H:
 
 ## Two-dimensional transformations
 
@@ -54,6 +289,7 @@ void main(){
 
 <img src="fig/image3.JPG">
 
+H:
 
 ## Two-dimensional transformations
 
@@ -79,6 +315,7 @@ P'= P + T
 $
 </font></p></p>
 
+H:
 
 ## Two-dimensional transformations
 
@@ -104,12 +341,14 @@ P'= S * P
 $
 </font></p></p>
 
+H:
 
 ## Two-dimensional transformations
 
 <p align ="left"><font color="yellow">Rotation</font></p>
 <img height="400" src="fig/image6.JPG">
 
+H:
 
 ## Two-dimensional transformations
 <table width="350" heigth="500" border="0" align ="right">
@@ -164,6 +403,7 @@ $\boxed {x'= xcos \beta - ysin \beta}$
 $\boxed {y'= xsin \beta + ycos \beta}$
 </font></p>
 
+H:
 
 ## Two-dimensional transformations
 <p align ="left"><font color="red">Shearing</font></p>
@@ -183,6 +423,7 @@ P'= {D_x} * P
 $
 </font>
 
+H:
 
 ## Two-dimensional transformations
 
@@ -247,7 +488,7 @@ $P' = R\ast P$
 $P'=D{}_{(x/y)}*P$
 </font></p>
 
-
+H:
 
 ## Types of Transformations 
 
@@ -274,7 +515,7 @@ $
 P'= M\ast P,\space \space \space \space \space \space \space  M^{-1}P' = M^{-1}M P
 $
 
-
+H:
 
 ## Homogeneous space
 <table width="350" heigth="500" border="0" align ="left">
@@ -317,6 +558,7 @@ $
 </p>
 </font>
 
+H:
 
 ## Summary 
 <table width="350" heigth="500" border="0" align ="right">
@@ -398,9 +640,9 @@ $P' = R(\beta)\ast P$
 $P'=D_x*P$
 </font></p>
 
+H:
 
-
-##Homogeneous coordinates
+## Homogeneous coordinates
 <p align ="left"><font color="blue"> Observation about the inverse matrix of the transformation matrix</p></font>
 <table width="650" heigth="500" border="0" align ="right">
 <tr>
@@ -485,8 +727,9 @@ $P' = T(s_x,s_y)\ast P $
 </font></p>
 </table> 
 
+H:
 
-##Homogeneous coordinates
+## Homogeneous coordinates
 <p align ="left"><font color="blue"> Observation about the inverse matrix of the transformation matrix</p></font>
 <p align ="left"><font color="green"> Rotation</p></font>
 <font color="#00FFFF" size ="5">
@@ -521,9 +764,9 @@ cos\beta & sin \beta & 0  \cr
 $
 </font>
 
+H:
 
-
-##Two-dimensional transformations Composition
+## Two-dimensional transformations Composition
 <p align ="left"><font color="blue"> Successive transformations example</p></font>
 <table width="100" heigth="500" border="0" align ="center">
 <tr>
@@ -645,20 +888,26 @@ $P'= S\ast T'\ast R\ast T\ast P$
 </div>
 </font>
 
+H:
 
-##Two-dimensional transformations Composition
+## Two-dimensional transformations Composition
+
 <p><font color="blue">Some special compositions</font></p>
 <p><font color="yellow">Rotation from pivot point</font></p>
 <img height="400" src="fig/image10.JPG">
 
+H:
 
-##Two-dimensional transformations Composition
+## Two-dimensional transformations Composition
+
 <p><font color="blue">Some special compositions</font></p>
 <p><font color="yellow">Rotation from pivot point</font></p>
 <img src="fig/image11.JPG">
 
+H:
 
-##Two-dimensional transformations Composition
+## Two-dimensional transformations Composition
+
 <p><font color="blue">Some special compositions</font></p>
 <p><font color="yellow">Rotation from pivot point</font></p>
 <br/>
@@ -703,20 +952,23 @@ sin\beta & cos\beta & y_r(1-cos\beta)-x_rsin\beta  \cr
 0 & 0 & 1\end{bmatrix}$
 </font>
 
+H:
 
-##Two-dimensional transformations Composition
+## Two-dimensional transformations Composition
 <p><font color="blue">Some special compositions</font></p>
 <p><font color="yellow">Scaling from static point</font></p>
 <img src="fig/image12.JPG">
 
+H:
 
-##Two-dimensional transformations Composition
+## Two-dimensional transformations Composition
 <p><font color="blue">Some special compositions</font></p>
 <p><font color="yellow">Scaling from static point</font></p>
 <img src="fig/image13.JPG">
 
+H:
 
-##Two-dimensional transformations Composition
+## Two-dimensional transformations Composition
 <p><font color="blue">Some special compositions</font></p>
 <p><font color="yellow">Scaling from static point</font></p>
 <br/>
@@ -761,6 +1013,7 @@ s_x & 0 & x_f(1-s_x)  \cr
 0 & 0 & 1\end{bmatrix}$
 </font>
 
+H:
 
 ## Two-dimensional transformations Composition
 <p align ="left"><font color="blue">Some special compositions</font></p>
@@ -778,6 +1031,7 @@ s_x & 0 & x_f(1-s_x)  \cr
 3. The object is rotated on the opposite way.
 </p></p>
 
+H:
 
 ## Two-dimensional transformations Composition
 <p align ="left"><font color="blue">Some special compositions</font></p>
@@ -791,11 +1045,12 @@ s_1 cos^2\beta + s_2 sin^2\beta & (s_2-s_1)cos\beta sin\beta & 0  \cr
 0 & 0 & 1\end{bmatrix}$
 </font>
 
-
+H:
 
 ## Translations
 <img src="fig/image15.JPG">
 
+H:
 
 ## Translations
 <p align ="left"><font color="yellow">Specification</font></p>
@@ -854,11 +1109,12 @@ z' \cr
 <font color="#00FFFF" size ="5">$P'$</font>= <font color="yellow" size ="5">$T$</font>$\ast$<font color="#2EFE2E" size ="5"> $P$</font>
 </p></p>
 
+H:
 
-
-##Scaling
+## Scaling
 <img src="fig/image17.JPG">
 
+H:
 
 ## Scaling
 <p align ="left"><font color="yellow">Specification</font></p>
@@ -917,12 +1173,13 @@ z' \cr
 <font size ="5">$P'$</font>= <font color="#00FFFF" size ="5">$S$</font>$\ast$<font color="#2EFE2E" size ="5"> $P$</font>
 </p></p>
 
-
+H:
 
 ## Rotations
 <p align ="left"><font color="yellow">Parameters used in rotations</font></p>
 <img src="fig/image19.JPG">
 
+H:
 
 ## Rotations
 <p align ="left">Rotation respect z-axis</p>
@@ -963,8 +1220,10 @@ z' \cr
 $P' = R \ast P$
 </p></p>
 
+H:
 
 ## Rotations
+
 <p align ="left">Rotation respect x-axis</p>
 <img height="400" src="fig/image21.JPG" align ="left">
 <p align ="left"><font size="5">Doing $y \rightarrow z \rightarrow x \rightarrow y$</font></p>
@@ -998,8 +1257,10 @@ z' \cr
 $P' = R \ast P$
 </p></p>
 
+H:
 
 ## Rotations
+
 <p align ="left">Rotation respect y-axis</p>
 <img height="400" src="fig/image22.JPG" align ="left">
 <p align ="left"><font size="5">Doing $y \rightarrow z \rightarrow x \rightarrow y$</font></p>
@@ -1033,15 +1294,18 @@ z' \cr
 $P' = R \ast P$
 </p></p>
 
+H:
 
 ## Rotations
 <p align ="left">General Rotations</p>
 <img src="fig/image23.JPG">
 
+H:
 
 ## Rotations
 <img height="500" src="fig/image24.JPG">
 
+H:
 
 ## Rotations
 <p align ="left">1st step. Rotation parameter specifications</p>
@@ -1057,6 +1321,7 @@ $
 <p><font color= "#2EFE2E">$b$</font>$=$ $(y_2-y_1)\above 1pt |V|$</p>
 <p><font color= "#2EFE2E">$a$</font>$=$ $(z_2-z_1)\above 1pt |V|$</p>
 
+H:
 
 ## Rotations
 <p align ="left">2nd step. Translation from $P_1$ to origin</p>
@@ -1072,11 +1337,13 @@ $
 </font>
 </p>
 
+H:
 
 ## Rotations
 <p align ="left">3rd step. Turn of $P_2$ in z-axis</p>
 <img height="500" src="fig/image27.JPG">
 
+H:
 
 ## Rotations
 <table width="350" heigth="500" border="0" align ="left">
@@ -1114,6 +1381,7 @@ $
 <p align ="left"><font size ="5">Thus:</font></p>
 <p align ="left"><font size ="5">$sin$<font color="#2EFE2E">$\alpha$</font>$=$<font color="#2EFE2E">$\frac bd$</font></font></p>
 
+H:
 
 ## Rotations
 <table width="350" heigth="500" border="0" align ="left">
@@ -1159,8 +1427,10 @@ $
 <p align ="left"><font size ="5">Thus:</font>
 <font size ="5">$sin$<font color="#2EFE2E">$\lambda$</font>$=$<font color="#2EFE2E">$-a$</font></font></p>
 
+H:
 
-##Rotations
+## Rotations
+
 <img height="250" src="fig/image30.JPG">
 <p align ="center"><font size ="5">
 $R_z(\beta)=\begin{bmatrix} 
@@ -1179,14 +1449,16 @@ $R(\beta)=$<font color="yellow">$T^{-1}$</font>$\bullet R_x$<font color="#2EFE2E
 </div>
 </font>
 
+H:
 
-##Rotations
+## Rotations
 <p align ="left">Another way to calculate the composite transformation matrix:</p>
 <p align ="left">$R_y$<font color="#2EFE2E">$(\lambda)$</font>$\bullet R_x$<font color="#2EFE2E">$(\alpha)$</font></p>
 <img width ="800" height="400" src="fig/image31.JPG">
 
+H:
 
-##Rotations
+## Rotations
 <p align ="left">Another way to calculate the composite transformation matrix:</p>
 <p align ="left">$R_y$<font color="#2EFE2E">$(\lambda)$</font>$\bullet R_x$<font color="#2EFE2E">$(\alpha)$</font></p>
 <img width ="800" height="250" src="fig/image32.JPG">
@@ -1209,8 +1481,9 @@ $R(\beta)=$<font color="yellow">$T^{-1}$</font>$\bullet R_x$<font color="#2EFE2E
 </div>
 </font>
 
+H:
 
-##Rotations
+## Rotations
 <p align ="left"><font size ="5">Another way to calculate the composite transformation matrix:</font></p>
 <p align ="left"><font size ="5">$R_y$<font color="#2EFE2E">$(\lambda)$</font>$\bullet R_x$<font color="#2EFE2E">$(\alpha)$</font></font></p>
 <img width ="400" height="450" src="fig/image33.JPG" align ="right">
@@ -1240,8 +1513,10 @@ u_z'1 & u_z'1 & u_z'1 & 0 \cr
 $ 
 </font>
 
+H:
 
-##Rotations
+## Rotations
+
 <p align ="left"><font size ="6">Rotations and Quaternions - Review</font></p>
 
 <font size ="6">
@@ -1263,8 +1538,9 @@ $
 </div>
 </font>
 
+H:
 
-##Rotations
+## Rotations
 <p align ="left"><font size ="6">Rotations and Quaternions - Review</font></p>
 
 <font size ="6">
@@ -1282,8 +1558,10 @@ $
 </div>
 </font>
 
+H:
 
-##Rotations
+## Rotations
+
 <p align ="left"><font size="5">The hypersphere of rotations(<font color="yellow">2D case</font>)</font></p>
 <p align ="left"><font color="yellow" size ="5">Rotation angle : $\beta $(->latitude $\alpha$)</font></p>
 <img width ="800" height="250" src="fig/image34.JPG">
@@ -1298,8 +1576,10 @@ $
 </div>
 </font>
 
+H:
 
-##Rotations
+## Rotations
+
 <p align ="left"><font size="5">The hypersphere of rotations(<font color="yellow">3D case</font>)</font></p>
 <p align ="left"><font color="yellow" size ="5">Rotation angle : $\beta $(->latitude $\alpha$)</font></p>
 <img width ="900" height="200" src="fig/image35.JPG">
@@ -1316,8 +1596,10 @@ $
 </div>
 </font>
 
+H:
 
-##Rotations
+## Rotations
+
 <p align ="left"><font size="5">Parameterizing the space of rotations(<font color="yellow">2D case</font>)</font></p>
 
 <font size ="4">
@@ -1353,8 +1635,9 @@ $
 <p align ="left"><font size = "5">2. Since<font color="yellow">$\space w^2 = cos^2 (\beta / 2)$</font>$\rightarrow$<font color="yellow">$(x^2 + y^2 = sin^2 (\beta / 2))$</font>
 </font></p>
 
+H:
 
-##Rotations
+## Rotations
 <p align ="left"><font size="5">Parameterizing the space of rotations(<font color="yellow">3D case</font>)</font></p>
 
 <font size ="4">
@@ -1390,8 +1673,9 @@ $
 <p align ="left"><font size = "5">2. Since<font color="yellow">$\space w^2 = cos^2 (\beta / 2)$</font>$\rightarrow$<font color="yellow">$(x^2 + y^2 + z^2  = sin^2 (\beta / 2))$</font>
 </font></p>
 
+H:
 
-##Rotations
+## Rotations
 <p align ="left"><font size ="5">Rotations and Quaternions</font></p>
 <img width ="400" height="450" src="fig/image37.JPG" align ="right">
 <font size ="5">
@@ -1419,8 +1703,10 @@ $
 </div>
 </font>
 
+H:
 
-##Rotations
+## Rotations
+
 <p align ="left"><font size ="5">Proof and Properties</font></p>
 <font size ="5">
 <div style="width:900px;height:150px;border:6px outset">
@@ -1451,8 +1737,9 @@ between spatial orientations</font>.</p>
 </div>
 </font>
 
+H:
 
-##Rotations
+## Rotations
 <p align ="left"><font size ="5">Rodrigues rotation formula</font></p>
 <p align ="left"><font size ="5">The following formula rotates <font color="red">$v$</font> around the unit vector<font color="red">$z$</font> by an angle <font color="yellow">$\beta$</font>:</p>
 <font size ="5">
@@ -1482,8 +1769,10 @@ between spatial orientations</font>.</p>
 
 <p align ="left"><font color="blue">$v_{rot}$</font>$=$<font color="#00FFFF">$xrot$</font>$+($<font color="red">$z$</font>$\bullet$<font color="red">$v$</font>$)$<font color="red">$z$</font></p>
 
+H:
 
-##Rotations
+## Rotations
+
 <p align ="left"><font size ="5">Rotations and Quaternions</font></p>
 <table width="350" heigth="500" border="0" align ="right">
 <tr>
@@ -1550,9 +1839,10 @@ $
 </div>
 </font>
 
+H:
 
+## Shear 
 
-##Shear 
 <p align ="left">Three-dimensional<font color="#2EFE2E">/ respect to z-axis</font></p>
 <img width ="800" height="300" src="fig/image39.JPG">
 <table width="800" heigth="500" border="0">
@@ -1581,25 +1871,29 @@ $
 </tr>
 </table>
 
+H:
 
-
-##Modeling Transformations
+## Modeling Transformations
 <p align ="left">World and local coordinates systems</P>
 <img src="fig/image40.JPG">
 
+H:
 
-##Modeling Transformations
+## Modeling Transformations
+
 <p align ="left">Transformations between coordinates systems</P>
 <img width ="800" height="400" src="fig/image41.JPG">
 <p align ="left"><font color="#2EFE2E">Note:</font>Transformations between systems may involve till three consecutive rotations</p>
 
+H:
 
-##Modeling Transformations
+## Modeling Transformations
 <p align ="left">Transformations between coordinates systems/ Hierarchy(Graph)</P>
 <img width ="800" height="400" src="fig/image42.JPG">
 
+H:
 
-##Modeling Transformations
+## Modeling Transformations
 <p align ="left"><font size ="5">Transformations between coordinates systems/ Orthogonal Matrix method</font></p>
 <p align ="left"><font size ="5">Coordinate transformation involve 1 translation and 3 rotations: $\space R \bullet$<font color ="yellow"> $T$</font></font></p>
 <p align ="left"><font size ="5">Alternative way to calculate the composed rotation matrix: $R$</font></p>
@@ -1624,8 +1918,10 @@ u_z'1 & u_z'1 & u_z'1 & 0 \cr
 $ 
 </font>
 
+H:
 
-##Modeling Transformations
+## Modeling Transformations
+
 <p align ="left"><font size ="5">OpenGL Example</font></p>
 <img width ="400" height="400" src="fig/image43.JPG" align ="right">
 <font size ="5">
@@ -1643,8 +1939,9 @@ $
 </div>
 </font>
 
+H:
 
-##Modeling Transformations
+## Modeling Transformations
 <p align ="left"><font size ="5">OpenGL Example</font></p>
 <p align ="left"><font size ="5"><font color="#2EFE2E">OpenGL matrix stack (model-view)</font></font></p>
 <p align ="left"><font size ="5"><font color="#00FFFF">pushMatrix:</font> multiply current matrix and adds to the head</font></p>
