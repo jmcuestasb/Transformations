@@ -227,8 +227,8 @@ V:
 ## Linear transformations: Scaling (3d case)
 
 <div class="ulist">
-    <img src="fig/image17.JPG" alt="3d scaling" width="38%" style="float: left">
-    <ul style="width: 57%;">
+    <img src="fig/image17.JPG" alt="3d scaling" width="30%" style="float: left">
+    <ul style="width: 65%;">
         </p>
         <p class="fragment" data-fragment-index="1">
         `$x'= sx*x$`
