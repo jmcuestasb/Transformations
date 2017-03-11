@@ -28,26 +28,34 @@ H:
 ## Index
 
  1. Intro<!-- .element: class="fragment" data-fragment-index="1"-->
-    * Shaders
     * Active vs pasive transformations
+    * Shaders
  2. Linear transformations<!-- .element: class="fragment" data-fragment-index="2"-->
-    * Rotation, scaling & Shearing
+    * Scaling, rotation & shearing
  3. Affine transformations<!-- .element: class="fragment" data-fragment-index="3"-->
     * Homogeneous space
-    * Translation
-    * Rotation, scaling & shearing revisited
-    * Matrix operations: concatenating, inverting, stack
- 
+    * Shearing and translation
+    * Scaling, rotation revisited
+    * Matrix operations: concatenating, inverting
+
 V:
 
 ## Index (part 2)
 
- 4. Projections<!-- .element: class="fragment" data-fragment-index="1"-->
+ 4. Modelling and view<!-- .element: class="fragment" data-fragment-index="4"-->
+ 5. Projections<!-- .element: class="fragment" data-fragment-index="5"-->
     * Orthogonal
     * Perspective
- 5. Modelling<!-- .element: class="fragment" data-fragment-index="2"-->
-
+ 
 H:
+
+## Intro: Active vs pasive transformations
+
+<font color="yellow"> Active Transformation (Standard Basis) vs Passive Transformation (change of basis)</font>
+
+<img height='300' src='fig/image3.JPG'/>
+
+V:
 
 ## Intro: Shaders
 
@@ -73,7 +81,7 @@ for (int i = 0; i < vertexCount; i++) {
 V:
 
 ## Intro: Shaders
-### Vertex shader: glsl code
+### Vertex shader
 
 ```glsl
 uniform mat4 transform;
@@ -86,6 +94,45 @@ void main(){
    vertColor = color;
 }
 ```
+
+V:
+
+## Intro: Shaders
+### Vertex shader: glsl code for active *transform*
+
+```glsl
+uniform mat4 transform;
+attribute vec4 vertex;
+attribute vec4 color;
+varying vec4 vertColor;
+
+void main(){
+   gl_Position = transform * vertex;
+   vertColor = color;
+}
+```
+
+1. `transform = projection`
+  
+V:
+
+## Intro: Shaders
+### Vertex shader: glsl code for passive *transform*
+
+```glsl
+uniform mat4 transform;
+attribute vec4 vertex;
+attribute vec4 color;
+varying vec4 vertColor;
+
+void main(){
+   gl_Position = transform * vertex;
+   vertColor = color;
+}
+```
+
+1. `transform = projection * modelview`
+2. `transform = projection * view * model`
 
 V:
 
@@ -115,14 +162,6 @@ void main(){
 }
 ```
 
-V:
-
-## Intro: Active vs pasive transformations
-
-<font color="yellow"> Active Transformation (Standard Basis) vs Passive Transformation (change of basis)</font>
-
-<img height='300' src='fig/image3.JPG'/>
-
 H:
 
 ## Linear transformations: Notion
@@ -138,11 +177,48 @@ Observation 1:<!-- .element: class="fragment" data-fragment-index="3"-->
 
 Observation 2:<!-- .element: class="fragment" data-fragment-index="4"-->
    Translation is a nonlinear transformation
+   
+V:
+
+## Linear transformations: Scaling (2d case)
+
+<div class="ulist">
+    <img src="fig/image5.JPG" alt="2d scaling" width="38%" style="float: left">
+    <ul style="width: 57%;">
+        </p>
+        <p class="fragment" data-fragment-index="1">
+        `$x'= sx*x$`
+        </p>
+        </p>
+        <p class="fragment" data-fragment-index="2">
+        `$y'= sy*y$`
+        </p>
+        
+        <p class="fragment" data-fragment-index="3">
+        `$\begin{bmatrix} 
+        x' \cr 
+        y' \cr
+        \end{bmatrix}
+        = 
+        \begin{bmatrix}
+        sx & 0 \cr
+        0 & sy \cr
+        \end{bmatrix} \bullet \begin{bmatrix} 
+        x \cr 
+        y \cr
+        \end{bmatrix}
+        $`
+        <p class="fragment" data-fragment-index="4">
+        $P'= S(sx,sy) \bullet P$
+        </p>
+        </p>
+    </ul>
+</div>
 
 V:
 
 ## Linear transformations: Rotation
-### Euler angles (2d case)
+### 2d case
 
 <div class="ulist">
     <img src="fig/image7.png" alt="2d rotations" width="38%" style="float: left">
@@ -155,11 +231,13 @@ V:
         </p>
         </p>
         <p class="fragment" data-fragment-index="3">
-        $x'= rcos (\alpha+\beta) = rcos \alpha cos \beta - rsin \alpha sin \beta$
+        $x'= rcos (\alpha+\beta)$
+        $x'= rcos \alpha cos \beta - rsin \alpha sin \beta$
         </p>
         </p>
         <p class="fragment" data-fragment-index="4">
-        $y'= rsin (\alpha+\beta) = rcos \alpha sin \beta - rsin \alpha cos \beta$
+        $y'= rsin (\alpha+\beta)$
+        $y'= rcos \alpha sin \beta - rsin \alpha cos \beta$
         </p>
     </ul>
 </div>
@@ -167,7 +245,7 @@ V:
 V:
 
 ## Linear transformations: Rotation
-### Euler angles (2d case)
+### 2d case
 
 <div class="ulist">
     <img src="fig/image7.png" alt="2d rotations" width="38%" style="float: left">
@@ -187,7 +265,7 @@ V:
         \end{bmatrix}
         $`
         <p class="fragment" data-fragment-index="2">
-        $P'= R_{\beta} \bullet P$
+        $P'= R(\beta) \bullet P$
         </p>
         </p>
     </ul>
@@ -199,8 +277,8 @@ V:
 ### Euler angles (respect to z-axis)
 
 <div class="ulist">
-    <img src="fig/image20.JPG" alt="z-axis rotation" width="38%" style="float: left">
-    <ul style="width: 57%;">
+    <img src="fig/image20.JPG" alt="z-axis rotation" width="28%" style="float: left">
+    <ul style="width: 67%;">
         <p class="fragment" data-fragment-index="1">
         $z' = z$
         </p>
@@ -222,7 +300,7 @@ V:
         \end{bmatrix}
         $`
         <p class="fragment" data-fragment-index="3">
-        $P'= R_{\beta} \bullet P$
+        $P'= R_z(\beta) \bullet P$
         </p>
         </p>
     </ul>
@@ -234,8 +312,8 @@ V:
 ### Euler angles (respect to x-axis)
 
 <div class="ulist">
-    <img src="fig/image21.JPG" alt="z-axis rotation" width="38%" style="float: left">
-    <ul style="width: 57%;">
+    <img src="fig/image21.JPG" alt="z-axis rotation" width="28%" style="float: left">
+    <ul style="width: 67%;">
         <p class="fragment" data-fragment-index="1">
         $x' = x$
         </p>
@@ -257,7 +335,7 @@ V:
         \end{bmatrix}
         $`
         <p class="fragment" data-fragment-index="3">
-        $P'= R_{\beta} \bullet P$
+        $P'= R_x(\beta) \bullet P$
         </p>
         </p>
     </ul>
@@ -269,8 +347,8 @@ V:
 ### Euler angles (respect to y-axis)
 
 <div class="ulist">
-    <img src="fig/image22.JPG" alt="z-axis rotation" width="38%" style="float: left">
-    <ul style="width: 57%;">
+    <img src="fig/image22.JPG" alt="z-axis rotation" width="28%" style="float: left">
+    <ul style="width: 67%;">
         <p class="fragment" data-fragment-index="1">
         $y' = y$
         </p>
@@ -292,116 +370,11 @@ V:
         \end{bmatrix}
         $`
         <p class="fragment" data-fragment-index="3">
-        $P'= R_{\beta} \bullet P$
+        $P'= R_y(\beta) \bullet P$
         </p>
         </p>
     </ul>
 </div>
-   
-V:
-
-## Linear transformations: Rotation
-### Euler angles
-
-<table width="350" heigth="500" border="0" align ="right">
-<tr>
-<td>
-<img src="fig/image7.JPG" width="350" heigth="350">
-</td>
-</tr>
-<tr>
-<td>
-<font size ="5">Vectorially we get:</font>
-</br>
-<font size ="5" color="#00FFFF">
-$\begin{bmatrix} 
-x \cr 
-y \end{bmatrix}
-\begin{bmatrix} 
-cos\beta & -sin \beta  \cr 
-sin\beta & cos \beta \end{bmatrix}
-\begin{bmatrix} 
-x' \cr 
-y' \end{bmatrix}$
-</font>
-</br>
-<font size ="5" color="#01DF3A">
-$
-P'= R * P
-$
-</font>
-</td>
-</tr>
-</table> 
-<p align ="left"><font color="yellow">Rotation</font></p>
-</font></p>
-<p align ="left"><font size ="6">From the triangulation:</font></p>
-<p align ="left"><font size ="6" color="blue">
-$x = rcos \alpha$
-</font></p>
-<p align ="left"><font size ="6" color="blue">
-$y= rsin \alpha$
-</font></p>
-
-<p align ="left"><font size ="5" color="red">
-$x'= rcos (\alpha+\beta) = rcos \alpha cos \beta - rsin \alpha sin \beta $
-</font></p>
-<p align ="left"><font size ="5" color="red">
-$y'= rsin (\alpha+\beta) = rcos \alpha sin \beta - rsin \alpha cos \beta $
-</font></p>
-<p align ="left"><font size ="6" color="#01DF3A">
-$\boxed {x'= xcos \beta - ysin \beta}$
-</font></p>
-<p align ="left"><font size ="6" color="#01DF3A">
-$\boxed {y'= xsin \beta + ycos \beta}$
-</font></p>
-
-V:
-
-## Linear transformations: Rotation
-### Euler angles
-
-<p align ="left">Rotation respect z-axis</p>
-<img height="400" src="fig/image20.JPG" align ="left">
-<p align ="left"><font size="5">Notice $z=z'$, we get:</font></p>
-<p align ="right"><p align ="botton">
-<p>$ x' = x cos \beta -y sin \beta$</p>
-<p>$ y' = x sin \beta +y cos \beta$</p>
-<p>$ z'= z$</p>
-</p></p>
-<p align ="left"><font size="5">In homogeneous coordinates we get:</font></p>
-<p align ="right"><p align ="botton"><font size ="5">
-$\begin{bmatrix} 
-x \cr
-y \cr
-z \cr 
-1 \end{bmatrix}
-$
-</font>
-<font size ="5">
-$
-\begin{bmatrix} 
-cos \beta & -sin \beta & 0 & 0 \cr
-sin \beta & cos \beta & 0 & 0 \cr
-0 & 0 & 1 & 0 \cr 
-0 & 0 & 0 & 1 \end{bmatrix}
-$
-</font>
-<font size ="5">
-$
-\begin{bmatrix} 
-x' \cr
-y' \cr
-z' \cr 
-1 \end{bmatrix}$
-</font></p></p>
-<p align ="right"><p align ="botton">
-$P' = R \ast P$
-</p></p>
-
-V:
-
-## Linear transformations: Scaling
 
 V:
 
@@ -422,7 +395,11 @@ V:
 
 V:
 
-## Affine transformations: Translation
+## Affine transformations: Shearing and translation
+
+V:
+
+## Affine transformations: Scaling revisited
 
 V:
 
@@ -438,14 +415,6 @@ V:
 
 ## Affine transformations: Rotation
 ### Quaternions
-
-V:
-
-## Affine transformations: Scaling revisited
-
-V:
-
-## Affine transformations: Shearing revisited
 
 V:
 
@@ -465,10 +434,13 @@ $
 P'= M\ast P,\space \space \space \space \space \space \space  M^{-1}P' = M^{-1}M P
 $
 
-V:
+H:
 
-## Affine transformations: Matrix operations
-### Matrix stack
+## Modelling and view
+
+Any (homogeneous matrix) transform represents a change (of basis) of a coordinate system, i.e., passive transformation
+
+Matrix stack stuff goes here!
 
 H:
 
@@ -477,10 +449,6 @@ H:
 V:
 
 ## Projections: Perspective
-
-H:
-
-## Modelling
 
 H:
 
