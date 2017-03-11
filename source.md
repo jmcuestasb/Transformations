@@ -127,22 +127,277 @@ H:
 
 ## Linear transformations: Notion
 
-<p align ="left"><font color="#00FFFF">1. Linear</font></p>
-<p align ="left">
+Property 1<!-- .element: class="fragment" data-fragment-index="1"-->
+   $$F(a+b)= F(a)+ F(b)$$
+
+Property 2<!-- .element: class="fragment" data-fragment-index="2"-->
+   $$F(\lambda a) = \lambda F(a)\rightarrow F(0) = 0$$
+
+Observation 1:<!-- .element: class="fragment" data-fragment-index="3"-->
+   Matrix multiplication is always linear
+
+Observation 2:<!-- .element: class="fragment" data-fragment-index="4"-->
+   Translation is a nonlinear transformation
+
+V:
+
+## Linear transformations: Rotation
+### Euler angles (2d case)
+
+<div class="ulist">
+    <img src="fig/image7.png" alt="2d rotations" width="38%" style="float: left">
+    <ul style="width: 57%;">        
+        <p class="fragment" data-fragment-index="1">
+        $x = rcos \alpha$
+        </p>
+        <p class="fragment" data-fragment-index="2">
+        $y= rsin \alpha$
+        </p>
+        </p>
+        <p class="fragment" data-fragment-index="3">
+        $x'= rcos (\alpha+\beta) = rcos \alpha cos \beta - rsin \alpha sin \beta$
+        </p>
+        </p>
+        <p class="fragment" data-fragment-index="4">
+        $y'= rsin (\alpha+\beta) = rcos \alpha sin \beta - rsin \alpha cos \beta$
+        </p>
+    </ul>
+</div>
+
+V:
+
+## Linear transformations: Rotation
+### Euler angles (2d case)
+
+<div class="ulist">
+    <img src="fig/image7.png" alt="2d rotations" width="38%" style="float: left">
+    <ul style="width: 57%;">        
+        <p class="fragment" data-fragment-index="1">
+        `$\begin{bmatrix} 
+        x' \cr 
+        y' \cr
+        \end{bmatrix}
+        = 
+        \begin{bmatrix}
+        cos\beta & -sin \beta \cr
+        sin\beta & cos \beta \cr
+        \end{bmatrix} \bullet \begin{bmatrix} 
+        x \cr 
+        y \cr
+        \end{bmatrix}
+        $`
+        <p class="fragment" data-fragment-index="2">
+        $P'= R_{\beta} \bullet P$
+        </p>
+        </p>
+    </ul>
+</div>
+
+V:
+
+## Linear transformations: Rotation
+### Euler angles (respect to z-axis)
+
+<div class="ulist">
+    <img src="fig/image20.JPG" alt="z-axis rotation" width="38%" style="float: left">
+    <ul style="width: 57%;">
+        <p class="fragment" data-fragment-index="1">
+        $z' = z$
+        </p>
+        <p class="fragment" data-fragment-index="2">
+        `$\begin{bmatrix} 
+        x' \cr 
+        y' \cr
+        z' \cr
+        \end{bmatrix}
+        = 
+        \begin{bmatrix}
+        cos\beta & -sin \beta & 0 \cr
+        sin\beta & cos \beta & 0 \cr
+        0 & 0 & 1 \cr
+        \end{bmatrix} \bullet \begin{bmatrix} 
+        x \cr 
+        y \cr
+        z \cr
+        \end{bmatrix}
+        $`
+        <p class="fragment" data-fragment-index="3">
+        $P'= R_{\beta} \bullet P$
+        </p>
+        </p>
+    </ul>
+</div>
+
+V:
+
+## Linear transformations: Rotation
+### Euler angles (respect to x-axis)
+
+<div class="ulist">
+    <img src="fig/image21.JPG" alt="z-axis rotation" width="38%" style="float: left">
+    <ul style="width: 57%;">
+        <p class="fragment" data-fragment-index="1">
+        $x' = x$
+        </p>
+        <p class="fragment" data-fragment-index="2">
+        `$\begin{bmatrix} 
+        x' \cr 
+        y' \cr
+        z' \cr
+        \end{bmatrix}
+        = 
+        \begin{bmatrix}
+        1 & 0 & 0 \cr
+        0 & cos\beta & -sin \beta \cr
+        0 & sin\beta & cos \beta \cr
+        \end{bmatrix} \bullet \begin{bmatrix} 
+        x \cr 
+        y \cr
+        z \cr
+        \end{bmatrix}
+        $`
+        <p class="fragment" data-fragment-index="3">
+        $P'= R_{\beta} \bullet P$
+        </p>
+        </p>
+    </ul>
+</div>
+
+V:
+
+## Linear transformations: Rotation
+### Euler angles (respect to y-axis)
+
+<div class="ulist">
+    <img src="fig/image22.JPG" alt="z-axis rotation" width="38%" style="float: left">
+    <ul style="width: 57%;">
+        <p class="fragment" data-fragment-index="1">
+        $y' = y$
+        </p>
+        <p class="fragment" data-fragment-index="2">
+        `$\begin{bmatrix} 
+        x' \cr 
+        y' \cr
+        z' \cr
+        \end{bmatrix}
+        = 
+        \begin{bmatrix}
+        cos\beta & 0 & sin \beta \cr
+        0 & 1 & 0 \cr
+        -sin\beta & 0 & cos \beta \cr
+        \end{bmatrix} \bullet \begin{bmatrix} 
+        x \cr 
+        y \cr
+        z \cr
+        \end{bmatrix}
+        $`
+        <p class="fragment" data-fragment-index="3">
+        $P'= R_{\beta} \bullet P$
+        </p>
+        </p>
+    </ul>
+</div>
+   
+V:
+
+## Linear transformations: Rotation
+### Euler angles
+
+<table width="350" heigth="500" border="0" align ="right">
+<tr>
+<td>
+<img src="fig/image7.JPG" width="350" heigth="350">
+</td>
+</tr>
+<tr>
+<td>
+<font size ="5">Vectorially we get:</font>
+</br>
+<font size ="5" color="#00FFFF">
+$\begin{bmatrix} 
+x \cr 
+y \end{bmatrix}
+\begin{bmatrix} 
+cos\beta & -sin \beta  \cr 
+sin\beta & cos \beta \end{bmatrix}
+\begin{bmatrix} 
+x' \cr 
+y' \end{bmatrix}$
+</font>
+</br>
+<font size ="5" color="#01DF3A">
 $
-F(a+b)= F(a)+ F(b), 
+P'= R * P
 $
-$
-F(\lambda a) = \lambda F(a)\rightarrow F(0) = 0
-$
-, Thus translation is a nonlinear transformation
-</p>
-<p align ="center"><font color="yellow">Note:</font> Matrix multiplication is always linear</p>
+</font>
+</td>
+</tr>
+</table> 
+<p align ="left"><font color="yellow">Rotation</font></p>
+</font></p>
+<p align ="left"><font size ="6">From the triangulation:</font></p>
+<p align ="left"><font size ="6" color="blue">
+$x = rcos \alpha$
+</font></p>
+<p align ="left"><font size ="6" color="blue">
+$y= rsin \alpha$
+</font></p>
+
+<p align ="left"><font size ="5" color="red">
+$x'= rcos (\alpha+\beta) = rcos \alpha cos \beta - rsin \alpha sin \beta $
+</font></p>
+<p align ="left"><font size ="5" color="red">
+$y'= rsin (\alpha+\beta) = rcos \alpha sin \beta - rsin \alpha cos \beta $
+</font></p>
+<p align ="left"><font size ="6" color="#01DF3A">
+$\boxed {x'= xcos \beta - ysin \beta}$
+</font></p>
+<p align ="left"><font size ="6" color="#01DF3A">
+$\boxed {y'= xsin \beta + ycos \beta}$
+</font></p>
 
 V:
 
 ## Linear transformations: Rotation
 ### Euler angles
+
+<p align ="left">Rotation respect z-axis</p>
+<img height="400" src="fig/image20.JPG" align ="left">
+<p align ="left"><font size="5">Notice $z=z'$, we get:</font></p>
+<p align ="right"><p align ="botton">
+<p>$ x' = x cos \beta -y sin \beta$</p>
+<p>$ y' = x sin \beta +y cos \beta$</p>
+<p>$ z'= z$</p>
+</p></p>
+<p align ="left"><font size="5">In homogeneous coordinates we get:</font></p>
+<p align ="right"><p align ="botton"><font size ="5">
+$\begin{bmatrix} 
+x \cr
+y \cr
+z \cr 
+1 \end{bmatrix}
+$
+</font>
+<font size ="5">
+$
+\begin{bmatrix} 
+cos \beta & -sin \beta & 0 & 0 \cr
+sin \beta & cos \beta & 0 & 0 \cr
+0 & 0 & 1 & 0 \cr 
+0 & 0 & 0 & 1 \end{bmatrix}
+$
+</font>
+<font size ="5">
+$
+\begin{bmatrix} 
+x' \cr
+y' \cr
+z' \cr 
+1 \end{bmatrix}$
+</font></p></p>
+<p align ="right"><p align ="botton">
+$P' = R \ast P$
+</p></p>
 
 V:
 
@@ -1182,6 +1437,7 @@ H:
 H:
 
 ## Rotations
+
 <p align ="left">Rotation respect z-axis</p>
 <img height="400" src="fig/image20.JPG" align ="left">
 <p align ="left"><font size="5">Notice $z=z'$, we get:</font></p>
