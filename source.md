@@ -34,8 +34,8 @@ H:
     * Scaling, rotation & shearing
  3. Affine transformations<!-- .element: class="fragment" data-fragment-index="3"-->
     * Homogeneous space
-    * Shearing and translation
-    * Scaling, rotation revisited
+    * Translation
+    * Scaling, rotation & shearing revisited
     * Matrix operations: concatenating, inverting
 
 V:
@@ -189,10 +189,8 @@ V:
 <div class="ulist">
     <img src="fig/image5.JPG" alt="2d scaling" width="38%" style="float: left">
     <ul style="width: 57%;">
-        </p>
         <p class="fragment" data-fragment-index="1">
         `$x'= sx*x$`
-        </p>
         </p>
         <p class="fragment" data-fragment-index="2">
         `$y'= sy*y$`
@@ -211,9 +209,9 @@ V:
         y \cr
         \end{bmatrix}
         $`
+        </p>
         <p class="fragment" data-fragment-index="4">
         $P'= S(sx,sy) \bullet P$
-        </p>
         </p>
     </ul>
 </div>
@@ -229,10 +227,8 @@ V:
 <div class="ulist">
     <img src="fig/image17.JPG" alt="3d scaling" width="30%" style="float: left">
     <ul style="width: 65%;">
-        </p>
         <p class="fragment" data-fragment-index="1">
         `$x'= sx*x$`
-        </p>
         </p>
         <p class="fragment" data-fragment-index="2">
         `$y'= sy*y$`
@@ -257,9 +253,9 @@ V:
         z \cr
         \end{bmatrix}
         $`
+        </p>
         <p class="fragment" data-fragment-index="5">
         $P'= S(sx,sy,sz) \bullet P$
-        </p>
         </p>
     </ul>
 </div>
@@ -281,11 +277,9 @@ V:
         <p class="fragment" data-fragment-index="2">
         $y= rsin \alpha$
         </p>
-        </p>
         <p class="fragment" data-fragment-index="3">
         $x'= rcos (\alpha+\beta)$
         $x'= rcos \alpha cos \beta - rsin \alpha sin \beta$
-        </p>
         </p>
         <p class="fragment" data-fragment-index="4">
         $y'= rsin (\alpha+\beta)$
@@ -315,9 +309,9 @@ V:
         y \cr
         \end{bmatrix}
         $`
+        </p>
         <p class="fragment" data-fragment-index="2">
         $P'= R(\beta) \bullet P$
-        </p>
         </p>
     </ul>
 </div>
@@ -350,9 +344,9 @@ V:
         z \cr
         \end{bmatrix}
         $`
+        </p>
         <p class="fragment" data-fragment-index="3">
         $P'= R_z(\beta) \bullet P$
-        </p>
         </p>
     </ul>
 </div>
@@ -385,9 +379,9 @@ V:
         z \cr
         \end{bmatrix}
         $`
+        </p>
         <p class="fragment" data-fragment-index="3">
         $P'= R_x(\beta) \bullet P$
-        </p>
         </p>
     </ul>
 </div>
@@ -420,9 +414,9 @@ V:
         z \cr
         \end{bmatrix}
         $`
+        </p>
         <p class="fragment" data-fragment-index="3">
         $P'= R_y(\beta) \bullet P$
-        </p>
         </p>
     </ul>
 </div>
@@ -434,10 +428,8 @@ V:
 <div class="ulist">
     <img src="fig/shearing2d.png" alt="2d shearing" width="38%" style="float: left">
     <ul style="width: 57%;">
-        </p>
         <p class="fragment" data-fragment-index="1">
         `$x'= x + h*y$`
-        </p>
         </p>
         <p class="fragment" data-fragment-index="2">
         `$y'=y$`
@@ -456,9 +448,43 @@ V:
         y \cr
         \end{bmatrix}
         $`
+        </p>
         <p class="fragment" data-fragment-index="4">
         $P'= D_x(h) \bullet P$
         </p>
+    </ul>
+</div>
+
+V:
+
+## Linear transformations: 2d shearing
+
+<div class="ulist">
+    <img src="fig/shearing2dy.png" alt="2d y-shearing" width="38%" style="float: left">
+    <ul style="width: 57%;">
+        <p class="fragment" data-fragment-index="1">
+        `$x'= x$`
+        </p>
+        <p class="fragment" data-fragment-index="2">
+        `$y'=y + h*x$`
+        </p>
+        <p class="fragment" data-fragment-index="3">
+        `$\begin{bmatrix} 
+        x' \cr 
+        y' \cr
+        \end{bmatrix}
+        = 
+        \begin{bmatrix}
+        1 & 0 \cr
+        h & 1 \cr
+        \end{bmatrix} \bullet \begin{bmatrix} 
+        x \cr 
+        y \cr
+        \end{bmatrix}
+        $`
+        </p>
+        <p class="fragment" data-fragment-index="4">
+        $P'= D_y(h) \bullet P$
         </p>
     </ul>
 </div>
@@ -470,18 +496,16 @@ V:
 <div class="ulist">
     <img src="fig/shearing_proscene.png" alt="3d shearing" width="38%" style="float: left">
     <ul style="width: 57%;">
-        </p>
         <p class="fragment" data-fragment-index="1">
         `$x'=x+az$`
-        </p>
         </p>
         <p class="fragment" data-fragment-index="2">
         `$y'=y+bz$`
         </p>
-        <p class="fragment" data-fragment-index="2">
+        <p class="fragment" data-fragment-index="3">
         `$z'=z$`
         </p>
-        <p class="fragment" data-fragment-index="3">
+        <p class="fragment" data-fragment-index="4">
         `$\begin{bmatrix} 
         x' \cr 
         y' \cr
@@ -498,9 +522,9 @@ V:
         z \cr
         \end{bmatrix}
         $`
-        <p class="fragment" data-fragment-index="4">
-        $P'= D_z(a,b) \bullet P$
         </p>
+        <p class="fragment" data-fragment-index="5">
+        $P'= D_z(a,b) \bullet P$
         </p>
     </ul>
 </div>
@@ -513,20 +537,166 @@ V:
 
 H:
 
+## Affine transformations
+### Non-linearity of translation
+
+<div class="ulist">
+    <img src="fig/image4.JPG" alt="2d translation" width="38%" style="float: left">
+    <ul style="width: 57%;">
+        <p class="fragment" data-fragment-index="1">
+        `$x'= x + dx$`
+        </p>
+        <p class="fragment" data-fragment-index="2">
+        `$y'=y + dy$`
+        </p>
+        <p class="fragment" data-fragment-index="3">
+        `$\begin{bmatrix} 
+        x' \cr 
+        y' \cr
+        \end{bmatrix}
+        = 
+        \begin{bmatrix}
+        dx \cr
+        dy \cr
+        \end{bmatrix} + \begin{bmatrix} 
+        x \cr 
+        y \cr
+        \end{bmatrix}
+        $`
+        </p>
+        <p class="fragment" data-fragment-index="4">
+        $P'= T(dx,dy) + P$
+        </p>
+    </ul>
+</div>
+
+V:
+
 ## Affine transformations: Notion
 
-<p align ="left"><font color="#00FFFF">2. Affine</font></p>
 <p align ="center">
-Linear $+$ Translation $\rightarrow p' = M\ast p + b $
+Linear transformations $+$ Translation $\rightarrow P' = M\ast P + T $
 </p>
 
 V:
 
-## Affine transformations: Homogeneous space
+## Affine transformations: Homogeneous space $\rightarrow$ 2d
+
+<div class="ulist">
+    <img src="fig/image9.JPG" alt="Homogeneous space" width="38%" style="float: left">
+    <ul style="width: 57%;">
+        <p class="fragment" data-fragment-index="1">
+        Homogeneous w-coordinate: $(x,y,w)$
+        </p>
+        <p class="fragment" data-fragment-index="2">
+        Homogeneous space $\rightarrow$ 2d
+        </p>
+        <p class="fragment" data-fragment-index="3">
+        $(x,y,1) \rightarrow (x,y)$, for $w=1$
+        </p>
+        <p class="fragment" data-fragment-index="4">
+        In general: $(x,y,w) \rightarrow (x/w,y/w)$
+        </p>
+    </ul>
+</div>
 
 V:
 
-## Affine transformations: Shearing and translation
+## Affine transformations: Homogeneous space $\rightarrow$ 3d
+
+<p class="fragment" data-fragment-index="1">
+$(x,y,z,1) \rightarrow (x,y,z)$, for $w=1$
+</p>
+<p class="fragment" data-fragment-index="2">
+In general: $(x,y,z,w) \rightarrow (x/w,y/w,z/w)$
+</p>
+
+V:
+
+## Affine transformations:Translation
+
+<div class="ulist">
+    <img src="fig/image4.JPG" alt="2d translation" width="38%" style="float: left">
+    <ul style="width: 57%;">
+        <p class="fragment" data-fragment-index="1">
+        `$x'= x + dx$`
+        </p>
+        <p class="fragment" data-fragment-index="2">
+        `$y'=y + dy$`
+        </p>
+        <p class="fragment" data-fragment-index="3">
+        `$w=1$`
+        </p>
+        <p class="fragment" data-fragment-index="4">
+        `$\begin{bmatrix} 
+        x' \cr 
+        y' \cr
+        w \cr
+        \end{bmatrix}
+        = 
+        \begin{bmatrix}
+        1 & 0 & dx \cr
+        0 & 1 & dy \cr
+        0 & 0 & 1 \cr
+        \end{bmatrix} \bullet \begin{bmatrix} 
+        x \cr 
+        y \cr
+        1 \cr
+        \end{bmatrix}
+        $`
+        </p>
+        <p class="fragment" data-fragment-index="5">
+        $P'= T(dx,dy) \bullet P$
+        </p>
+    </ul>
+</div>
+
+V:
+
+## Affine transformations:Translation
+
+<div class="ulist">
+    <img src="fig/image15.JPG" alt="3d translation" width="38%" style="float: left">
+    <ul style="width: 57%;">
+        <p class="fragment" data-fragment-index="1">
+        `$x'= x + dx$`
+        </p>
+        <p class="fragment" data-fragment-index="2">
+        `$y'=y + dy$`
+        </p>
+        <p class="fragment" data-fragment-index="3">
+        `$z'=z + dz$`
+        </p>
+        <p class="fragment" data-fragment-index="4">
+        `$\begin{bmatrix} 
+        x' \cr 
+        y' \cr
+        z' \cr
+        w \cr
+        \end{bmatrix}
+        = 
+        \begin{bmatrix}
+        1 & 0 & 0 & dx \cr
+        0 & 1 & 0 & dy \cr
+        0 & 0 & 1 & dz \cr
+        0 & 0 & 0 & 1 \cr
+        \end{bmatrix} \bullet \begin{bmatrix} 
+        x \cr 
+        y \cr
+        z \cr
+        1 \cr
+        \end{bmatrix}
+        $`
+        </p>
+        <p class="fragment" data-fragment-index="5">
+        $P'= T(dx,dy,dz) \bullet P$
+        </p>
+    </ul>
+</div>
+
+V:
+
+## Affine transformations: Shearing revisited
 
 V:
 
