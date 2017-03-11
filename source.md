@@ -184,7 +184,7 @@ Observation 2:<!-- .element: class="fragment" data-fragment-index="4"-->
    
 V:
 
-## Linear transformations: Scaling (2d case)
+## Linear transformations: 2d scaling
 
 <div class="ulist">
     <img src="fig/image5.JPG" alt="2d scaling" width="38%" style="float: left">
@@ -220,11 +220,11 @@ V:
 
 N:
 
-* mirroring and reflections is missed
+* mirroring and reflections are missed
 
 V:
 
-## Linear transformations: Scaling (3d case)
+## Linear transformations: 3d scaling
 
 <div class="ulist">
     <img src="fig/image17.JPG" alt="3d scaling" width="30%" style="float: left">
@@ -266,12 +266,11 @@ V:
 
 N:
 
-* mirroring and reflections is missed
+* mirroring and reflections are missed
 
 V:
 
-## Linear transformations: Rotation
-### 2d case
+## Linear transformations: 2d rotation
 
 <div class="ulist">
     <img src="fig/image7.png" alt="2d rotations" width="38%" style="float: left">
@@ -297,8 +296,7 @@ V:
 
 V:
 
-## Linear transformations: Rotation
-### 2d case
+## Linear transformations: 2d Rotation
 
 <div class="ulist">
     <img src="fig/image7.png" alt="2d rotations" width="38%" style="float: left">
@@ -326,7 +324,7 @@ V:
 
 V:
 
-## Linear transformations: Rotation
+## Linear transformations: 3d rotation
 ### Euler angles (respect to z-axis)
 
 <div class="ulist">
@@ -361,7 +359,7 @@ V:
 
 V:
 
-## Linear transformations: Rotation
+## Linear transformations: 3d rotation
 ### Euler angles (respect to x-axis)
 
 <div class="ulist">
@@ -396,7 +394,7 @@ V:
 
 V:
 
-## Linear transformations: Rotation
+## Linear transformations: 3d rotation
 ### Euler angles (respect to y-axis)
 
 <div class="ulist">
@@ -431,7 +429,87 @@ V:
 
 V:
 
-## Linear transformations: Shearing
+## Linear transformations: 2d shearing
+
+<div class="ulist">
+    <img src="fig/shearing2d.png" alt="2d shearing" width="38%" style="float: left">
+    <ul style="width: 57%;">
+        </p>
+        <p class="fragment" data-fragment-index="1">
+        `$x'= x + h*y$`
+        </p>
+        </p>
+        <p class="fragment" data-fragment-index="2">
+        `$y'=y$`
+        </p>
+        <p class="fragment" data-fragment-index="3">
+        `$\begin{bmatrix} 
+        x' \cr 
+        y' \cr
+        \end{bmatrix}
+        = 
+        \begin{bmatrix}
+        1 & h \cr
+        0 & 1 \cr
+        \end{bmatrix} \bullet \begin{bmatrix} 
+        x \cr 
+        y \cr
+        \end{bmatrix}
+        $`
+        <p class="fragment" data-fragment-index="4">
+        $P'= D_x(h) \bullet P$
+        </p>
+        </p>
+    </ul>
+</div>
+
+V:
+
+## Linear transformations: 3d shearing
+
+<div class="ulist">
+    <img src="fig/shearing_proscene.png" alt="3d shearing" width="38%" style="float: left">
+    <ul style="width: 57%;">
+        </p>
+        <p class="fragment" data-fragment-index="1">
+        `$x'=x+az$`
+        </p>
+        </p>
+        <p class="fragment" data-fragment-index="2">
+        `$y'=y+bz$`
+        </p>
+        <p class="fragment" data-fragment-index="2">
+        `$z'=z$`
+        </p>
+        <p class="fragment" data-fragment-index="3">
+        `$\begin{bmatrix} 
+        x' \cr 
+        y' \cr
+        z' \cr
+        \end{bmatrix}
+        = 
+        \begin{bmatrix}
+        1 & 0 & a \cr
+        0 & 1 & b \cr
+        0 & 0 & 1 \cr
+        \end{bmatrix} \bullet \begin{bmatrix} 
+        x \cr 
+        y \cr
+        z \cr
+        \end{bmatrix}
+        $`
+        <p class="fragment" data-fragment-index="4">
+        $P'= D_z(a,b) \bullet P$
+        </p>
+        </p>
+    </ul>
+</div>
+
+V:
+
+## Linear transformations: 3d shearing
+
+...don't forget $P'= D_x(a,b) \bullet P$ and $P'= D_y(a,b) \bullet P$
 
 H:
 
@@ -508,7 +586,7 @@ H:
 ## References
 
 * [Math primer for graphics and game development](https://tfetimes.com/wp-content/uploads/2015/04/F.Dunn-I.Parberry-3D-Math-Primer-for-Graphics-and-Game-Development.pdf)
-* [Processing transformations tutorial](https://www.processing.org/tutorials/transform2d/)
+* [Processing 2d transformations tutorial](https://www.processing.org/tutorials/transform2d/)
 * [Processing shaders tutorial](https://www.processing.org/tutorials/pshader/)
 
 H:
