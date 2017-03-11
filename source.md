@@ -696,16 +696,219 @@ V:
 
 V:
 
-## Affine transformations: Shearing revisited
+## Affine transformations: Shearing (r)
+
+<div class="ulist">
+    <img src="fig/shearing_proscene.png" alt="3d shearing" width="38%" style="float: left">
+    <ul style="width: 57%;">
+        <p>
+        `$x'=x+az$`
+        </p>
+        <p>
+        `$y'=y+bz$`
+        </p>
+        <p>
+        `$z'=z$`
+        </p>
+        <p>
+        `$w=1$`
+        </p>
+        <p>
+        `$\begin{bmatrix} 
+        x' \cr 
+        y' \cr
+        z' \cr
+        w \cr
+        \end{bmatrix}
+        = 
+        \begin{bmatrix}
+        1 & 0 & a & 0 \cr
+        0 & 1 & b & 0 \cr
+        0 & 0 & 1 & 0 \cr
+        0 & 0 & 0 & 1 \cr
+        \end{bmatrix} \bullet \begin{bmatrix} 
+        x \cr 
+        y \cr
+        z \cr
+        1 \cr
+        \end{bmatrix}
+        $`
+        </p>
+        <p>
+        $P'= D_z(a,b) \bullet P$
+        </p>
+    </ul>
+</div>
 
 V:
 
-## Affine transformations: Scaling revisited
+## Affine transformations: Scaling (r)
+
+<div class="ulist">
+    <img src="fig/image17.JPG" alt="3d scaling" width="30%" style="float: left">
+    <ul style="width: 65%;">
+        <p>
+        `$x'= sx*x$`
+        </p>
+        <p>
+        `$y'= sy*y$`
+        </p>
+        <p>
+        `$z'= sz*z$`
+        </p>
+        <p>
+        `$w=1$`
+        </p>
+        <p>
+        `$\begin{bmatrix} 
+        x' \cr 
+        y' \cr
+        z' \cr
+        w \cr
+        \end{bmatrix}
+        = 
+        \begin{bmatrix}
+        sx & 0 & 0 & 0 \cr
+        0 & sy & 0 & 0 \cr
+        0 & 0 & sz & 0 \cr
+        0 & 0 & 0 & 1 \cr
+        \end{bmatrix} \bullet \begin{bmatrix} 
+        x \cr 
+        y \cr
+        z \cr
+        1 \cr
+        \end{bmatrix}
+        $`
+        </p>
+        <p>
+        $P'= S(sx,sy,sz) \bullet P$
+        </p>
+    </ul>
+</div>
+
 
 V:
 
-## Affine transformations: Rotation revisited
-### Euler angles
+## Affine transformations: 3d rotation (r)
+### Euler angles (respect to z-axis)
+
+<div class="ulist">
+    <img src="fig/image20.JPG" alt="z-axis rotation" width="28%" style="float: left">
+    <ul style="width: 67%;">
+        <p>
+        $z' = z$
+        </p>
+        <p>
+        `$w=1$`
+        </p>
+        <p>
+        `$\begin{bmatrix} 
+        x' \cr 
+        y' \cr
+        z' \cr
+        w \cr
+        \end{bmatrix}
+        = 
+        \begin{bmatrix}
+        cos\beta & -sin \beta & 0 & 0 \cr
+        sin\beta & cos \beta & 0 & 0 \cr
+        0 & 0 & 1 & 0 \cr
+        0 & 0 & 0 & 1 \cr
+        \end{bmatrix} \bullet \begin{bmatrix} 
+        x \cr 
+        y \cr
+        z \cr
+        1 \cr
+        \end{bmatrix}
+        $`
+        </p>
+        <p>
+        $P'= R_z(\beta) \bullet P$
+        </p>
+    </ul>
+</div>
+
+V:
+
+## Affine transformations: 3d rotation (r)
+### Euler angles (respect to x-axis)
+
+<div class="ulist">
+    <img src="fig/image21.JPG" alt="z-axis rotation" width="28%" style="float: left">
+    <ul style="width: 67%;">
+        <p>
+        $x' = x$
+        </p>
+        <p>
+        `$w=1$`
+        </p>
+        <p>
+        `$\begin{bmatrix} 
+        x' \cr 
+        y' \cr
+        z' \cr
+        w \cr
+        \end{bmatrix}
+        = 
+        \begin{bmatrix}
+        1 & 0 & 0 & 0 \cr
+        0 & cos\beta & -sin \beta & 0 \cr
+        0 & sin\beta & cos \beta & 0 \cr
+        0 & 0 & 0 & 1 \cr
+        \end{bmatrix} \bullet \begin{bmatrix} 
+        x \cr 
+        y \cr
+        z \cr
+        1 \cr
+        \end{bmatrix}
+        $`
+        </p>
+        <p>
+        $P'= R_x(\beta) \bullet P$
+        </p>
+    </ul>
+</div>
+
+V:
+
+## Affine transformations: 3d rotation (r)
+### Euler angles (respect to y-axis)
+
+<div class="ulist">
+    <img src="fig/image22.JPG" alt="z-axis rotation" width="28%" style="float: left">
+    <ul style="width: 67%;">
+        <p>
+        $y' = y$
+        </p>
+        <p>
+        `$w=1$`
+        </p>
+        <p>
+        `$\begin{bmatrix} 
+        x' \cr 
+        y' \cr
+        z' \cr
+        w \cr
+        \end{bmatrix}
+        = 
+        \begin{bmatrix}
+        cos\beta & 0 & sin \beta & 0 \cr
+        0 & 1 & 0 & 0 \cr
+        -sin\beta & 0 & cos \beta & 0 \cr
+        0 & 0 & 0 & 1 \cr
+        \end{bmatrix} \bullet \begin{bmatrix} 
+        x \cr 
+        y \cr
+        z \cr
+        1 \cr
+        \end{bmatrix}
+        $`
+        </p>
+        <p>
+        $P'= R_y(\beta) \bullet P$
+        </p>
+    </ul>
+</div>
 
 V:
 
