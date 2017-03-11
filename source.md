@@ -51,9 +51,13 @@ H:
 
 ## Intro: Active vs pasive transformations
 
-<font color="yellow"> Active Transformation (Standard Basis) vs Passive Transformation (change of basis)</font>
+<font color="yellow"> Active Transformation (standard basis) vs Passive Transformation (change of basis)</font>
 
 <img height='300' src='fig/image3.JPG'/>
+
+N:
+
+* Standard = Canonical
 
 V:
 
@@ -193,7 +197,6 @@ V:
         <p class="fragment" data-fragment-index="2">
         `$y'= sy*y$`
         </p>
-        
         <p class="fragment" data-fragment-index="3">
         `$\begin{bmatrix} 
         x' \cr 
@@ -214,6 +217,56 @@ V:
         </p>
     </ul>
 </div>
+
+N:
+
+* mirroring and reflections is missed
+
+V:
+
+## Linear transformations: Scaling (3d case)
+
+<div class="ulist">
+    <img src="fig/image17.JPG" alt="3d scaling" width="38%" style="float: left">
+    <ul style="width: 57%;">
+        </p>
+        <p class="fragment" data-fragment-index="1">
+        `$x'= sx*x$`
+        </p>
+        </p>
+        <p class="fragment" data-fragment-index="2">
+        `$y'= sy*y$`
+        </p>
+        <p class="fragment" data-fragment-index="3">
+        `$z'= sz*z$`
+        </p>
+        <p class="fragment" data-fragment-index="4">
+        `$\begin{bmatrix} 
+        x' \cr 
+        y' \cr
+        z' \cr
+        \end{bmatrix}
+        = 
+        \begin{bmatrix}
+        sx & 0 & 0 \cr
+        0 & sy & 0 \cr
+        0 & 0 & sz \cr
+        \end{bmatrix} \bullet \begin{bmatrix} 
+        x \cr 
+        y \cr
+        z \cr
+        \end{bmatrix}
+        $`
+        <p class="fragment" data-fragment-index="5">
+        $P'= S(sx,sy,sz) \bullet P$
+        </p>
+        </p>
+    </ul>
+</div>
+
+N:
+
+* mirroring and reflections is missed
 
 V:
 
