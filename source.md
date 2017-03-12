@@ -138,6 +138,8 @@ void main(){
 1. `transform = projection * modelview`
 2. `transform = projection * view * model`
 
+(<a href="#/5/15">goto matrix composition</a>)
+
 V:
 
 ## Intro: Shaders
@@ -524,7 +526,7 @@ V:
         $`
         </p>
         <p class="fragment" data-fragment-index="5">
-        $P'= D_z(a,b) \bullet P$ (<a href="#/5/4">go to 2d translation</a>)
+        $P'= D_z(a,b) \bullet P$ (<a href="#/5/4">goto 2d translation</a>)
         </p>
     </ul>
 </div>
@@ -646,7 +648,7 @@ V:
         $`
         </p>
         <p class="fragment" data-fragment-index="5">
-        $P'= T(dx,dy) \bullet P$ (<a href="#/4/10">go to 3d shearing</a>)
+        $P'= T(dx,dy) \bullet P$ (<a href="#/4/10">goto 3d shearing</a>)
         </p>
     </ul>
 </div>
@@ -963,12 +965,14 @@ Consider the following sequence of transformations:
 `$...,$` <!-- .element: class="fragment" data-fragment-index="3"-->
 `$P_n=M_nP_n-1,$` <!-- .element: class="fragment" data-fragment-index="4"-->
 
-`which may simply be written as: $M'P$, where $M'=M_n...M_2M_1$`<!-- .element: class="fragment" data-fragment-index="5"-->
+`which may simply be written as: $M'P$, where $M'=M_n...M_2M_1$` <!-- .element: class="fragment" data-fragment-index="5"-->
 
-Mnemonic rule 1:<!-- .element: class="fragment" data-fragment-index="6"-->
+<a href="#/3/5">goto vertex shader</a><!-- .element: class="fragment" data-fragment-index="6"-->
+
+Mnemonic rule 1:<!-- .element: class="fragment" data-fragment-index="7"-->
    The (right-to-left) $M_1,M_2...M_n$ sequence is performed respect to a world (fixed) coordinate system
 
-Mnemonic rule 2:<!-- .element: class="fragment" data-fragment-index="7"-->
+Mnemonic rule 2:<!-- .element: class="fragment" data-fragment-index="8"-->
    The (left-to-right) $M_n,...M_2M_1$ sequence is performed respect to a local (mutable) coordinate system
    
 V:
