@@ -524,7 +524,7 @@ V:
         $`
         </p>
         <p class="fragment" data-fragment-index="5">
-        $P'= D_z(a,b) \bullet P$
+        $P'= D_z(a,b) \bullet P$ (<a href="#/5/4">go to 2d translation</a>)
         </p>
     </ul>
 </div>
@@ -646,7 +646,7 @@ V:
         $`
         </p>
         <p class="fragment" data-fragment-index="5">
-        $P'= T(dx,dy) \bullet P$
+        $P'= T(dx,dy) \bullet P$ (<a href="#/4/10">go to 3d shearing</a>)
         </p>
     </ul>
 </div>
