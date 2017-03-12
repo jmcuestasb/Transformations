@@ -1015,9 +1015,10 @@ H:
 
 ## Modelling and view
 
-Any (homogeneous matrix) transform represents a change (of basis) of a coordinate system, i.e., passive transformation
+N:
 
-Matrix stack stuff goes here!
+* Any (homogeneous matrix) transform represents a change (of basis) of a coordinate system, i.e., passive transformation
+* Matrix stack stuff goes here
 
 H:
 
