@@ -963,7 +963,7 @@ Consider the following sequence of transformations:
 `$...,$` <!-- .element: class="fragment" data-fragment-index="3"-->
 `$P_n=M_nP_n-1,$` <!-- .element: class="fragment" data-fragment-index="4"-->
 
-`which may simply be written as: $P_n=M_n...M_2M_1P$`<!-- .element: class="fragment" data-fragment-index="5"-->
+`which may simply be written as: $M'P$, where $M'=M_n...M_2M_1$`<!-- .element: class="fragment" data-fragment-index="5"-->
 
 Mnemonic rule 1:<!-- .element: class="fragment" data-fragment-index="6"-->
    The (right-to-left) $M_1,M_2...M_n$ sequence is performed respect to a world (fixed) coordinate system
