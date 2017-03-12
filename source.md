@@ -36,7 +36,7 @@ H:
     * Homogeneous space
     * Translation
     * Scaling, rotation & shearing revisited
-    * Matrix operations: concatenating, inverting
+    * Matrix operations: inversion, composition
 
 V:
 
@@ -923,20 +923,38 @@ V:
 V:
 
 ## Affine transformations: Matrix operations
-### Concatenating
+### Inversion
+
+Let $M$ be an affine transformation matrix such that:
+
+$$P'=MP$$
+
+<!-- .element: class="fragment" data-fragment-index="1"-->
+
+Let $M^{-1}$ be the inverse of $M$. Observe that:
+
+<!-- .element: class="fragment" data-fragment-index="2"-->
+
+$$M^{-1}P'=M^{-1}MP=(M^{-1}M)P=IP=P$$
+
+<!-- .element: class="fragment" data-fragment-index="3"-->
 
 V:
 
 ## Affine transformations: Matrix operations
-### Inverting
+### Affine inverse matrices
 
-<p align ="left"><font color="#00FFFF">3. Invertibles</font></p>
-<p align ="center"> 
-Lets take a look at <font color="red">$M^{-1}$ </font>, the inverse matrix of the general transformation matrix <font color="red">$M$</font>
-</p>
-$
-P'= M\ast P,\space \space \space \space \space \space \space  M^{-1}P' = M^{-1}M P
-$
+| Transformation |    Direct     |      Inverted       |
+|----------------|---------------|---------------------|
+| Translation    | $T(dx,dy,dz)$ |   $T(-dx,-dy,-dz)$  |
+| Shearing       |   $D_z(a,b)$  |     $D_z(-a,-b)$    |
+| Scaling        | $S(sx,sy,sz)$ | $S(1/sx,1/sy,1/sz)$ |
+| Rotation       |  $R_z(\beta)$ |    $R_z(-\beta)$    |
+
+V:
+
+## Affine transformations: Matrix operations
+### Composition
 
 H:
 
