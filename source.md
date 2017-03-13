@@ -1012,7 +1012,7 @@ V:
 
 <figure>
     <img height="400" src="fig/image13.JPG">
-    <figcaption>$T(x_f,y_f)$S(sx,sy)$T(-x_r,-y_r)P$</figcaption>
+    <figcaption>$T(x_f,y_f)S(sx,sy)T(-x_f,-y_f)P$</figcaption>
 </figure>
 
 H:
