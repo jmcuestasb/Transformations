@@ -965,20 +965,21 @@ Consider the following sequence of transformations:
 `$...,$` <!-- .element: class="fragment" data-fragment-index="3"-->
 `$P_n=M_nP_{n-1}$` <!-- .element: class="fragment" data-fragment-index="4"-->
 
-`which may simply be written as: $M'P$, where $M'=M_n...M_2M_1$` <!-- .element: class="fragment" data-fragment-index="5"-->
+which is the same as: <!-- .element: class="fragment" data-fragment-index="5"-->
+`$P_n=M_n^*P$, where $M_n^*=M_n...M_2M_1$` <!-- .element: class="fragment" data-fragment-index="6"-->
 
-<a href="#/3/5">goto vertex shader</a><!-- .element: class="fragment" data-fragment-index="6"-->
+<a href="#/3/5">goto vertex shader</a><!-- .element: class="fragment" data-fragment-index="7"-->
 
-Mnemonic rule 1:<!-- .element: class="fragment" data-fragment-index="7"-->
-   The (right-to-left) $M_1,M_2...M_n$ sequence is performed respect to a world (fixed) coordinate system
+Mnemonic rule 1:<!-- .element: class="fragment" data-fragment-index="8"-->
+   The (right-to-left) $M_1M_2...M_n$ product sequence is performed respect to a world (fixed) coordinate system
 
-Mnemonic rule 2:<!-- .element: class="fragment" data-fragment-index="8"-->
-   The (left-to-right) $M_n,...M_2M_1$ sequence is performed respect to a local (mutable) coordinate system
+Mnemonic rule 2:<!-- .element: class="fragment" data-fragment-index="9"-->
+   The (left-to-right) $M_n,...M_2M_1$ product sequence is performed respect to a local (mutable) coordinate system
    
 V:
 
 ## Affine transformations: Matrix operations
-### Composition: Examples
+### Composition rule 1 examples
 
 <figure>
     <img height="400" src="fig/image10.JPG">
@@ -988,7 +989,7 @@ V:
 V:
 
 ## Affine transformations: Matrix operations
-### Composition: Examples
+### Composition rule 1 examples
 
 <figure>
     <img height="400" src="fig/image11.png">
@@ -998,7 +999,7 @@ V:
 V:
 
 ## Affine transformations: Matrix operations
-### Composition: Examples
+### Composition rule 1 examples
 
 <figure>
     <img height="400" src="fig/image12.JPG">
@@ -1008,7 +1009,7 @@ V:
 V:
 
 ## Affine transformations: Matrix operations
-### Composition: Examples
+### Composition rule 1 examples
 
 <figure>
     <img height="400" src="fig/image13.JPG">
