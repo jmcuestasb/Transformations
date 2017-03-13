@@ -963,7 +963,7 @@ Consider the following sequence of transformations:
 `$P_1=M_1P,$` <!-- .element: class="fragment" data-fragment-index="1"-->
 `$P_2=M_2P_1,$` <!-- .element: class="fragment" data-fragment-index="2"-->
 `$...,$` <!-- .element: class="fragment" data-fragment-index="3"-->
-`$P_n=M_nP_n-1,$` <!-- .element: class="fragment" data-fragment-index="4"-->
+`$P_n=M_nP_{n-1}$` <!-- .element: class="fragment" data-fragment-index="4"-->
 
 `which may simply be written as: $M'P$, where $M'=M_n...M_2M_1$` <!-- .element: class="fragment" data-fragment-index="5"-->
 
@@ -991,7 +991,7 @@ V:
 ### Composition: Examples
 
 <figure>
-    <img height="400" src="fig/image11.JPG">
+    <img height="400" src="fig/image11.png">
     <figcaption>$T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)P$</figcaption>
 </figure>
 
@@ -1012,7 +1012,7 @@ V:
 
 <figure>
     <img height="400" src="fig/image13.JPG">
-    <figcaption>$T(x_f,y_f)$S(sx,sy)$(-x_r,-y_r)P$</figcaption>
+    <figcaption>$T(x_f,y_f)$S(sx,sy)$T(-x_r,-y_r)P$</figcaption>
 </figure>
 
 H:
