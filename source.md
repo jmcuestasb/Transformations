@@ -80,6 +80,12 @@ V:
 for (int i = 0; i < vertexCount; i++) {
   output = vertexShader(vertex[i]);
 }
+
+function vertexShader(vertex) {
+  projPos = projection * modelview * vertex.position;
+  litColor = lightColor * dot(vertex.normal, lightDirection);
+  return (projPos, litColor);
+}
 ```
 
 V:
@@ -93,7 +99,7 @@ attribute vec4 vertex;
 attribute vec4 color;
 varying vec4 vertColor;
 
-void main(){
+void main() {
    gl_Position = transform * vertex;
    vertColor = color;
 }
@@ -110,7 +116,7 @@ attribute vec4 vertex;
 attribute vec4 color;
 varying vec4 vertColor;
 
-void main(){
+void main() {
    gl_Position = transform * vertex;
    vertColor = color;
 }
@@ -129,7 +135,7 @@ attribute vec4 vertex;
 attribute vec4 color;
 varying vec4 vertColor;
 
-void main(){
+void main() {
    gl_Position = transform * vertex;
    vertColor = color;
 }
@@ -163,7 +169,7 @@ V:
 ```glsl
 varying vec4 vertColor;
 
-void main(){
+void main() {
   gl_FragColor = vertColor;
 }
 ```
