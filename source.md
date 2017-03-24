@@ -1222,7 +1222,7 @@ V:
 
 ## Affine transformations: Matrix operations
 ### Composition rule 1 examples
-Processing implementation: [default shader]() (`applyMatrix()`)
+$T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [default shader](https://github.com/VisualComputing/Transformations/blob/gh-pages/rotations/RotationDefaultShader/RotationDefaultShader.pde) (`applyMatrix()`)
 
 ```processing
 float pivotX=30, pivotY=20;
@@ -1250,16 +1250,15 @@ void draw() {
               0, 1, 0, -pivotY, 
               0, 0, 1, 0, 
               0, 0, 0, 1);
+  // drawing code follows
 } 
 ```
-
-Note that `translate`, `rotate`, etc., multiplies the current `modelview`
 
 V:
 
 ## Affine transformations: Matrix operations
 ### Composition rule 1 examples
-#### Processing implementation: default shader
+$T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [default shader](https://github.com/VisualComputing/Transformations/blob/gh-pages/rotations/RotationDefaultShader/RotationDefaultShader.pde) (`translation()` and `rotation()`)
 
 ```processing
 float pivotX=30, pivotY=20;
@@ -1273,10 +1272,127 @@ void draw() {
   translate(pivotX, pivotY);
   rotate(radians(beta));
   translate(-pivotX, -pivotY);
+  // drawing code follows
 } 
 ```
 
-Note that `translate`, `rotate`, etc., multiplies the current `modelview`
+Hence `translate()`, `rotate()`, applies the transformation to the current `modelview`
+
+V:
+
+## Affine transformations: Matrix operations
+### Composition rule 1 examples
+$T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [simple shader](https://github.com/VisualComputing/Transformations/tree/gh-pages/rotations/RotationSimpleShader)
+
+```processing
+PShader simpleShader;
+
+void setup() {
+  size(700, 700, P3D);
+  // simple custom shader
+  simpleShader = loadShader("simple_frag.glsl", "simple_vert.glsl");
+  shader(simpleShader);
+} 
+```
+
+V:
+
+## Affine transformations: Matrix operations
+### Composition rule 1 examples
+$T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [simple shader](https://github.com/VisualComputing/Transformations/tree/gh-pages/rotations/RotationSimpleShader)
+
+[simple_vert.glsl](https://github.com/VisualComputing/Transformations/blob/gh-pages/rotations/RotationSimpleShader/data/simple_vert.glsl):
+
+```glsl
+uniform mat4 transform;
+attribute vec4 vertex;
+attribute vec4 color;
+varying vec4 vertColor;
+
+void main() {
+  gl_Position = transform * vertex;
+  vertColor = color;
+}
+```
+
+Since here we use the default uniforms (`transform`) and attributes (`vertex`, `color`) the rest of the sketch remains the same
+
+V:
+
+## Affine transformations: Matrix operations
+### Composition rule 1 examples
+$T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [unal shader](https://github.com/VisualComputing/Transformations/tree/gh-pages/rotations/RotationUnalShader)
+
+```processing
+PShader unalShader;
+PMatrix3D modelview, projection;
+PMatrix3D projectionTimesModelview;
+
+void setup() {
+  size(700, 700, P3D);
+  // unal custom shader
+  unalShader = loadShader("unal_frag.glsl", "unal_vert.glsl");
+  shader(unalShader);
+  modelview = new PMatrix3D();
+  projection = new PMatrix3D();
+  projection.m00 = 2.0f / width;
+  projection.m11 = -2.0f / height;
+  projection.m22 = -1;
+  projectionTimesModelview = new PMatrix3D();
+} 
+```
+
+V:
+
+## Affine transformations: Matrix operations
+### Composition rule 1 examples
+$T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [unal shader](https://github.com/VisualComputing/Transformations/tree/gh-pages/rotations/RotationUnalShader)
+
+```processing
+void draw() {
+  background(0);
+  //load identity
+  modelview.reset();
+  modelview.translate(pivotX, pivotY);
+  modelview.rotate(beta);
+  modelview.translate(-pivotX, -pivotY);
+  emitUniforms();
+  // drawing code follows
+}
+```
+
+```processing
+void emitUniforms() {
+  projectionTimesModelview.set(projection);
+  projectionTimesModelview.apply(modelview);
+  //GLSL uses column major order, whereas processing uses row major order
+  projectionTimesModelview.transpose();
+  unalShader.set("unalMatrix", projectionTimesModelview);
+}
+```
+<!-- .element: class="fragment" data-fragment-index="1"-->
+
+V:
+
+## Affine transformations: Matrix operations
+### Composition rule 1 examples
+$T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [unal shader](https://github.com/VisualComputing/Transformations/tree/gh-pages/rotations/RotationUnalShader)
+
+[unal_vert.glsl](https://github.com/VisualComputing/Transformations/blob/gh-pages/rotations/RotationUnalShader/data/unal_vert.glsl):
+
+```glsl
+uniform mat4 unalMatrix;
+attribute vec4 vertex;
+attribute vec4 color;
+varying vec4 unalVertColor;
+
+void main() {
+  gl_Position = unalMatrix * vertex;
+  unalVertColor = color;
+}
+```
+
+<li class="fragment"> The [Shader Programming for Computational Arts and Design](http://www.scitepress.org/DigitalLibrary/PublicationsDetail.aspx?ID=ysaclbloDHk=&t=1) paper discusses API _simplicity_ and _flexibility_ in shader programming
 
 V:
 
