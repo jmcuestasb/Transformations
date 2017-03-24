@@ -174,6 +174,222 @@ void main() {
 }
 ```
 
+V:
+
+## Intro: Shaders
+### GLSL variable types
+
+<li class="fragment"> _uniform_: variables that remain constant for each vertex in the scene. Example: `uniform mat4 transform`
+<li class="fragment"> _attribute_: variables that change from vertex to vertex. Examples: `attribute vec4 vertex`, `attribute vec4 color`
+<li class="fragment"> _varying_:  variables that are exchanged between the vertex and the fragment shaders. Example: `varying vec4 vertColor`
+
+V:
+
+## Intro: Shaders
+### Common GLSL uniform variables emitted by P5
+
+| Name         | Alias              | Type        |
+|--------------|--------------------|-------------|
+| `transform`  | `transformMatrix`  | `mat4`      |
+| `modelview`  | `modelviewMatrix`  | `mat4`      |
+| `projection` | `projectionMatrix` | `mat4`      |
+| `texture`    | `texMap`           | `sampler2D` |
+
+V:
+
+## Intro: Shaders
+### Common GLSL attribute variables emitted by P5
+
+| Name                      | Type   |
+|---------------------------|--------|
+| `position` (or, `vertex`) | `vec4` |
+| `color`                   | `vec4` |
+| `normal`                  | `vec3` |
+
+V:
+
+## Intro: Shaders
+### Processing shader API: [PShader](https://processing.org/reference/PShader.html)
+
+> Class that encapsulates a GLSL shader program, including a vertex and a fragment shader
+
+V:
+
+## Intro: Shaders
+### Processing shader API: [loadShader()](https://processing.org/reference/loadShader_.html)
+
+> Loads a shader into the PShader object
+
+Method signatures
+
+```processing
+  loadShader(fragFilename)
+  loadShader(fragFilename, vertFilename)
+```
+<!-- .element: class="fragment" data-fragment-index="1"-->
+
+Example
+
+```processing
+  PShader unalShader;
+  void setup() {
+    ...
+    //when no path is specified it looks in the sketch 'data' folder
+    unalShader = loadShader("unal_frag.glsl", "unal_vert.glsl");
+  }
+```
+<!-- .element: class="fragment" data-fragment-index="2"-->
+
+V:
+
+## Intro: Shaders
+### Processing shader API: [shader()](https://processing.org/reference/shader_.html)
+
+> Applies the specified shader
+
+Method signature
+
+```processing
+  shader(shader)
+```
+<!-- .element: class="fragment" data-fragment-index="1"-->
+
+Example
+
+```processing
+  PShader simpleShader, unalShader;
+  void draw() {
+    ...
+    shader(simpleShader);
+    simpleGeometry();
+    shader(unalShader);
+    unalGeometry();
+  }
+```
+<!-- .element: class="fragment" data-fragment-index="2"-->
+
+V:
+
+## Intro: Shaders
+### Processing shader API: [resetShader()](https://processing.org/reference/resetShader_.html)
+
+> Restores the default shaders
+
+Method signatures
+
+```processing
+  resetShader()
+```
+<!-- .element: class="fragment" data-fragment-index="1"-->
+
+Example
+
+```processing
+    PShader simpleShader;
+  void draw() {
+    ...
+    shader(simpleShader);
+    simpleGeometry();
+    resetshader();
+    otherGeometry();
+  }
+```
+<!-- .element: class="fragment" data-fragment-index="2"-->
+
+V:
+
+## Intro: Shaders
+### Processing shader API: [PShader.set()](https://processing.org/reference/PShader_set_.html)
+
+> Sets the uniform variables inside the shader to modify the effect while the program is running
+
+Method signatures for vector uniform variables `vec2`, `vec3` or `vec4`:
+
+```processing
+  .set(name, x)
+  .set(name, x, y)
+  .set(name, x, y, z)
+  .set(name, x, y, z, w)
+  .set(name, vec)
+```
+
+* *name*: of the uniform variable to modify
+* *x*, *y*, *z* and *w*: 1st, snd, 3rd and 4rd vec float components resp.
+* *vec*: PVector
+
+V:
+
+## Intro: Shaders
+### Processing shader API: [PShader.set()](https://processing.org/reference/PShader_set_.html)
+
+> Sets the uniform variables inside the shader to modify the effect while the program is running
+
+Method signatures for vector uniform variables `boolean[]`, `float[]`, `int[]`:
+
+```processing
+  .set(name, x)
+  .set(name, x, y)
+  .set(name, x, y, z)
+  .set(name, x, y, z, w)
+  .set(name, vec)
+```
+
+* *name*: of the uniform variable to modify
+* *x*, *y*, *z* and *w*: 1st, snd, 3rd and 4rd vec (boolean, float or int) components resp.
+* *vec*: boolean[], float[], int[]
+
+V:
+
+## Intro: Shaders
+### Processing shader API: [PShader.set()](https://processing.org/reference/PShader_set_.html)
+
+> Sets the uniform variables inside the shader to modify the effect while the program is running
+
+Method signatures for matrix uniform variables:
+
+```processing
+  .set(name, mat) // mat is PMatrix3D, or PMatrix2D
+```
+
+* *name* of the uniform variable to modify
+* *mat* PMatrix3D, or PMatrix2D
+
+V:
+
+## Intro: Shaders
+### Processing shader API: [PShader.set()](https://processing.org/reference/PShader_set_.html)
+
+> Sets the uniform variables inside the shader to modify the effect while the program is running
+
+Method signatures for vector uniform variables:
+
+```processing
+  .set(name, tex) // tex is a PImage
+```
+
+V:
+
+## Intro: Shaders
+### Processing shader API: [PShader.set()](https://processing.org/reference/PShader_set_.html)
+
+> Sets the uniform variables inside the shader to modify the effect while the program is running
+
+Example:
+
+```processing
+  PShader unalShader;
+  PMatrix3D projectionModelView1, projectionModelView2;
+  void draw() {
+    ...
+    shader(unalShader);
+    unalShader.set("unalMatrix", projectionModelView1);
+    unalGeometry1();
+    unalShader.set("unalMatrix", projectionModelView2);
+    unalGeometry2();
+  }
+```
+<!-- .element: class="fragment" data-fragment-index="1"-->
+
 H:
 
 ## Linear transformations: Notion
@@ -1006,6 +1222,66 @@ V:
 
 ## Affine transformations: Matrix operations
 ### Composition rule 1 examples
+Processing implementation: [default shader]() (`applyMatrix()`)
+
+```processing
+float pivotX=30, pivotY=20;
+float beta = 0;
+
+void draw() {
+  background(0);
+  applyMatrix(1, 0, 0, width/2, 
+              0, 1, 0, height/2, 
+              0, 0, 1, 0, 
+              0, 0, 0, 1);
+  // We do the rotation as: T(xr,yr)Rz(β)T(−xr,−yr)
+  // 1. T(xr,yr)
+  applyMatrix(1, 0, 0, pivotX, 
+      0, 1, 0, pivotY, 
+      0, 0, 1, 0, 
+      0, 0, 0, 1);
+  // 2. Rz(β)
+  applyMatrix(cos(beta), -sin(beta), 0, 0, 
+              sin(beta), cos(beta),  0, 0, 
+              0,         0,          1, 0, 
+      0, 0, 0, 1);
+  // 3. T(−xr,−yr)
+  applyMatrix(1, 0, 0, -pivotX, 
+              0, 1, 0, -pivotY, 
+              0, 0, 1, 0, 
+              0, 0, 0, 1);
+} 
+```
+
+Note that `translate`, `rotate`, etc., multiplies the current `modelview`
+
+V:
+
+## Affine transformations: Matrix operations
+### Composition rule 1 examples
+#### Processing implementation: default shader
+
+```processing
+float pivotX=30, pivotY=20;
+float beta = 0;
+
+void draw() {
+  background(0);
+  // draw respect to screen center
+  translate(width/2, height/2);
+  // rotate respect to pivot:
+  translate(pivotX, pivotY);
+  rotate(radians(beta));
+  translate(-pivotX, -pivotY);
+} 
+```
+
+Note that `translate`, `rotate`, etc., multiplies the current `modelview`
+
+V:
+
+## Affine transformations: Matrix operations
+### Composition rule 1 examples
 
 <figure>
     <img height="400" src="fig/image12.JPG">
@@ -1046,6 +1322,7 @@ H:
 * [Math primer for graphics and game development](https://tfetimes.com/wp-content/uploads/2015/04/F.Dunn-I.Parberry-3D-Math-Primer-for-Graphics-and-Game-Development.pdf)
 * [Processing 2d transformations tutorial](https://www.processing.org/tutorials/transform2d/)
 * [Processing shaders tutorial](https://www.processing.org/tutorials/pshader/)
+* [Shader Programming for Computational Arts and Design - A Comparison between Creative Coding Frameworks](http://www.scitepress.org/DigitalLibrary/PublicationsDetail.aspx?ID=ysaclbloDHk=&t=1)
 
 H:
 
