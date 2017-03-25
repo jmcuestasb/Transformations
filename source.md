@@ -1232,18 +1232,18 @@ void draw() {
   background(0);
   // We do the rotation as: T(xr,yr)Rz(β)T(−xr,−yr)
   // 1. T(xr,yr)
-  applyMatrix(1, 0, 0, pivotX, 
-      0, 1, 0, pivotY, 
-      0, 0, 1, 0, 
-      0, 0, 0, 1);
+  applyMatrix(1, 0, 0, xr, 
+              0, 1, 0, yr, 
+              0, 0, 1, 0, 
+              0, 0, 0, 1);
   // 2. Rz(β)
   applyMatrix(cos(beta), -sin(beta), 0, 0, 
               sin(beta), cos(beta),  0, 0, 
               0,         0,          1, 0, 
-      0, 0, 0, 1);
+              0,         0,          0, 1);
   // 3. T(−xr,−yr)
-  applyMatrix(1, 0, 0, -pivotX, 
-              0, 1, 0, -pivotY, 
+  applyMatrix(1, 0, 0, -xr, 
+              0, 1, 0, -yr, 
               0, 0, 1, 0, 
               0, 0, 0, 1);
   // drawing code follows
@@ -1263,11 +1263,11 @@ float beta = -QUARTER_PI;
 void draw() {
   background(0);
   // 1. T(xr,yr)
-  translate(pivotX, pivotY);
+  translate(xr, yr);
   // 2. Rz(β)
   rotate(radians(beta));
   // 3. T(−xr,−yr)
-  translate(-pivotX, -pivotY);
+  translate(-xr, -yr);
   // drawing code follows
 } 
 ```
@@ -1344,11 +1344,11 @@ void draw() {
   //load identity
   modelview.reset();
   // 1. T(xr,yr)
-  modelview.translate(pivotX, pivotY);
+  modelview.translate(xr, yr);
   // 2. Rz(β)
   modelview.rotate(beta);
   // 1. T(-xr,-yr)
-  modelview.translate(-pivotX, -pivotY);
+  modelview.translate(-xr, -yr);
   emitUniforms();
   // drawing code follows
 }
