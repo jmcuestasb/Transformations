@@ -1,6 +1,6 @@
 // 1. Rotation parameters
-float pivotX=30, pivotY=20;
-float beta = 0;
+float pivotX=500, pivotY=250;
+float beta = -QUARTER_PI;
 boolean applyMatrix = true;
 // 2. simple custom shader
 PShader simpleShader;
@@ -16,11 +16,6 @@ void draw() {
   background(0);
   // default and simple custom shaders:
   if (applyMatrix) {
-    // move origin to the center of the screen:
-    applyMatrix(1, 0, 0, width/2, 
-      0, 1, 0, height/2, 
-      0, 0, 1, 0, 
-      0, 0, 0, 1);
     // We do the rotation as: T(xr,yr)Rz(β)T(−xr,−yr)
     // 1. T(xr,yr)
     applyMatrix(1, 0, 0, pivotX, 
@@ -38,8 +33,6 @@ void draw() {
       0, 0, 1, 0, 
       0, 0, 0, 1);
   } else {
-    // move origin to the center of the screen:
-    translate(width/2, height/2);
     // we do the rotation as: T(xr,yr)Rz(β)T(−xr,−yr)
     // 1. T(xr,yr)
     translate(pivotX, pivotY);
@@ -64,7 +57,7 @@ void keyPressed() {
 }
 
 void mouseDragged() {
-  beta = map(mouseX, 0, width, HALF_PI, 0);
+  beta = map(mouseX, 0, width, 0, -HALF_PI);
 }
 
 void pivot() {
