@@ -1235,7 +1235,7 @@ V:
 
 ## Affine transformations: Matrix operations
 ### Composition rule 1 examples
-$T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [default shader](https://github.com/VisualComputing/Transformations/blob/gh-pages/rotations/RotationDefaultShader/RotationDefaultShader.pde) (`applyMatrix()`)
+$T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [default shader](https://github.com/VisualComputing/Transformations/blob/gh-pages/sketches/desktop/rotations/RotationDefaultShader/RotationDefaultShader.pde) (`applyMatrix()`)
 
 ```processing
 float xr=500, yr=250;
@@ -1267,7 +1267,7 @@ V:
 
 ## Affine transformations: Matrix operations
 ### Composition rule 1 examples
-$T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [default shader](https://github.com/VisualComputing/Transformations/blob/gh-pages/rotations/RotationDefaultShader/RotationDefaultShader.pde) (`translation()` and `rotation()`)
+$T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [default shader](https://github.com/VisualComputing/Transformations/blob/gh-pages/sketches/desktop/rotations/RotationDefaultShader/RotationDefaultShader.pde) (`translation()` and `rotation()`)
 
 ```processing
 float xr=500, yr=250;
@@ -1291,7 +1291,7 @@ V:
 
 ## Affine transformations: Matrix operations
 ### Composition rule 1 examples
-$T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [simple shader](https://github.com/VisualComputing/Transformations/tree/gh-pages/rotations/RotationSimpleShader)
+$T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [simple shader](https://github.com/VisualComputing/Transformations/tree/gh-pages/sketches/desktop/rotations/RotationSimpleShader)
 
 ```processing
 PShader simpleShader;
@@ -1308,9 +1308,9 @@ V:
 
 ## Affine transformations: Matrix operations
 ### Composition rule 1 examples
-$T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [simple shader](https://github.com/VisualComputing/Transformations/tree/gh-pages/rotations/RotationSimpleShader)
+$T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [simple shader](https://github.com/VisualComputing/Transformations/tree/gh-pages/sketches/desktop/rotations/RotationSimpleShader)
 
-[simple_vert.glsl](https://github.com/VisualComputing/Transformations/blob/gh-pages/rotations/RotationSimpleShader/data/simple_vert.glsl):
+[simple_vert.glsl](https://github.com/VisualComputing/Transformations/blob/gh-pages/sketches/desktop/rotations/RotationSimpleShader/data/simple_vert.glsl):
 
 ```glsl
 uniform mat4 transform;
@@ -1330,7 +1330,7 @@ V:
 
 ## Affine transformations: Matrix operations
 ### Composition rule 1 examples
-$T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [unal shader](https://github.com/VisualComputing/Transformations/tree/gh-pages/rotations/RotationUnalShader)
+$T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [unal shader](https://github.com/VisualComputing/Transformations/tree/gh-pages/sketches/desktop/rotations/RotationUnalShader)
 
 ```processing
 PShader unalShader;
@@ -1349,7 +1349,7 @@ V:
 
 ## Affine transformations: Matrix operations
 ### Composition rule 1 examples
-$T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [unal shader](https://github.com/VisualComputing/Transformations/tree/gh-pages/rotations/RotationUnalShader)
+$T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [unal shader](https://github.com/VisualComputing/Transformations/tree/gh-pages/sketches/desktop/rotations/RotationUnalShader)
 
 ```processing
 void draw() {
@@ -1383,9 +1383,9 @@ V:
 
 ## Affine transformations: Matrix operations
 ### Composition rule 1 examples
-$T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [unal shader](https://github.com/VisualComputing/Transformations/tree/gh-pages/rotations/RotationUnalShader)
+$T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [unal shader](https://github.com/VisualComputing/Transformations/tree/gh-pages/sketches/desktop/rotations/RotationUnalShader)
 
-[unal_vert.glsl](https://github.com/VisualComputing/Transformations/blob/gh-pages/rotations/RotationUnalShader/data/unal_vert.glsl):
+[unal_vert.glsl](https://github.com/VisualComputing/Transformations/blob/gh-pages/sketches/desktop/rotations/RotationUnalShader/data/unal_vert.glsl):
 
 ```glsl
 uniform mat4 unalMatrix;
