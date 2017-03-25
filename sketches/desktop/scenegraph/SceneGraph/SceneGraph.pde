@@ -5,17 +5,18 @@
  
  World
  ^
+ |
+ | 
+ |  
+ L1
+ ^
  |\
- | \
- |  \
- L1  Eye
- ^\
  | \
  |  \
  L2  L3
  
- Each frame (including the Eye) is defined by an affine transformation
- which may be a composition of several affine transformations read in
+ Each frame is defined by a single affine transformation
+ or by a composition of several affine transformations read in
  left-to-right order (top-down in the code).
  Refer to the 'mnemonic rule 2' in the presentation.
  
@@ -26,7 +27,7 @@
  Using off-screen rendering we draw the above scene twice.
  See: http://processing.org/reference/PGraphics.html
  
- -jp
+ A scene-graph with an eye frame is implemented in the MiniMap sketch
  */
 
 PFont font;
@@ -40,20 +41,20 @@ void setup() {
   textFont(font, 12);
 }
 
-public void draw() {
-  background(255);
+void draw() {
+  background(50);
   axes();
   // define a local frame L1 (respect to the world)
   pushMatrix();
-  translate(350, 100);
+  translate(400, 40);
   rotate(QUARTER_PI / 2);
   axes();
   // draw a robot in L1
-  fill(255, 0, 0);
+  fill(255, 0, 255);
   robot();
   // define a local frame L2 respect to L1
   pushMatrix();
-  translate(240, 300);
+  translate(200, 300);
   rotate(-QUARTER_PI);
   scale(2);
   axes();
@@ -64,12 +65,12 @@ public void draw() {
   popMatrix();
   // define a local coordinate system L3 respect to L1
   pushMatrix();
-  translate(50, 300);
+  translate(-80, 160);
   rotate(HALF_PI);
   scale(1.5);
   axes();
   // draw a robot in L3
-  fill(38, 38, 200);
+  fill(255, 255, 0);
   robot();
   // return to L1
   popMatrix();
