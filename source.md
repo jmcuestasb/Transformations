@@ -1265,7 +1265,7 @@ void draw() {
   // 1. T(xr,yr)
   translate(xr, yr);
   // 2. Rz(β)
-  rotate(radians(beta));
+  rotate(beta);
   // 3. T(−xr,−yr)
   translate(-xr, -yr);
   // drawing code follows
