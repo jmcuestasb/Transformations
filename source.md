@@ -1197,16 +1197,16 @@ which is the same as: <!-- .element: class="fragment" data-fragment-index="5"-->
 
 <a href="#/3/5">goto vertex shader</a><!-- .element: class="fragment" data-fragment-index="7"-->
 
-Mnemonic rule 1:<!-- .element: class="fragment" data-fragment-index="8"-->
+Mnemonic 1:<!-- .element: class="fragment" data-fragment-index="8"-->
    The (right-to-left) $M_1M_2...M_n$ product sequence is performed respect to a world (fixed) coordinate system
 
-Mnemonic rule 2:<!-- .element: class="fragment" data-fragment-index="9"-->
+Mnemonic 2:<!-- .element: class="fragment" data-fragment-index="9"-->
    The (left-to-right) $M_n,...M_2M_1$ product sequence is performed respect to a local (mutable) coordinate system
    
 V:
 
 ## Affine transformations: Matrix operations
-### Composition rule 1 examples
+### Mnemonic 1 examples
 
 <figure>
     <img height="400" src="fig/image10.JPG">
@@ -1216,7 +1216,7 @@ V:
 V:
 
 ## Affine transformations: Matrix operations
-### Composition rule 1 examples
+### Mnemonic 1 examples
 
 <figure>
     <img height="400" src="fig/image11.png">
@@ -1226,7 +1226,7 @@ V:
 V:
 
 ## Affine transformations: Matrix operations
-### Composition rule 1 examples
+### Mnemonic 1 examples
 $T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation
 
 <video width="400" height="400" controls data-autoplay loop src="vid/rotation.ogv"></video>
@@ -1234,7 +1234,7 @@ $T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation
 V:
 
 ## Affine transformations: Matrix operations
-### Composition rule 1 examples
+### Mnemonic 1 examples
 $T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [default shader](https://github.com/VisualComputing/Transformations/blob/gh-pages/sketches/desktop/rotations/RotationDefaultShader/RotationDefaultShader.pde) (`applyMatrix()`)
 
 ```processing
@@ -1266,7 +1266,7 @@ void draw() {
 V:
 
 ## Affine transformations: Matrix operations
-### Composition rule 1 examples
+### Mnemonic 1 examples
 $T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [default shader](https://github.com/VisualComputing/Transformations/blob/gh-pages/sketches/desktop/rotations/RotationDefaultShader/RotationDefaultShader.pde) (`translation()` and `rotation()`)
 
 ```processing
@@ -1290,7 +1290,7 @@ Hence `translate()`, `rotate()`, applies the transformation to the current `mode
 V:
 
 ## Affine transformations: Matrix operations
-### Composition rule 1 examples
+### Mnemonic 1 examples
 $T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [simple shader](https://github.com/VisualComputing/Transformations/tree/gh-pages/sketches/desktop/rotations/RotationSimpleShader)
 
 ```processing
@@ -1307,7 +1307,7 @@ void setup() {
 V:
 
 ## Affine transformations: Matrix operations
-### Composition rule 1 examples
+### Mnemonic 1 examples
 $T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [simple shader](https://github.com/VisualComputing/Transformations/tree/gh-pages/sketches/desktop/rotations/RotationSimpleShader)
 
 [simple_vert.glsl](https://github.com/VisualComputing/Transformations/blob/gh-pages/sketches/desktop/rotations/RotationSimpleShader/data/simple_vert.glsl):
@@ -1329,7 +1329,7 @@ Since here we use the default uniforms (`transform`) and attributes (`vertex`, `
 V:
 
 ## Affine transformations: Matrix operations
-### Composition rule 1 examples
+### Mnemonic 1 examples
 $T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [unal shader](https://github.com/VisualComputing/Transformations/tree/gh-pages/sketches/desktop/rotations/RotationUnalShader)
 
 ```processing
@@ -1348,7 +1348,7 @@ void setup() {
 V:
 
 ## Affine transformations: Matrix operations
-### Composition rule 1 examples
+### Mnemonic 1 examples
 $T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [unal shader](https://github.com/VisualComputing/Transformations/tree/gh-pages/sketches/desktop/rotations/RotationUnalShader)
 
 ```processing
@@ -1382,7 +1382,7 @@ void emitUniforms() {
 V:
 
 ## Affine transformations: Matrix operations
-### Composition rule 1 examples
+### Mnemonic 1 examples
 $T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [unal shader](https://github.com/VisualComputing/Transformations/tree/gh-pages/sketches/desktop/rotations/RotationUnalShader)
 
 [unal_vert.glsl](https://github.com/VisualComputing/Transformations/blob/gh-pages/sketches/desktop/rotations/RotationUnalShader/data/unal_vert.glsl):
@@ -1405,7 +1405,7 @@ void main() {
 V:
 
 ## Affine transformations: Matrix operations
-### Composition rule 1 examples
+### Mnemonic 1 examples
 
 <figure>
     <img height="400" src="fig/image12.JPG">
@@ -1415,7 +1415,7 @@ V:
 V:
 
 ## Affine transformations: Matrix operations
-### Composition rule 1 examples
+### Mnemonic 1 examples
 
 <figure>
     <img height="400" src="fig/image13.JPG">

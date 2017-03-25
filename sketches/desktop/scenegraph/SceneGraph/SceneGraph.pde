@@ -14,8 +14,9 @@
  |  \
  L2  L3
  
- Each frame (including the Eye) is defined by one or several affine
- transformations composed in left-to-right order (top-down in the code).
+ Each frame (including the Eye) is defined by an affine transformation
+ which may be a composition of several affine transformations read in
+ left-to-right order (top-down in the code).
  Refer to the 'mnemonic rule 2' in the presentation.
  
  This sketch also shows how to use a matrix stack of transformations
