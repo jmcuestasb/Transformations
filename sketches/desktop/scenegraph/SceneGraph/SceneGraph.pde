@@ -1,31 +1,32 @@
 /**
-This sketch shows how geometric transformations could be regarded as
-changing the frame (coordinate system) of reference. It also shows how
-to use a matrix stack of transformations to "navigate" among frames.
-See: http://processing.org/reference/pushMatrix_.html
-
-A scene graph is just a hierarchy of nested frames. Here we implement
-the following scene graph:
-
-    W
-    ^
-    |\
-    | \
-    |  \
-   L1  Eye
-    ^\
-    | \
-    |  \
-   L2  L3
-
-
-Using off-screen rendering we draw the above scene twice.
-See: http://processing.org/reference/PGraphics.html
-
-Press any key and see what happens.
-
+ Scene-graphs are simply a hierarchy of nested coordinate systems (frames).
+ 
+ This sketch implements the following scene-graph:
+ 
+ World
+ ^
+ |\
+ | \
+ |  \
+ L1  Eye
+ ^\
+ | \
+ |  \
+ L2  L3
+ 
+ Each frame (including the Eye) is defined by one or several affine
+ transformations composed in left-to-right order (top-down in the code).
+ Refer to the 'mnemonic rule 2' in the presentation.
+ 
+ This sketch also shows how to use a matrix stack of transformations
+ to "navigate" among the scene-graph frames.
+ See: http://processing.org/reference/pushMatrix_.html
+ 
+ Using off-screen rendering we draw the above scene twice.
+ See: http://processing.org/reference/PGraphics.html
+ 
  -jp
-*/
+ */
 
 PFont font;
 
@@ -40,19 +41,21 @@ void setup() {
 
 public void draw() {
   background(255);
-  drawAxes();
+  axes();
   // define a local frame L1 (respect to the world)
   pushMatrix();
   translate(350, 100);
-  rotate(QUARTER_PI / 2);  
+  rotate(QUARTER_PI / 2);
+  axes();
   // draw a robot in L1
-  fill(255,0,0);
+  fill(255, 0, 0);
   robot();
   // define a local frame L2 respect to L1
   pushMatrix();
   translate(240, 300);
   rotate(-QUARTER_PI);
   scale(2);
+  axes();
   // draw a house in L2
   fill(0, 255, 255);
   house();
@@ -60,26 +63,21 @@ public void draw() {
   popMatrix();
   // define a local coordinate system L3 respect to L1
   pushMatrix();
-  translate(50,300);
+  translate(50, 300);
   rotate(HALF_PI);
   scale(1.5);
+  axes();
   // draw a robot in L3
   fill(38, 38, 200);
   robot();
   // return to L1
   popMatrix();
-  // return to world
+  // return to World
   popMatrix();
 }
 
-void robot() {
-  robot(true);
-}
-
 //taken from: https://processing.org/tutorials/transform2d/
-void robot(boolean drawAxes) {
-  if(drawAxes)
-    drawAxes();
+void robot() {
   pushStyle();
   noStroke();
   rect(20, 0, 38, 30); // head
@@ -94,14 +92,8 @@ void robot(boolean drawAxes) {
   popStyle();
 }
 
-void house() {
-  house(true);
-}
-
 //taken from: https://processing.org/tutorials/transform2d/
-void house(boolean drawAxes) {
-  if(drawAxes)
-    drawAxes();
+void house() {
   pushStyle();
   triangle(15, 0, 0, 15, 30, 15);
   rect(0, 15, 30, 30);
@@ -109,7 +101,7 @@ void house(boolean drawAxes) {
   popStyle();
 }
 
-void drawAxes() {
+void axes() {
   pushStyle();
   // X-Axis
   strokeWeight(4);
