@@ -1,14 +1,14 @@
 // 1. Rotation parameters
-float pivotX=500, pivotY=250;
+float xr=500, yr=250;
 float beta = -QUARTER_PI;
-// 2. unal custom shader, with custom (unalMatrix) uniforms
+// 2. unal custom shader:
 PShader unalShader;
 //the unal shader will emit a custom uniform transform:
 PMatrix3D modelview;
 
 void setup() {
   size(700, 700, P2D);
-  // unal custom shader, with custom (unalMatrix) uniforms
+  // unal custom shader, with a custom (unalMatrix) uniform
   unalShader = loadShader("unal_frag.glsl", "unal_vert.glsl");
   shader(unalShader);
   // the unal shader thus requires projection and modelview matrices:
@@ -23,11 +23,11 @@ void draw() {
   modelview.reset();
   // we do the rotation as: T(xr,yr)Rz(β)T(−xr,−yr)
   // 1. T(xr,yr)
-  modelview.translate(pivotX, pivotY);
+  modelview.translate(xr, yr);
   // 2. Rz(β)
   modelview.rotate(beta);
   // 3. T(−xr,−yr)
-  modelview.translate(-pivotX, -pivotY);
+  modelview.translate(-xr, -yr);
   //emit model-view and projection custom matrices
   emitUniforms();
   pivot();
@@ -51,7 +51,7 @@ void pivot() {
   pushStyle();
   stroke(0, 255, 255);
   strokeWeight(6);
-  point(pivotX, pivotY);
+  point(xr, yr);
   popStyle();
 }
 
@@ -65,6 +65,7 @@ void lShape() {
 
 //Whenever the model-view or projection matrices changes we need to emit the uniforms
 void emitUniforms() {
+  //hack to retrieve the Processing projection matrix
   PMatrix3D projectionTimesModelview = new PMatrix3D(((PGraphics2D)g).projection);
   projectionTimesModelview.apply(modelview);
   //GLSL uses column major order, whereas processing uses row major order

@@ -1,5 +1,5 @@
 // 1. Rotation parameters
-float pivotX=500, pivotY=250;
+float xr=500, yr=250;
 float beta = -QUARTER_PI;
 boolean applyMatrix = true;
 // 2. simple custom shader
@@ -18,8 +18,8 @@ void draw() {
   if (applyMatrix) {
     // We do the rotation as: T(xr,yr)Rz(β)T(−xr,−yr)
     // 1. T(xr,yr)
-    applyMatrix(1, 0, 0, pivotX, 
-      0, 1, 0, pivotY, 
+    applyMatrix(1, 0, 0, xr, 
+      0, 1, 0, yr, 
       0, 0, 1, 0, 
       0, 0, 0, 1);
     // 2. Rz(β)
@@ -28,18 +28,18 @@ void draw() {
       0, 0, 1, 0, 
       0, 0, 0, 1);
     // 3. T(−xr,−yr)
-    applyMatrix(1, 0, 0, -pivotX, 
-      0, 1, 0, -pivotY, 
+    applyMatrix(1, 0, 0, -xr, 
+      0, 1, 0, -yr, 
       0, 0, 1, 0, 
       0, 0, 0, 1);
   } else {
     // we do the rotation as: T(xr,yr)Rz(β)T(−xr,−yr)
     // 1. T(xr,yr)
-    translate(pivotX, pivotY);
+    translate(xr, yr);
     // 2. Rz(β)
     rotate(beta);
     // 3. T(−xr,−yr)
-    translate(-pivotX, -pivotY);
+    translate(-xr, -yr);
   }
   pivot();
   lShape();
@@ -64,7 +64,7 @@ void pivot() {
   pushStyle();
   stroke(0, 255, 255);
   strokeWeight(6);
-  point(pivotX, pivotY);
+  point(xr, yr);
   popStyle();
 }
 

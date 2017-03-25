@@ -1225,15 +1225,11 @@ V:
 $T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [default shader](https://github.com/VisualComputing/Transformations/blob/gh-pages/rotations/RotationDefaultShader/RotationDefaultShader.pde) (`applyMatrix()`)
 
 ```processing
-float pivotX=30, pivotY=20;
-float beta = 0;
+float xr=500, yr=250;
+float beta = -QUARTER_PI;
 
 void draw() {
   background(0);
-  applyMatrix(1, 0, 0, width/2, 
-              0, 1, 0, height/2, 
-              0, 0, 1, 0, 
-              0, 0, 0, 1);
   // We do the rotation as: T(xr,yr)Rz(β)T(−xr,−yr)
   // 1. T(xr,yr)
   applyMatrix(1, 0, 0, pivotX, 
@@ -1261,16 +1257,16 @@ V:
 $T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [default shader](https://github.com/VisualComputing/Transformations/blob/gh-pages/rotations/RotationDefaultShader/RotationDefaultShader.pde) (`translation()` and `rotation()`)
 
 ```processing
-float pivotX=30, pivotY=20;
-float beta = 0;
+float xr=500, yr=250;
+float beta = -QUARTER_PI;
 
 void draw() {
   background(0);
-  // draw respect to screen center
-  translate(width/2, height/2);
-  // rotate respect to pivot:
+  // 1. T(xr,yr)
   translate(pivotX, pivotY);
+  // 2. Rz(β)
   rotate(radians(beta));
+  // 3. T(−xr,−yr)
   translate(-pivotX, -pivotY);
   // drawing code follows
 } 
@@ -1325,8 +1321,7 @@ $T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation: [unal shader](http
 
 ```processing
 PShader unalShader;
-PMatrix3D modelview, projection;
-PMatrix3D projectionTimesModelview;
+PMatrix3D modelview;
 
 void setup() {
   size(700, 700, P3D);
@@ -1334,11 +1329,6 @@ void setup() {
   unalShader = loadShader("unal_frag.glsl", "unal_vert.glsl");
   shader(unalShader);
   modelview = new PMatrix3D();
-  projection = new PMatrix3D();
-  projection.m00 = 2.0f / width;
-  projection.m11 = -2.0f / height;
-  projection.m22 = -1;
-  projectionTimesModelview = new PMatrix3D();
 } 
 ```
 
@@ -1353,8 +1343,11 @@ void draw() {
   background(0);
   //load identity
   modelview.reset();
+  // 1. T(xr,yr)
   modelview.translate(pivotX, pivotY);
+  // 2. Rz(β)
   modelview.rotate(beta);
+  // 1. T(-xr,-yr)
   modelview.translate(-pivotX, -pivotY);
   emitUniforms();
   // drawing code follows
@@ -1363,7 +1356,8 @@ void draw() {
 
 ```processing
 void emitUniforms() {
-  projectionTimesModelview.set(projection);
+  //hack to retrieve the Processing projection matrix
+  PMatrix3D projectionTimesModelview = new PMatrix3D(((PGraphics2D)g).projection);
   projectionTimesModelview.apply(modelview);
   //GLSL uses column major order, whereas processing uses row major order
   projectionTimesModelview.transpose();
