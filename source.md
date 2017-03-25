@@ -1431,6 +1431,56 @@ N:
 * Any (homogeneous matrix) transform represents a change (of basis) of a coordinate system, i.e., passive transformation
 * Matrix stack stuff goes here
 
+V:
+
+## Modelling and view
+### Mnemonic 2 examples: [scene-graph](https://github.com/VisualComputing/Transformations/blob/gh-pages/sketches/desktop/scenegraph/SceneGraph/SceneGraph.pde)
+
+```processing
+World
+  ^
+  |
+  |
+ L1
+  ^
+  |\
+  | \
+ L2  L3
+```
+
+```processing
+void draw() {
+  // define a local frame L1 (respect to the world)
+  pushMatrix();
+  affineTransform1();
+  drawL1();
+  // define a local frame L2 respect to L1
+  pushMatrix();
+  affineTransform2();
+  drawL2();
+  // "return" to L1
+  popMatrix();
+  // define a local coordinate system L3 respect to L1
+  pushMatrix();
+  affineTransform3();
+  drawL3();
+  // return to L1
+  popMatrix();
+  // return to World
+  popMatrix();
+}
+```
+<!-- .element: class="fragment" data-fragment-index="1"-->
+
+V:
+
+## Modelling and view
+### Mnemonic 2 examples: [mini-map](https://github.com/VisualComputing/Transformations/blob/gh-pages/sketches/desktop/scenegraph/MiniMap/MiniMap.pde)
+
+```processing
+
+```
+
 H:
 
 ## Projections: Orthogonal

@@ -4,15 +4,13 @@
  This sketch implements the following scene-graph:
  
  World
- ^
- |\
- | \
- |  \
- L1  Eye
- ^
- |\
- | \
- |  \
+  ^
+  |\
+  | \
+ L1 Eye
+  ^
+  |\
+  | \
  L2  L3
  
  The scene-graph has en eye frame used to navigate the scene.

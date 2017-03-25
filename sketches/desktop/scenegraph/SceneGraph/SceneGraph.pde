@@ -4,15 +4,13 @@
  This sketch implements the following scene-graph:
  
  World
- ^
- |
- | 
- |  
+  ^
+  |
+  |
  L1
- ^
- |\
- | \
- |  \
+  ^
+  |\
+  | \
  L2  L3
  
  Each frame is defined by a single affine transformation
