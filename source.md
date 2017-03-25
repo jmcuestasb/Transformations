@@ -1142,6 +1142,11 @@ V:
 V:
 
 ## Affine transformations: Rotation
+### [Rodrigues' rotation formula](https://en.wikipedia.org/wiki/Rodrigues'_rotation_formula)
+
+V:
+
+## Affine transformations: Rotation
 ### Quaternions
 
 V:
@@ -1217,6 +1222,14 @@ V:
     <img height="400" src="fig/image11.png">
     <figcaption>$T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)P$</figcaption>
 </figure>
+
+V:
+
+## Affine transformations: Matrix operations
+### Composition rule 1 examples
+$T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation
+
+<video width="400" height="400" controls data-autoplay loop src="vid/rotation.ogv"></video>
 
 V:
 
