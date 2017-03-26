@@ -1428,7 +1428,7 @@ H:
 
 > Mnemonic 2: The (left-to-right) $M_n,...M_2M_1$ transformation sequence is performed respect to a local (mutable) coordinate system
 
-Local coordinate systems are known as Frames <!-- .element: class="fragment" data-fragment-index="1"-->
+Local coordinate systems are commonly referred to as "frames" <!-- .element: class="fragment" data-fragment-index="1"-->
 
 V:
 
@@ -1474,7 +1474,7 @@ V:
 
 ## Modelling and view: Frame notion
 
-now let's call it again but pre-translating it first:
+now let's call it again, but pre-translating it first:
 
 ```processing
 void draw() {
@@ -1534,7 +1534,7 @@ V:
 
 ## Modelling and view: Frame notion
 
-see the result if we animate the _first_ rotation;
+see the result when we animate only the _first_ rotation;
 
 ```processing
 void draw() {
@@ -1557,7 +1557,7 @@ V:
 
 ## Modelling and view: Frame notion
 
-see the result if we animate the _second_ rotation;
+and now see the result when we animate only the _second_ rotation;
 
 ```processing
 void draw() {
@@ -1576,34 +1576,23 @@ void draw() {
 <div id='frames6_id'></div>
 <!-- .element: class="fragment" data-fragment-index="1"-->
 
-N:
-
-* Any (homogeneous matrix) transform represents a change (of basis) of a coordinate system, i.e., passive transformation
-* Matrix stack stuff goes here
-* > A Frame is a coordinate system encapsulating a sequence of affine transformations
-
 V:
 
-## Modelling and view
-### Mnemonic 2 examples: [scene-graph](https://github.com/VisualComputing/Transformations/blob/gh-pages/sketches/desktop/scenegraph/SceneGraph/SceneGraph.pde)
+## Modelling and view: Frame notion
 
-```processing
- World
-  ^
-  |
- L1
-  ^
-  |\
- L2  L3
-```
-
-A frame is defined by an affine (composed) transform: `$M_i^*, 1 \leq i \leq 3$`
+> A frame is defined by an affine (composed) transform: `$M_i^*, 1 \leq i \leq 3$`
 read in left-to-right order (<a href="#/5/16">goto mnemonic 2</a>)
 
 V:
 
-## Modelling and view
-### Mnemonic 2 examples: [scene-graph](https://github.com/VisualComputing/Transformations/blob/gh-pages/sketches/desktop/scenegraph/SceneGraph/SceneGraph.pde) (pseudo-code)
+## Modelling and view: [Scene-graph](https://github.com/VisualComputing/Transformations/blob/gh-pages/sketches/desktop/scenegraph/SceneGraph/SceneGraph.pde)
+
+> A scene-graph is a [directed acyclic graph (DAG)](https://en.wikipedia.org/wiki/Directed_acyclic_graph) of frames which root is the world coordinate system
+
+V:
+
+## Modelling and view: [Scene-graph](https://github.com/VisualComputing/Transformations/blob/gh-pages/sketches/desktop/scenegraph/SceneGraph/SceneGraph.pde)
+### Eyeless example
 
 ```processing
  World
@@ -1641,17 +1630,17 @@ void drawModel() {
 
 V:
 
-## Modelling and view
-### Mnemonic 2 examples: [mini-map](https://github.com/VisualComputing/Transformations/blob/gh-pages/sketches/desktop/scenegraph/MiniMap/MiniMap.pde)
+## Modelling and view: [Scene-graph](https://github.com/VisualComputing/Transformations/blob/gh-pages/sketches/desktop/scenegraph/SceneGraph/SceneGraph.pde)
+### View transform (eye-frame)
 
 ```processing
  World
   ^
   |\
- L1 Eye
+... Eye
   ^
   |\
- L2 L3
+... ...
 ```
 
 Let the eye frame transform be defined, like it is with any other frame, as:<!-- .element: class="fragment" data-fragment-index="1"-->
@@ -1674,8 +1663,8 @@ in the world, but want it to be the other way around (i.e., draw the scene from 
 
 V:
 
-## Modelling and view
-### Mnemonic 2 examples: [mini-map](https://github.com/VisualComputing/Transformations/blob/gh-pages/sketches/desktop/scenegraph/MiniMap/MiniMap.pde) (pseudo-code)
+## Modelling and view: Scene-grah
+### [View](https://github.com/VisualComputing/Transformations/blob/gh-pages/sketches/desktop/scenegraph/MiniMap/MiniMap.pde) example
 
 ```processing
  World
