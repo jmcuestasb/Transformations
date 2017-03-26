@@ -144,7 +144,7 @@ void main() {
 1. `transform = projection * modelview`
 2. `transform = projection * view * model`
 
-(<a href="#/5/15">goto matrix composition</a>)
+(<a href="#/5/15">goto matrix composition</a> and then to <a href="#/6/3">eye transform</a>)
 
 V:
 
@@ -1437,7 +1437,27 @@ V:
 ### Mnemonic 2 examples: [scene-graph](https://github.com/VisualComputing/Transformations/blob/gh-pages/sketches/desktop/scenegraph/SceneGraph/SceneGraph.pde)
 
 ```processing
-World
+ World
+  ^
+  |
+  |
+ L1
+  ^
+  |\
+  | \
+ L2  L3
+```
+
+A frame is defined by an affine (composed) transform: `$M_i^*, 1 \leq i \leq 3$`
+read in left-to-right order (<a href="#/5/16">goto mnemonic 2</a>)
+
+V:
+
+## Modelling and view
+### Mnemonic 2 examples: [scene-graph](https://github.com/VisualComputing/Transformations/blob/gh-pages/sketches/desktop/scenegraph/SceneGraph/SceneGraph.pde) (pseudo-code)
+
+```processing
+ World
   ^
   |
   |
@@ -1449,7 +1469,7 @@ World
 ```
 
 ```processing
-void draw() {
+void drawModel() {
   // define a local frame L1 (respect to the world)
   pushMatrix();
   affineTransform1();
@@ -1478,8 +1498,67 @@ V:
 ### Mnemonic 2 examples: [mini-map](https://github.com/VisualComputing/Transformations/blob/gh-pages/sketches/desktop/scenegraph/MiniMap/MiniMap.pde)
 
 ```processing
-
+ World
+  ^
+  |\
+  | \
+ L1 Eye
+  ^
+  |\
+  | \
+ L2  L3
 ```
+
+Let the eye frame transform be defined like any other frame as:<!-- .element: class="fragment" data-fragment-index="1"-->
+`$M_{eye}^*$`<!-- .element: class="fragment" data-fragment-index="2"-->
+
+The eye transform is therefore:<!-- .element: class="fragment" data-fragment-index="3"-->
+`$\left.M_{eye}^{*}\right.^{-1}$`<!-- .element: class="fragment" data-fragment-index="4"-->
+<a href="#/3/5">(goto vertex shader)</a><!-- .element: class="fragment" data-fragment-index="4"-->
+
+For example, for an eye frame transform:<!-- .element: class="fragment" data-fragment-index="5"-->
+`$M_{eye}^*=T(x,y,z)R(\beta)S(s)$`<!-- .element: class="fragment" data-fragment-index="6"-->
+
+The eye transform would be:<!-- .element: class="fragment" data-fragment-index="7"-->
+`$\left.M_{eye}^{*}\right.^{-1}=S(1/s)R(-\beta)T(-x,-y,-z)$`<!-- .element: class="fragment" data-fragment-index="8"-->
+
+N:
+
+`$M_{eye}^*$` would position (orient, scale, ...) the eye frame
+in the world, but want it to be the other way around (i.e., draw the scene from the eye point-of-view)
+
+V:
+
+## Modelling and view
+### Mnemonic 2 examples: [mini-map](https://github.com/VisualComputing/Transformations/blob/gh-pages/sketches/desktop/scenegraph/MiniMap/MiniMap.pde) (pseudo-code)
+
+```processing
+ World
+  ^
+  |\
+  | \
+ L1 Eye
+  ^
+  |\
+  | \
+ L2  L3
+```
+
+```processing
+void draw() {
+  scale(1/eyeScaling);
+  rotate(-eyeOrientation);
+  translate(-eyePosition.x, -eyePosition.y);
+  drawModel();
+  // i.e., the following sequence would position
+  // (orient, scale, ...) the eye frame in the world:
+  // translate(eyePosition.x, eyePosition.y);
+  // rotate(eyeOrientation);
+  // scale(eyeScaling)
+  // drawEye();
+}
+```
+<!-- .element: class="fragment" data-fragment-index="1"-->
 
 H:
 
