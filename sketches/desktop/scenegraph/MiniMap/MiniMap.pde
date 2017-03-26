@@ -4,13 +4,13 @@
  This sketch implements the following scene-graph:
  
  World
-  ^
-  |\
-  | \
+ ^
+ |\
+ | \
  L1 Eye
-  ^
-  |\
-  | \
+ ^
+ |\
+ | \
  L2  L3
  
  The scene-graph has en eye frame used to navigate the scene.
@@ -175,11 +175,13 @@ void axes(PGraphics pg) {
 void keyPressed() {
   if (key == ' ')
     showMiniMap = !showMiniMap;
-  if (key == CODED) {
-    if (keyCode == UP) {
+  if (key == CODED)
+    if (keyCode == UP)
       eyeScaling *= 1.1;
-    } else if (keyCode == DOWN) {
+    else if (keyCode == DOWN)
       eyeScaling /= 1.1;
-    } 
-  }
+    else if (keyCode == LEFT)
+      eyeOrientation += .1;
+    else if (keyCode == RIGHT)
+      eyeOrientation -= .1;
 }
