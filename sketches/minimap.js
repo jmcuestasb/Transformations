@@ -29,6 +29,13 @@ var sketch = function( p ) {
         p.image(canvas1, 0, 0);
         // minimap
         if (showMiniMap) {
+            
+            if (p.mouseIsPressed)
+                if (p.mouseButton == p.LEFT)
+                    eyeScaling *= 1.1;
+                if (p.mouseButton == p.CENTER)
+                    eyeScaling /= 1.1;
+            
             canvas2.background(0);
             // the eye matrix is defined as the inverted matrix
             // used to set the drawEye() for canvas1:
@@ -45,6 +52,13 @@ var sketch = function( p ) {
             p.image(canvas2, 0, p.height/2);
         }
     };
+    
+    p.mouseWheel = function (event) {
+        //move the square according to the vertical scroll amount
+        eyeOrientation += event.delta;
+        //uncomment to block page scrolling
+        //return false;
+    }
     
     function scene(pg) {
         axes(pg);
