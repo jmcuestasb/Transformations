@@ -1,7 +1,7 @@
 var sketch = function( p ) {
     var canvas1;
     var canvas2;
-    var showMiniMap = false;
+    var showMiniMap = true;
 
     //eye params
     var eyePosition = p.createVector(0,0);
@@ -18,7 +18,6 @@ var sketch = function( p ) {
     p.draw = function() {
         //p.background(0);
         canvas1.background(50);
-        
         // call scene off-screen rendering on canvas 1
         scene(canvas1);
         if (showMiniMap) {
@@ -28,9 +27,23 @@ var sketch = function( p ) {
         }
         // draw canvas onto screen
         p.image(canvas1, 0, 0);
-        
-        //axes(canvas1);
-        //p.image(canvas1, 0, 0);
+        // minimap
+        if (showMiniMap) {
+            canvas2.background(0);
+            // the eye matrix is defined as the inverted matrix
+            // used to set the drawEye() for canvas1:
+            // inv(T(eyePosition)*R(eyeOrientation)*S(eyeScaling)) =
+            // inv(S(eyeScaling)) * inv(R(eyeOrientation)) * inv(T(eyePosition)) =
+            // S(1/eyeScaling) * R(-eyeOrientation) * T(-eyePosition)
+            canvas2.push();
+            canvas2.scale(1/eyeScaling);
+            canvas2.rotate(-eyeOrientation);
+            canvas2.translate(-eyePosition.x, -eyePosition.y);
+            scene(canvas2);
+            canvas2.pop();
+            // draw canvas onto screen
+            p.image(canvas2, 0, p.height/2);
+        }
     };
     
     function scene(pg) {
@@ -68,6 +81,22 @@ var sketch = function( p ) {
         // return to World
         pg.pop();
     };
+    
+    function drawEye() {
+        // define an eye frame L1 (respect to the world)
+        canvas1.push();
+        // the position of the minimap rect is defined according to eye parameters as:
+        // T(eyePosition)*R(eyeOrientation)*S(eyeScaling)
+        canvas1.translate(eyePosition.x, eyePosition.y);
+        canvas1.rotate(eyeOrientation);
+        canvas1.scale(eyeScaling);
+        canvas1.stroke(0, 255, 0);
+        canvas1.strokeWeight(8);
+        canvas1.noFill();
+        canvas1.rect(0, 0, canvas2.width, canvas2.height);
+        // return to World
+        canvas1.pop();
+    }
     
     function axes(pg) {
         pg.push();
