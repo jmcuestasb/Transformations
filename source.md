@@ -1699,6 +1699,13 @@ void draw() {
 ```
 <!-- .element: class="fragment" data-fragment-index="1"-->
 
+V:
+
+## Modelling and view: Scene-grah
+### [View](https://github.com/VisualComputing/Transformations/blob/gh-pages/sketches/desktop/scenegraph/MiniMap/MiniMap.pde) example
+
+<div id='minimap_id'></div>
+
 H:
 
 ## Projections: Orthogonal
