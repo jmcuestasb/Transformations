@@ -1467,9 +1467,7 @@ void draw() {
 }
 ```
 
-<figure>
-    <img height="360" src="fig/frames1.png">
-</figure>
+<div id='frames1_id'></div>
 <!-- .element: class="fragment" data-fragment-index="1"-->
 
 V:
@@ -1482,35 +1480,31 @@ now let's call it again but pre-translating it first:
 void draw() {
   background(50);
   axes();
-  translate(450, 260);//translating
-  axes();
+  translate(300, 180);//translation
+  axes();//2nd call
 }
 ```
 
-<figure>
-    <img height="360" src="fig/frames2a.png">
-</figure>
+<div id='frames2_id'></div>
 <!-- .element: class="fragment" data-fragment-index="1"-->
 
 V:
 
 ## Modelling and view: Frame notion
 
-let's add a rotation to the second `axes()` called:
+let's add a rotation to the second `axes()` call:
 
 ```processing
 void draw() {
   background(50);
   axes();
-  translate(450, 260);
-  rotate(QUARTER_PI / 2);//rotate after translate
-  axes();
+  translate(300, 180);
+  rotate(QUARTER_PI / 2);//rotation after translation
+  axes();//2nd call
 }
 ```
 
-<figure>
-    <img height="360" src="fig/frames2b.png">
-</figure>
+<div id='frames3_id'></div>
 <!-- .element: class="fragment" data-fragment-index="1"-->
 
 V:
@@ -1523,19 +1517,17 @@ let's do something similar with a third `axes()` call:
 void draw() {
   background(50);
   axes();
-  translate(450, 260);
-  rotate(QUARTER_PI / 2);
+  translate(300, 180);
+  rotate(QUARTER_PI/2);
   axes();
-  translate(300, -240);
+  translate(260, -180);
   rotate(-QUARTER_PI);
-  scale(2);//even scaling it
-  axes();//thid call
+  scale(1.5);//even scaling it
+  axes();//3rd call
 }
 ```
 
-<figure>
-    <img height="360" src="fig/frames3.png">
-</figure>
+<div id='frames4_id'></div>
 <!-- .element: class="fragment" data-fragment-index="1"-->
 
 V:
@@ -1548,17 +1540,18 @@ see the result if we animate the _first_ rotation;
 void draw() {
   background(50);
   axes();
-  translate(450, 260);
-  rotate(QUARTER_PI / 2 * frameCount);//animation line
+  translate(300, 180);
+  rotate(QUARTER_PI/2 * p.frameCount);//animation line
   axes();
-  translate(300, -240);
+  translate(260, -180);
   rotate(-QUARTER_PI);
-  scale(2);//even scaling it
-  axes();//thid call
+  scale(1.5);
+  axes();
 }
 ```
 
-<video height="360" controls data-autoplay loop src="vid/frames4a.ogv"></video>
+<div id='frames5_id'></div>
+<!-- .element: class="fragment" data-fragment-index="1"-->
 
 V:
 
@@ -1570,17 +1563,18 @@ see the result if we animate the _second_ rotation;
 void draw() {
   background(50);
   axes();
-  translate(450, 260);
-  rotate(QUARTER_PI / 2);
+  translate(300, 180);
+  rotate(QUARTER_PI/2);
   axes();
-  translate(300, -240);
-  rotate(-QUARTER_PI * frameCount);//animation line
-  scale(2);//even scaling it
-  axes();//thid call
+  translate(260, -180);
+  rotate(-QUARTER_PI * p.frameCount);//animation line
+  scale(1.5);
+  axes();
 }
 ```
 
-<video height="360" controls data-autoplay loop src="vid/frames4b.ogv"></video>
+<div id='frames6_id'></div>
+<!-- .element: class="fragment" data-fragment-index="1"-->
 
 N:
 
