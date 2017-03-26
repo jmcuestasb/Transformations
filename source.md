@@ -1198,10 +1198,10 @@ which is the same as: <!-- .element: class="fragment" data-fragment-index="5"-->
 <a href="#/3/5">goto vertex shader</a><!-- .element: class="fragment" data-fragment-index="7"-->
 
 Mnemonic 1:<!-- .element: class="fragment" data-fragment-index="8"-->
-   The (right-to-left) $M_1M_2...M_n$ product sequence is performed respect to a world (fixed) coordinate system
+   The (right-to-left) $M_1M_2...M_n$ transformation sequence is performed respect to a world (fixed) coordinate system
 
 Mnemonic 2:<!-- .element: class="fragment" data-fragment-index="9"-->
-   The (left-to-right) $M_n,...M_2M_1$ product sequence is performed respect to a local (mutable) coordinate system
+   The (left-to-right) $M_n,...M_2M_1$ transformation sequence is performed respect to a local (mutable) coordinate system
    
 V:
 
@@ -1424,12 +1424,169 @@ V:
 
 H:
 
-## Modelling and view
+## Modelling and view: Frame notion
+
+> Mnemonic 2: The (left-to-right) $M_n,...M_2M_1$ transformation sequence is performed respect to a local (mutable) coordinate system
+
+Local coordinate systems are known as Frames <!-- .element: class="fragment" data-fragment-index="1"-->
+
+V:
+
+## Modelling and view: Frame notion
+
+Consider the function `axes()` which draws the X (horizontal) and Y vertical) axes:
+
+```processing
+void axes() {
+  pushStyle();
+  // X-Axis
+  strokeWeight(4);
+  stroke(255, 0, 0);
+  fill(255, 0, 0);
+  line(0, 0, 100, 0);//horizontal red X-axis line
+  text("X", 100 + 5, 0);
+  // Y-Axis
+  stroke(0, 0, 255);
+  fill(0, 0, 255);
+  line(0, 0, 0, 100);//vertical blue X-axis line
+  text("Y", 0, 100 + 15);
+  popStyle();
+}
+```
+
+V:
+
+## Modelling and view: Frame notion
+
+let's first call the `axes()` function to see what it does:
+
+```processing
+void draw() {
+  background(50);
+  axes();
+}
+```
+
+<figure>
+    <img height="360" src="fig/frames1.png">
+</figure>
+<!-- .element: class="fragment" data-fragment-index="1"-->
+
+V:
+
+## Modelling and view: Frame notion
+
+now let's call it again but pre-translating it first:
+
+```processing
+void draw() {
+  background(50);
+  axes();
+  translate(450, 260);//translating
+  axes();
+}
+```
+
+<figure>
+    <img height="360" src="fig/frames2a.png">
+</figure>
+<!-- .element: class="fragment" data-fragment-index="1"-->
+
+V:
+
+## Modelling and view: Frame notion
+
+let's add a rotation to the second `axes()` called:
+
+```processing
+void draw() {
+  background(50);
+  axes();
+  translate(450, 260);
+  rotate(QUARTER_PI / 2);//rotate after translate
+  axes();
+}
+```
+
+<figure>
+    <img height="360" src="fig/frames2b.png">
+</figure>
+<!-- .element: class="fragment" data-fragment-index="1"-->
+
+V:
+
+## Modelling and view: Frame notion
+
+let's do something similar with a third `axes()` call:
+
+```processing
+void draw() {
+  background(50);
+  axes();
+  translate(450, 260);
+  rotate(QUARTER_PI / 2);
+  axes();
+  translate(300, -240);
+  rotate(-QUARTER_PI);
+  scale(2);//even scaling it
+  axes();//thid call
+}
+```
+
+<figure>
+    <img height="360" src="fig/frames3.png">
+</figure>
+<!-- .element: class="fragment" data-fragment-index="1"-->
+
+V:
+
+## Modelling and view: Frame notion
+
+see the result if we animate the _first_ rotation;
+
+```processing
+void draw() {
+  background(50);
+  axes();
+  translate(450, 260);
+  rotate(QUARTER_PI / 2 * frameCount);//animation line
+  axes();
+  translate(300, -240);
+  rotate(-QUARTER_PI);
+  scale(2);//even scaling it
+  axes();//thid call
+}
+```
+
+<video height="360" controls data-autoplay loop src="vid/frames4a.ogv"></video>
+
+V:
+
+## Modelling and view: Frame notion
+
+see the result if we animate the _second_ rotation;
+
+```processing
+void draw() {
+  background(50);
+  axes();
+  translate(450, 260);
+  rotate(QUARTER_PI / 2);
+  axes();
+  translate(300, -240);
+  rotate(-QUARTER_PI * frameCount);//animation line
+  scale(2);//even scaling it
+  axes();//thid call
+}
+```
+
+<video height="360" controls data-autoplay loop src="vid/frames4b.ogv"></video>
 
 N:
 
 * Any (homogeneous matrix) transform represents a change (of basis) of a coordinate system, i.e., passive transformation
 * Matrix stack stuff goes here
+* > A Frame is a coordinate system encapsulating a sequence of affine transformations
 
 V:
 
@@ -1440,11 +1597,9 @@ V:
  World
   ^
   |
-  |
  L1
   ^
   |\
-  | \
  L2  L3
 ```
 
@@ -1460,11 +1615,9 @@ V:
  World
   ^
   |
-  |
  L1
   ^
   |\
-  | \
  L2  L3
 ```
 
@@ -1501,15 +1654,13 @@ V:
  World
   ^
   |\
-  | \
  L1 Eye
   ^
   |\
-  | \
- L2  L3
+ L2 L3
 ```
 
-Let the eye frame transform be defined like any other frame as:<!-- .element: class="fragment" data-fragment-index="1"-->
+Let the eye frame transform be defined, like it is with any other frame, as:<!-- .element: class="fragment" data-fragment-index="1"-->
 `$M_{eye}^*$`<!-- .element: class="fragment" data-fragment-index="2"-->
 
 The eye transform is therefore:<!-- .element: class="fragment" data-fragment-index="3"-->
@@ -1536,11 +1687,9 @@ V:
  World
   ^
   |\
-  | \
  L1 Eye
   ^
   |\
-  | \
  L2  L3
 ```
 
@@ -1579,6 +1728,6 @@ H:
 
 H:
 
-## Credits
+## Acknowledgements
 
-* [Jean Pierre Alfonso](https://www.linkedin.com/in/jean-pierre-alfonso-hoyos-59b46359/), for the initial draft of the presentation which included the [mathjax](https://www.mathjax.org/) formulas
+* [Jean Pierre Alfonso](https://www.linkedin.com/in/jean-pierre-alfonso-hoyos-59b46359/), for formatting some [mathjax](https://www.mathjax.org/) formulas
