@@ -32,7 +32,7 @@
 var sketch = function( p ) {
     var canvas1;
     var canvas2;
-    var showMiniMap = true;
+    var showMiniMap = false;
 
     //eye params
     var eyePosition = p.createVector(0,0);
@@ -51,11 +51,8 @@ var sketch = function( p ) {
         canvas1.background(50);
         // call scene off-screen rendering on canvas 1
         scene(canvas1);
-        if (showMiniMap) {
-            eyePosition.x = p.mouseX;
-            eyePosition.y = p.mouseY;
+        if (showMiniMap)
             drawEye();
-        }
         // draw canvas onto screen
         p.image(canvas1, 0, 0);
         // minimap
@@ -77,17 +74,30 @@ var sketch = function( p ) {
         }
     };
     
-    p.mousePressed = function () {
-        if (p.mouseButton == p.LEFT)
-            eyeScaling *= 1.1;
+    p.mouseMoved = function () {
+        eyePosition.x = p.mouseX;
+        eyePosition.y = p.mouseY;
+        //return false;
+    }
+    
+    p.mouseDragged = function () {
         if (p.mouseButton == p.CENTER)
-            eyeScaling /= 1.1;
+            if(p.mouseX > p.pmouseX)
+                eyeScaling *= 1.03;
+            else
+                eyeScaling /= 1.03;
         //return false;
     }
     
     p.mouseWheel = function (event) {
         eyeOrientation += event.delta;
         //uncomment to block page scrolling
+        //return false;
+    }
+    
+    p.mouseClicked = function () {
+        if (p.mouseButton == p.LEFT)
+            showMiniMap = !showMiniMap;
         //return false;
     }
     
