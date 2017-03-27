@@ -1670,7 +1670,7 @@ in the world, but want it to be the other way around (i.e., draw the scene from 
 
 V:
 
-## Modelling and view: Scene-grah
+## Modelling and view: Scene-graph
 ### [View](https://github.com/VisualComputing/Transformations/blob/gh-pages/sketches/desktop/scenegraph/MiniMap/MiniMap.pde) example
 
 ```processing
@@ -1701,7 +1701,7 @@ void draw() {
 
 V:
 
-## Modelling and view: Scene-grah
+## Modelling and view: Scene-graph
 ### [View](https://github.com/VisualComputing/Transformations/blob/gh-pages/sketches/desktop/scenegraph/MiniMap/MiniMap.pde) example
 
 <div id='minimap_id'></div>
