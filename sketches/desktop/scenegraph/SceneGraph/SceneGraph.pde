@@ -1,4 +1,7 @@
 /**
+ Scene Graph
+ by Jean Pierre Charalambos.
+ 
  Scene-graphs are simply a hierarchy of nested coordinate systems (frames).
  
  This sketch implements the following scene-graph:
@@ -21,9 +24,6 @@
  This sketch also shows how to use a matrix stack of transformations
  to "navigate" among the scene-graph frames.
  See: http://processing.org/reference/pushMatrix_.html
- 
- Using off-screen rendering we draw the above scene twice.
- See: http://processing.org/reference/PGraphics.html
  
  A scene-graph with an eye frame is implemented in the MiniMap sketch
  */

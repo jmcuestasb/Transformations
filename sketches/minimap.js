@@ -1,3 +1,34 @@
+/**
+ Mini Map
+ by Jean Pierre Charalambos.
+ 
+ Refer to the SceneGraph example first.
+ 
+ This sketch implements the following scene-graph:
+ 
+ World
+ ^
+ |\
+ | \
+ L1 Eye
+ ^
+ |\
+ | \
+ L2  L3
+ 
+ The scene-graph has en eye frame used to navigate the scene.
+ 
+ Using off-screen rendering we draw the above scene-graph twice.
+ See: https://p5js.org/reference/#/p5/createGraphics
+ 
+ The eye frame is typically used to navigate the scene where it
+ is defined. Here, however, the main scene eye (canvas1) is used
+ to navigate the minimap scene (canvas2). 
+ 
+ Press the space-bar to toggle the minimap and the arrows to
+ scale the minimap.
+*/
+
 var sketch = function( p ) {
     var canvas1;
     var canvas2;
@@ -29,13 +60,6 @@ var sketch = function( p ) {
         p.image(canvas1, 0, 0);
         // minimap
         if (showMiniMap) {
-            
-            if (p.mouseIsPressed)
-                if (p.mouseButton == p.LEFT)
-                    eyeScaling *= 1.1;
-                if (p.mouseButton == p.CENTER)
-                    eyeScaling /= 1.1;
-            
             canvas2.background(0);
             // the eye matrix is defined as the inverted matrix
             // used to set the drawEye() for canvas1:
@@ -53,8 +77,15 @@ var sketch = function( p ) {
         }
     };
     
+    p.mousePressed = function () {
+        if (p.mouseButton == p.LEFT)
+            eyeScaling *= 1.1;
+        if (p.mouseButton == p.CENTER)
+            eyeScaling /= 1.1;
+        //return false;
+    }
+    
     p.mouseWheel = function (event) {
-        //move the square according to the vertical scroll amount
         eyeOrientation += event.delta;
         //uncomment to block page scrolling
         //return false;

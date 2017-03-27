@@ -1,4 +1,7 @@
 /**
+ Mini Map
+ by Jean Pierre Charalambos.
+ 
  Refer to the SceneGraph example first.
  
  This sketch implements the following scene-graph:

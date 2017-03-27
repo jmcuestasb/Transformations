@@ -1,3 +1,34 @@
+/**
+ Scene Graph
+ by Jean Pierre Charalambos.
+ 
+ Scene-graphs are simply a hierarchy of nested coordinate systems (frames).
+ 
+ This sketch implements the following scene-graph:
+ 
+ World
+  ^
+  |
+  |
+ L1
+  ^
+  |\
+  | \
+ L2  L3
+ 
+ Each frame is defined by a single affine transformation
+ or by a composition of several affine transformations read in
+ left-to-right order (top-down in the code).
+ Refer to the 'mnemonic rule 2' in the presentation.
+ 
+ This sketch also shows how to use a matrix stack of transformations
+ to "navigate" among the scene-graph frames.
+ See: https://p5js.org/reference/#/p5/push
+      https://p5js.org/reference/#/p5/pop
+ 
+ A scene-graph with an eye frame is implemented in the MiniMap sketch
+*/
+
 var sketch = function( p ) {
     p.setup = function() {
         p.createCanvas(700, 700);
