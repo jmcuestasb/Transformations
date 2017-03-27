@@ -345,10 +345,10 @@ V:
 
 > Sets the uniform variables inside the shader to modify the effect while the program is running
 
-Method signatures for matrix uniform variables:
+Method signatures for `mat3` and `mat4` uniform variables:
 
 ```processing
-  .set(name, mat) // mat is PMatrix3D, or PMatrix2D
+  .set(name, mat) // mat is PMatrix2D, or PMatrix3D
 ```
 
 * *name* of the uniform variable to modify
