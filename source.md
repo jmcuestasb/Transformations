@@ -144,7 +144,7 @@ void main() {
 1. `transform = projection * modelview`
 2. `transform = projection * view * model`
 
-(<a href="#/5/15">goto matrix composition</a> and then to <a href="#/6/3">eye transform</a>)
+(<a href="#/5/15">goto matrix composition</a> and then to <a href="#/6/12">eye transform</a>)
 
 V:
 
@@ -1229,7 +1229,7 @@ V:
 ### Mnemonic 1 examples
 $T(x_r,y_r)R_z(\beta)T(-x_r,-y_r)$ Processing implementation
 
-<video width="400" height="400" controls data-autoplay loop src="vid/rotation.ogv"></video>
+<div id='rotation_id'></div>
 
 V:
 
@@ -1448,7 +1448,7 @@ void axes() {
   // Y-Axis
   stroke(0, 0, 255);
   fill(0, 0, 255);
-  line(0, 0, 0, 100);//vertical blue X-axis line
+  line(0, 0, 0, 100);//vertical blue Y-axis line
   text("Y", 0, 100 + 15);
   popStyle();
 }
