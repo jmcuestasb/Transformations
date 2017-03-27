@@ -1685,16 +1685,15 @@ V:
 
 ```processing
 void draw() {
-  scale(1/eyeScaling);
-  rotate(-eyeOrientation);
-  translate(-eyePosition.x, -eyePosition.y);
-  drawModel();
-  // i.e., the following sequence would position
-  // (orient, scale, ...) the eye frame in the world:
+  // the following sequence would position (orient, scale, ...) the eye frame in the world:
   // translate(eyePosition.x, eyePosition.y);
   // rotate(eyeOrientation);
   // scale(eyeScaling)
   // drawEye();
+  scale(1/eyeScaling);
+  rotate(-eyeOrientation);
+  translate(-eyePosition.x, -eyePosition.y);
+  drawModel();
 }
 ```
 <!-- .element: class="fragment" data-fragment-index="1"-->
