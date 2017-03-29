@@ -1147,6 +1147,11 @@ V:
 V:
 
 ## Affine transformations: Rotation
+### Euler angles Rodrigues' rotation relationship
+
+V:
+
+## Affine transformations: Rotation
 ### Quaternions
 
 V:
