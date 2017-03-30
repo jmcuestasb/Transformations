@@ -1154,9 +1154,10 @@ N:
 thinking it'd make a lot more of sense to simply go:
 * Affine transformations: ...
 * Affine transformations: Rotation: Orthogonal matrix
-* Affine transformations: Rotation Rodrigues
-* Affine transformations: Euler angles
-* Affine transformations: Euler angles Rodrigues' rotation relationship
+* Affine transformations: Rotation: Rodrigues
+* Affine transformations: Rotation: Euler angles
+* Affine transformations: Rotation: Euler angles Rodrigues' rotation relationship
+* Affine transformations: Rotation: Quaternions magic
 
 from next semester onwards :-P
 
