@@ -1149,6 +1149,17 @@ V:
 ## Affine transformations: Rotation
 ### Euler angles Rodrigues' rotation relationship
 
+N:
+
+thinking it'd make a lot more of sense to simply go:
+* Affine transformations: ...
+* Affine transformations: Rotation: Orthogonal matrix
+* Affine transformations: Rotation Rodrigues
+* Affine transformations: Euler angles
+* Affine transformations: Euler angles Rodrigues' rotation relationship
+
+from next semester onwards :-P
+
 V:
 
 ## Affine transformations: Rotation
