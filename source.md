@@ -44,7 +44,7 @@ V:
 
  4. Modelling and view<!-- .element: class="fragment" data-fragment-index="4"-->
  5. Projections<!-- .element: class="fragment" data-fragment-index="5"-->
-    * Orthogonal
+    * Orthographic
     * Perspective
  
 H:
@@ -1724,11 +1724,376 @@ V:
 
 H:
 
-## Projections: Orthogonal
+## Projections: Orthographic
+### View volume
+
+<img height="400" src="fig/pimage5.JPG">
+
+V:
+
+## Projections: Orthographic
+### View volume: Canonical volume
+
+<img height="400" src="fig/pimage6.JPG">
+
+V:
+
+## Projections: Orthographic
+### View volume: Canonical volume
+
+                |---------------*---------|
+                min            x         max
+
+        |-------------------*--------------|
+        min'                x'            max'
+    
+The linear conversion is given by:
+
+`$$x' = xS_x + T_x$$`
+
+where  `$S_x=\Delta x'/\Delta x$`, and `$T_x=min'max-max'min/\Delta x$`
+
+and `$\Delta x=max-min$`, and `$\Delta x'=max'-min'$`
+
+V:
+
+## Projections: Orthographic
+
+<p align ="left"><font color="blue">1. Remapping the x coordinate</font>$(L,R)$ to $-1$ and $1$</p>
+<table width="350" heigth="500" border="0" align ="left">
+<tr>
+<td>
+<img height="400" wight="350" src="fig/pimage7.JPG">
+</td>
+</tr>
+<tr>
+<td>
+<font color="blue">Screen Window Coordinates</font>
+</td>
+</tr>
+</table>
+<font size ="5">
+<p align ="center"> Remap : $(L,R)$ to $-1$ and $1$</p>
+<p align ="center"> If : $L \le$ x $\le R \rightarrow$</p>
+<p align ="center"> $0 \le$ x $-L \le R-L$</p>
+<p align ="center"> $0 \le ($ x $-L) / (R-L) \le 1$</p>
+<p align ="center"> $0 \le 2($ x $-L) / (R-L) \le 2$</p>
+<p align ="center"> $-1 \le 2($ x $-L) / (R-L)-1 \le 1$</p>
+<p align ="center"> Rewrite</p>
+<p align ="center"> $-1 \le 2$ x $/(R-L) - (R+L)/(R-L) \le 1$</p>
+<p align ="center"> Producing</p>
+<p align ="center"> $x'= 2$ x $/(R-L) - (R+L)/(R-L)$</p>
+</font>
+
+V:
+
+## Projections: Orthographic
+
+<p align ="left"><font color="blue">1. Remapping the x coordinate</font>$(L,R)$ to $-1$ and $1$</p>
+<table width="350" heigth="500" border="0" align ="left">
+<tr>
+<td>
+<img height="400" wight="350" src="fig/pimage7.JPG">
+</td>
+</tr>
+<tr>
+<td>
+<font color="blue">Screen Window Coordinates</font>
+</td>
+</tr>
+</table>
+</br>
+</br>
+</br>
+<font size ="5">
+$\begin{bmatrix} 
+{2 \above 1pt (R-L)} & 0 & 0 & 0 \cr 
+0 & 1 & 0 & 0 \cr
+0 & 0 & 1 & 0 \cr
+{-(R+L) \above 1pt (R-L)} & 0 & 0 & 1\end{bmatrix}$
+</font>
+
+V:
+
+## Projections: Orthographic
+
+<p align ="left"><font color="blue">2. Remapping the y coordinate</font>$(B,T)$ to $-1$ and $1$</p>
+<table width="350" heigth="500" border="0" align ="left">
+<tr>
+<td>
+<img height="400" wight="350" src="fig/pimage7.JPG">
+</td>
+</tr>
+<tr>
+<td>
+<font color="blue">Screen Window Coordinates</font>
+</td>
+</tr>
+</table>
+</br>
+</br>
+</br>
+<font size ="5">
+$\begin{bmatrix} 
+{2 \above 1pt (R-L)} & 0 & 0 & 0 \cr 
+0 & {2 \above 1pt (T-B)} & 0 & 0 \cr
+0 & 0 & 1 & 0 \cr
+{-(R+L) \above 1pt (R-L)} & {-(T+B) \above 1pt (T-B)} & 0 & 1\end{bmatrix}$
+</font>
+
+V:
+
+## Projections: Orthographic
+
+<p align ="left"><font color="blue">3. Remapping the z coordinate</font> $(n,f)$ to $0$ and $1$</p>
+<table width="350" heigth="500" border="0" align ="left">
+<tr>
+<td>
+<img height="400" wight="350" src="fig/pimage7.JPG">
+</td>
+</tr>
+<tr>
+<td>
+<font color="blue">Screen Window Coordinates</font>
+</td>
+</tr>
+</table>
+</br>
+<font size ="5">
+<p align ="center"> Remap : $(n,f)$ to $0$ and $1$</p>
+<p align ="center"> If : $n \le -z \le f \rightarrow$</p>
+<p align ="center"> $0 \le -z-n \le f-n$</p>
+<p align ="center"> $0 \le {(-z-n) \above 1pt (f-n)} \le 1$</p>
+<p align ="center"> Rewrite</p>
+<p align ="center"> $0 \le {-z \above 1pt (f-n)} - {n \above 1pt (f-n)} \le 1$</p>
+<p align ="center"> Producing</p>
+<p align ="center"> $z'= {-z \above 1pt (f-n)} - {n \above 1pt (f-n)}$</p>
+</font>
+
+V:
+
+## Projections: Orthographic
+
+<p align ="left"><font color="blue">3. Remapping the z coordinate</font>$(n,f)$ to $0$ and $1$</p>
+<table width="350" heigth="500" border="0" align ="left">
+<tr>
+<td>
+<img height="400" wight="350" src="fig/pimage7.JPG">
+</td>
+</tr>
+<tr>
+<td>
+<font color="blue">Screen Window Coordinates</font>
+</td>
+</tr>
+</table>
+</br>
+</br>
+</br>
+<font size ="5">
+$\begin{bmatrix} 
+{2 \above 1pt (R-L)} & 0 & 0 & 0 \cr 
+0 & {2 \above 1pt (T-B)} & 0 & 0 \cr
+0 & 0 & {-1 \above 1pt (f-n)} & 0 \cr
+{-(R+L) \above 1pt (R-L)} & {-(T+B) \above 1pt (T-B)} & {-n \above 1pt (f-n)} & 1\end{bmatrix}$
+</font>
+
+V:
+
+## Projections: Orthographic
+
+<p align ="left"><font color="blue"> Perspective</font></p>
+<img height="400" src="fig/pimage8.JPG">
 
 V:
 
 ## Projections: Perspective
+
+<p align ="left"><font color="blue"> Frustum</font></p>
+<img height="400" src="fig/pimage9.JPG">
+
+V:
+
+## Projections: Perspective
+
+<p align ="left"><font color="blue"> Field-Of-View (fov)</font></p>
+<img height="400" src="fig/pimage10.JPG">
+
+V:
+
+## Projections: Perspective
+
+<p align ="left"><font color="blue">1. Basic matrix of perspective</font></p>
+<img height="250" src="fig/pimage11.JPG">
+<table width="800" heigth="500" border="0" align ="left">
+<tr>
+<td>
+<p><font size ="5">${BC \above 1pt EF} = {BC \above 1pt EF} $ </font></p>
+<p><font size ="5">Like $AB = 1 \rightarrow BC ={EF \above 1pt DE} $ </font></p>
+</td>
+<td>
+<p><font size ="5">Producing</font></p>
+<p><font size ="5">$Ps_x = {Px \above 1pt -Pz}$</font></p>
+<p><font size ="5">$Ps_y = {Py \above 1pt -Pz}$</font></p>
+<p><font size ="5">$Ps_z =1$</font></p>
+</td>
+</tr>
+</table>
+
+V:
+
+## Projections: Perspective
+
+<p align ="left"><font color="blue">1. Basic matrix of perspective</font></p>
+<table width="900" heigth="500" border="0" align ="left">
+<tr>
+<td>
+<p><font size ="5">$Ps_x = {Px \above 1pt -Pz}$</font></p>
+<p><font size ="5">$Ps_y = {Py \above 1pt -Pz}$</font></p>
+<p><font size ="5">$Ps_z =1$</font></p>
+</td>
+<td>
+$\space \space$
+</td>
+<td>
+<font size ="5">
+$\begin{bmatrix} 
+x, & y, & z, & w=1 \end{bmatrix}$ 
+</font>
+<font size ="5">
+$\begin{bmatrix} 
+1 & 0 & 0 & 0 \cr 
+0 & 1 & 0 & 0 \cr
+0 & 0 & -1 & -1 \cr
+0 & 0 & 0 & 1\end{bmatrix}$
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<p><font size ="5">$x'= x$</font></p>
+<p><font size ="5">$y'= y$</font></p>
+<p><font size ="5">$z'= z$</font></p>
+<p><font size ="5">$w'= -z$</font></p>
+</td>
+<td>
+$\rightarrow$
+</td>
+<td>
+<p><font size ="5">$x'= {x \above 1pt (w = -z)}$</font></p>
+<p><font size ="5">$y'= {y \above 1pt (w = -z)}$</font></p>
+<p><font size ="5">$z'= {-z \above 1pt (w = -z)} = 1$</font></p>
+</td>
+</tr>
+</table>
+
+V:
+
+## Projections: Perspective
+
+<p align ="left"><font color="blue">3. Remapping the z coordinate</font>$(n,f)$ to $0$ and $1$</p>
+<table width="900" heigth="500" border="0">
+<tr>
+<td>
+<font size ="5">
+$\begin{bmatrix} 
+x, & y, & z, & w=1 \end{bmatrix}$ 
+</font>
+<font size ="5">
+$\begin{bmatrix} 
+1 & 0 & 0 & 0 \cr 
+0 & 1 & 0 & 0 \cr
+0 & 0 & A & -1 \cr
+0 & 0 & B & 1\end{bmatrix}$
+</font>
+</td>
+</tr>
+<tr>
+<td>
+<p><font size ="5">$z'= (x\ast 0 + y\ast 0 + z\ast$<font color ="#00FFFF">$A$</font>$+ w\ast$<font color ="#00FFFF">$B$</font>$)/w', w= 1$ and $w'=-z$</font></p>
+<p><font size ="5">$z'= z\ast$<font color ="#00FFFF">$A$</font>$+ w \ast$ <font color ="#00FFFF">$B$</font>$)/ -z$</font></p>
+<p><font size ="5">If $z= -n \rightarrow z' = 0$</font></p>
+<p><font size ="5">If $z= -f \rightarrow z' = 1$</font></p>
+<p><font size ="5">Replacing and resolving</font></p>
+<p><font size ="5"><font color ="#00FFFF">$A ={-f \above 1pt (f-n)}$</font></font></p>
+<p><font size ="5"><font color ="#00FFFF">$B ={-nf \above 1pt (f-n)}$</font></font></p>
+</td>
+</tr>
+</table>
+
+V:
+
+## Projections: Perspective
+
+<p align ="left"><font color="blue">2. FOV As it's perceived from the screen window coordinates</font></p>
+<table width="500" heigth="500" border="0" align ="left">
+<tr>
+<td>
+<img height="300" wight="300" src="fig/pimage12.JPG" align ="left">
+</td>
+</tr>
+<tr>
+<td>
+<font size ="5">
+<p>Notes:</p>
+<p>Zoom $\leftrightarrow$ Scaling toward x and y $($<font color="#00FFFF">$S$</font>$)$</p>
+<p>Zoom out = Shrink $($<font color="#00FFFF">$S<1$</font>$)\rightarrow$ FOV increases</p>
+<p>Zoom in = Expand $($<font color="#00FFFF">$S<1$</font>$)\rightarrow$ FOV decreases</p>
+</font>
+</td>
+	</tr>
+</table>
+
+<font size = "5">
+<p align ="center">
+$\begin{bmatrix} 
+S & 0 & 0 & 0 \cr 
+0 & S & 0 & 0 \cr
+0 & 0 & {-f \above 1pt (f-n)} & -1 \cr
+0 & 0 & {-nf \above 1pt (f-n)} & 1\end{bmatrix}$
+</p>
+<p align ="left">Model:</p>
+<p>If: $FOV ={PI \above 1pt 2} (90°)$</p>
+<p>$\rightarrow$ Points are not scalable $($<font color="#00FFFF">$S=1$</font>$)$</p>
+<p><font color="#00FFFF">$S = {1 \above 1pt tan({FOV \above 1pt 2})}$</font></p>
+</font >
+
+V:
+
+## Projections: Perspective
+
+<p align ="left"><font color="blue">2. FOV Model</font></p>
+<table width="500" heigth="500" border="0" align ="left">
+<tr>
+<td>
+<img height="300" wight="300" src="fig/pimage13.JPG" align ="left">
+</td>
+</tr>
+<tr>
+<td>
+<font size ="5">
+<p>Notes:</p>
+<p>Zoom $\leftrightarrow$ Scaling toward x and y $($<font color="#00FFFF">$S$</font>$)$</p>
+<p>Zoom out = Shrink $($<font color="#00FFFF">$S<1$</font>$)\rightarrow$ FOV increases</p>
+<p>Zoom in = Expand $($<font color="#00FFFF">$S<1$</font>$)\rightarrow$ FOV decreases</p>
+</font>
+</td>
+</tr>
+</table>
+
+<font size = "5">
+<p align ="center">
+$\begin{bmatrix} 
+S & 0 & 0 & 0 \cr 
+0 & S & 0 & 0 \cr
+0 & 0 & {-f \above 1pt (f-n)} & -1 \cr
+0 & 0 & {-nf \above 1pt (f-n)} & 1\end{bmatrix}$
+</p>
+<p align ="left">Model:</p>
+<p>If: $FOV ={PI \above 1pt 2} (90°)$</p>
+<p>$\rightarrow$ Points are not scalable $($<font color="#00FFFF">$S=1$</font>$)$</p>
+<p><font color="#00FFFF">$S = {1 \above 1pt tan({FOV \above 1pt 2})}$</font></p>
+</font >
 
 H:
 
