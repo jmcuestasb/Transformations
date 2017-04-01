@@ -849,13 +849,13 @@ V:
         `$y'=y + dy$`
         </p>
         <p class="fragment" data-fragment-index="3">
-        `$w=1$`
+        `$w'=w=1$`
         </p>
         <p class="fragment" data-fragment-index="4">
         `$\begin{bmatrix} 
         x' \cr 
         y' \cr
-        w \cr
+        w' \cr
         \end{bmatrix}
         = 
         \begin{bmatrix}
@@ -865,7 +865,7 @@ V:
         \end{bmatrix} \bullet \begin{bmatrix} 
         x \cr 
         y \cr
-        1 \cr
+        w \cr
         \end{bmatrix}
         $`
         </p>
@@ -892,11 +892,14 @@ V:
         `$z'=z + dz$`
         </p>
         <p class="fragment" data-fragment-index="4">
+        `$w'=w=1$`
+        </p>
+        <p class="fragment" data-fragment-index="5">
         `$\begin{bmatrix} 
         x' \cr 
         y' \cr
         z' \cr
-        w \cr
+        w' \cr
         \end{bmatrix}
         = 
         \begin{bmatrix}
@@ -908,11 +911,11 @@ V:
         x \cr 
         y \cr
         z \cr
-        1 \cr
+        w \cr
         \end{bmatrix}
         $`
         </p>
-        <p class="fragment" data-fragment-index="5">
+        <p class="fragment" data-fragment-index="6">
         $P'= T(dx,dy,dz) \bullet P$
         </p>
     </ul>
@@ -935,14 +938,14 @@ V:
         `$z'=z$`
         </p>
         <p>
-        `$w=1$`
+        `$w'=w=1$`
         </p>
         <p>
         `$\begin{bmatrix} 
         x' \cr 
         y' \cr
         z' \cr
-        w \cr
+        w' \cr
         \end{bmatrix}
         = 
         \begin{bmatrix}
@@ -954,7 +957,7 @@ V:
         x \cr 
         y \cr
         z \cr
-        1 \cr
+        w \cr
         \end{bmatrix}
         $`
         </p>
@@ -981,14 +984,14 @@ V:
         `$z'= sz*z$`
         </p>
         <p>
-        `$w=1$`
+        `$w'=w=1$`
         </p>
         <p>
         `$\begin{bmatrix} 
         x' \cr 
         y' \cr
         z' \cr
-        w \cr
+        w' \cr
         \end{bmatrix}
         = 
         \begin{bmatrix}
@@ -1000,7 +1003,7 @@ V:
         x \cr 
         y \cr
         z \cr
-        1 \cr
+        w \cr
         \end{bmatrix}
         $`
         </p>
@@ -1023,14 +1026,14 @@ V:
         $z' = z$
         </p>
         <p>
-        `$w=1$`
+        `$w'=w=1$`
         </p>
         <p>
         `$\begin{bmatrix} 
         x' \cr 
         y' \cr
         z' \cr
-        w \cr
+        w' \cr
         \end{bmatrix}
         = 
         \begin{bmatrix}
@@ -1042,7 +1045,7 @@ V:
         x \cr 
         y \cr
         z \cr
-        1 \cr
+        w \cr
         \end{bmatrix}
         $`
         </p>
@@ -1064,14 +1067,14 @@ V:
         $x' = x$
         </p>
         <p>
-        `$w=1$`
+        `$w'=w=1$`
         </p>
         <p>
         `$\begin{bmatrix} 
         x' \cr 
         y' \cr
         z' \cr
-        w \cr
+        w' \cr
         \end{bmatrix}
         = 
         \begin{bmatrix}
@@ -1083,7 +1086,7 @@ V:
         x \cr 
         y \cr
         z \cr
-        1 \cr
+        w \cr
         \end{bmatrix}
         $`
         </p>
@@ -1105,14 +1108,14 @@ V:
         $y' = y$
         </p>
         <p>
-        `$w=1$`
+        `$w'=w=1$`
         </p>
         <p>
         `$\begin{bmatrix} 
         x' \cr 
         y' \cr
         z' \cr
-        w \cr
+        w' \cr
         \end{bmatrix}
         = 
         \begin{bmatrix}
@@ -1124,7 +1127,7 @@ V:
         x \cr 
         y \cr
         z \cr
-        1 \cr
+        w \cr
         \end{bmatrix}
         $`
         </p>
@@ -1778,7 +1781,7 @@ V:
         x' \cr 
         y' \cr
         z' \cr
-        w \cr
+        w' \cr
         \end{bmatrix}
         = 
         \begin{bmatrix}
@@ -1790,7 +1793,7 @@ V:
         x \cr 
         y \cr
         z \cr
-        1 \cr
+        w(=1) \cr
         \end{bmatrix}
         $`
         </p>
@@ -1821,7 +1824,7 @@ V:
         x' \cr 
         y' \cr
         z' \cr
-        w \cr
+        w' \cr
         \end{bmatrix}
         = 
         \begin{bmatrix}
@@ -1833,7 +1836,7 @@ V:
         x \cr 
         y \cr
         z \cr
-        1 \cr
+        w(=1) \cr
         \end{bmatrix}
         $`
         </p>
@@ -1866,7 +1869,7 @@ V:
         x' \cr 
         y' \cr
         z' \cr
-        w \cr
+        w' \cr
         \end{bmatrix}
         = 
         \begin{bmatrix}
@@ -1878,7 +1881,7 @@ V:
         x \cr 
         y \cr
         z \cr
-        1 \cr
+        w(=1) \cr
         \end{bmatrix}
         $`
         </p>
