@@ -837,7 +837,7 @@ In general: $(x,y,z,w) \rightarrow (x/w,y/w,z/w)$
 
 V:
 
-## Affine transformations:Translation
+## Affine transformations: Translation
 
 <div class="ulist">
     <img src="fig/image4.JPG" alt="2d translation" width="38%" style="float: left">
@@ -877,7 +877,7 @@ V:
 
 V:
 
-## Affine transformations:Translation
+## Affine transformations: Translation
 
 <div class="ulist">
     <img src="fig/image15.JPG" alt="3d translation" width="38%" style="float: left">
@@ -1727,183 +1727,166 @@ H:
 ## Projections: Orthographic
 ### View volume
 
-<img height="400" src="fig/pimage5.JPG">
+<figure>
+    <img height='400' src='fig/pimage6.png' />
+    <figcaption>[Orthographic Volume and Normalized Device Coordinates (NDC)](http://www.songho.ca/opengl/gl_projectionmatrix.html#ortho)</figcaption>
+</figure>
 
 V:
 
 ## Projections: Orthographic
-### View volume: Canonical volume
-
-<img height="400" src="fig/pimage6.JPG">
-
-V:
-
-## Projections: Orthographic
-### View volume: Canonical volume
+### View volume: [Re-mapping a variable among ranges](http://stackoverflow.com/questions/929103/convert-a-number-range-to-another-range-maintaining-ratio)
 
                 |---------------*---------|
-                min            x         max
+               min              u        max
 
         |-------------------*--------------|
-        min'                x'            max'
+       min'                 u'            max'
     
 The linear conversion is given by:
 
-`$$x' = xS_x + T_x$$`
+`$$u' = min'+(u-min)(\Delta u')/(\Delta u)$$`
 
-where  `$S_x=\Delta x'/\Delta x$`, and `$T_x=min'max-max'min/\Delta x$`
+where `$\Delta u=max-min$`, and `$\Delta u'=max'-min'$`
 
-and `$\Delta x=max-min$`, and `$\Delta x'=max'-min'$`
+which may be re-written as:<!-- .element: class="fragment" data-fragment-index="1"-->
 
-V:
-
-## Projections: Orthographic
-
-<p align ="left"><font color="blue">1. Remapping the x coordinate</font>$(L,R)$ to $-1$ and $1$</p>
-<table width="350" heigth="500" border="0" align ="left">
-<tr>
-<td>
-<img height="400" wight="350" src="fig/pimage7.JPG">
-</td>
-</tr>
-<tr>
-<td>
-<font color="blue">Screen Window Coordinates</font>
-</td>
-</tr>
-</table>
-<font size ="5">
-<p align ="center"> Remap : $(L,R)$ to $-1$ and $1$</p>
-<p align ="center"> If : $L \le$ x $\le R \rightarrow$</p>
-<p align ="center"> $0 \le$ x $-L \le R-L$</p>
-<p align ="center"> $0 \le ($ x $-L) / (R-L) \le 1$</p>
-<p align ="center"> $0 \le 2($ x $-L) / (R-L) \le 2$</p>
-<p align ="center"> $-1 \le 2($ x $-L) / (R-L)-1 \le 1$</p>
-<p align ="center"> Rewrite</p>
-<p align ="center"> $-1 \le 2$ x $/(R-L) - (R+L)/(R-L) \le 1$</p>
-<p align ="center"> Producing</p>
-<p align ="center"> $x'= 2$ x $/(R-L) - (R+L)/(R-L)$</p>
-</font>
+`$$u' = uS_u + T_u$$`<!-- .element: class="fragment" data-fragment-index="2"-->
+`$$S_u=\Delta u'/\Delta u$$`<!-- .element: class="fragment" data-fragment-index="3"-->
+`$$T_u=min'max-max'min/\Delta u$$`<!-- .element: class="fragment" data-fragment-index="4"-->
 
 V:
 
 ## Projections: Orthographic
+### Matrix form
 
-<p align ="left"><font color="blue">1. Remapping the x coordinate</font>$(L,R)$ to $-1$ and $1$</p>
-<table width="350" heigth="500" border="0" align ="left">
-<tr>
-<td>
-<img height="400" wight="350" src="fig/pimage7.JPG">
-</td>
-</tr>
-<tr>
-<td>
-<font color="blue">Screen Window Coordinates</font>
-</td>
-</tr>
-</table>
-</br>
-</br>
-</br>
-<font size ="5">
-$\begin{bmatrix} 
-{2 \above 1pt (R-L)} & 0 & 0 & 0 \cr 
-0 & 1 & 0 & 0 \cr
-0 & 0 & 1 & 0 \cr
-{-(R+L) \above 1pt (R-L)} & 0 & 0 & 1\end{bmatrix}$
-</font>
-
-V:
-
-## Projections: Orthographic
-
-<p align ="left"><font color="blue">2. Remapping the y coordinate</font>$(B,T)$ to $-1$ and $1$</p>
-<table width="350" heigth="500" border="0" align ="left">
-<tr>
-<td>
-<img height="400" wight="350" src="fig/pimage7.JPG">
-</td>
-</tr>
-<tr>
-<td>
-<font color="blue">Screen Window Coordinates</font>
-</td>
-</tr>
-</table>
-</br>
-</br>
-</br>
-<font size ="5">
-$\begin{bmatrix} 
-{2 \above 1pt (R-L)} & 0 & 0 & 0 \cr 
-0 & {2 \above 1pt (T-B)} & 0 & 0 \cr
-0 & 0 & 1 & 0 \cr
-{-(R+L) \above 1pt (R-L)} & {-(T+B) \above 1pt (T-B)} & 0 & 1\end{bmatrix}$
-</font>
+<div class="ulist">
+    <img src="fig/pimage7.JPG" alt="orthographic projection" width="30%" style="float: left">
+    <ul style="width: 67%;">
+        <blockquote>
+        `$$u' = uS_u + T_u$$`
+        `$$S_u=\Delta u'/\Delta u$$`
+        `$$T_u=min'max-max'min/\Delta u$$`
+        </blockquote>
+        
+        <p class="fragment" data-fragment-index="1">
+        Remap $x: [l,r] \rightarrow [-1,1]$, $y: [b,t] \rightarrow [-1,1]$, $z: [n,f] \rightarrow [-1,1]$
+        </p>
+        
+        <p class="fragment" data-fragment-index="2">
+        `$\begin{bmatrix} 
+        x' \cr 
+        y' \cr
+        z' \cr
+        w \cr
+        \end{bmatrix}
+        = 
+        \begin{bmatrix}
+        S_x & 0 &   0   & T_x \cr
+        0   & S_y & 0   & T_y \cr
+        0   & 0   & S_z & T_z \cr
+        0   & 0   & 0   & 1  \cr
+        \end{bmatrix} \bullet \begin{bmatrix} 
+        x \cr 
+        y \cr
+        z \cr
+        1 \cr
+        \end{bmatrix}
+        $`
+        </p>
+        <p class="fragment" data-fragment-index="2">
+        `$P'= Ortho(S_{x/y/z},T_{x/y/z}) \bullet P$`
+        </p>
+    </ul>
+</div>
 
 V:
 
 ## Projections: Orthographic
+### Matrix form
 
-<p align ="left"><font color="blue">3. Remapping the z coordinate</font> $(n,f)$ to $0$ and $1$</p>
-<table width="350" heigth="500" border="0" align ="left">
-<tr>
-<td>
-<img height="400" wight="350" src="fig/pimage7.JPG">
-</td>
-</tr>
-<tr>
-<td>
-<font color="blue">Screen Window Coordinates</font>
-</td>
-</tr>
-</table>
-</br>
-<font size ="5">
-<p align ="center"> Remap : $(n,f)$ to $0$ and $1$</p>
-<p align ="center"> If : $n \le -z \le f \rightarrow$</p>
-<p align ="center"> $0 \le -z-n \le f-n$</p>
-<p align ="center"> $0 \le {(-z-n) \above 1pt (f-n)} \le 1$</p>
-<p align ="center"> Rewrite</p>
-<p align ="center"> $0 \le {-z \above 1pt (f-n)} - {n \above 1pt (f-n)} \le 1$</p>
-<p align ="center"> Producing</p>
-<p align ="center"> $z'= {-z \above 1pt (f-n)} - {n \above 1pt (f-n)}$</p>
-</font>
-
-V:
-
-## Projections: Orthographic
-
-<p align ="left"><font color="blue">3. Remapping the z coordinate</font>$(n,f)$ to $0$ and $1$</p>
-<table width="350" heigth="500" border="0" align ="left">
-<tr>
-<td>
-<img height="400" wight="350" src="fig/pimage7.JPG">
-</td>
-</tr>
-<tr>
-<td>
-<font color="blue">Screen Window Coordinates</font>
-</td>
-</tr>
-</table>
-</br>
-</br>
-</br>
-<font size ="5">
-$\begin{bmatrix} 
-{2 \above 1pt (R-L)} & 0 & 0 & 0 \cr 
-0 & {2 \above 1pt (T-B)} & 0 & 0 \cr
-0 & 0 & {-1 \above 1pt (f-n)} & 0 \cr
-{-(R+L) \above 1pt (R-L)} & {-(T+B) \above 1pt (T-B)} & {-n \above 1pt (f-n)} & 1\end{bmatrix}$
-</font>
+<div class="ulist">
+    <img src="fig/pimage7.JPG" alt="orthographic projection" width="30%" style="float: left">
+    <ul style="width: 67%;">
+        <blockquote>
+        `$$u' = uS_u + T_u$$`
+        `$$S_u=\Delta u'/\Delta u$$`
+        `$$T_u=min'max-max'min/\Delta u$$`
+        </blockquote>
+        
+        Remap $x: [l,r] \rightarrow [-1,1]$, $y: [b,t] \rightarrow [-1,1]$, $z: [n,f] \rightarrow [-1,1]$
+        
+        <p class="fragment" data-fragment-index="1">
+        `$\begin{bmatrix} 
+        x' \cr 
+        y' \cr
+        z' \cr
+        w \cr
+        \end{bmatrix}
+        = 
+        \begin{bmatrix}
+        2 \above 1pt (r-l) & 0                    & 0                   & -(r+l) \above 1pt (r-l) \cr
+        0                  & 2 \above 1pt (t-b) & 0                     & -(t+b) \above 1pt (t-b) \cr
+        0                  & 0                    & -2 \above 1pt (f-n) & -(f+n) \above 1pt (f-n) \cr
+        0                  & 0                    & 0                   & 1  \cr
+        \end{bmatrix} \bullet \begin{bmatrix} 
+        x \cr 
+        y \cr
+        z \cr
+        1 \cr
+        \end{bmatrix}
+        $`
+        </p>
+        <p class="fragment" data-fragment-index="2">
+        `$P'= Ortho(l,r,b,t,n,f) \bullet P$`
+        </p>
+    </ul>
+</div>
 
 V:
 
 ## Projections: Orthographic
+### Matrix form
 
-<p align ="left"><font color="blue"> Perspective</font></p>
-<img height="400" src="fig/pimage8.JPG">
+<div class="ulist">
+    <img src="fig/pimage7.JPG" alt="orthographic projection" width="30%" style="float: left">
+    <ul style="width: 67%;">
+        <blockquote>
+        `$$u' = uS_u + T_u$$`
+        `$$S_u=\Delta u'/\Delta u$$`
+        `$$T_u=min'max-max'min/\Delta u$$`
+        </blockquote>
+        
+        Remap $x: [l,r] \rightarrow [-1,1]$, $y: [b,t] \rightarrow [-1,1]$, $z: [n,f] \rightarrow [-1,1]$
+        
+        <p class="fragment" data-fragment-index="1">
+        If the viewing volume is symmetrical: `$r=-l$` and `$t=-b$`
+        
+        `$\begin{bmatrix} 
+        x' \cr 
+        y' \cr
+        z' \cr
+        w \cr
+        \end{bmatrix}
+        = 
+        \begin{bmatrix}
+        1 \above 1pt r & 0                    & 0                   & 0 \cr
+        0              & 1 \above 1pt t       & 0                   & 0 \cr
+        0              & 0                    & -2 \above 1pt (f-n) & -(f+n) \above 1pt (f-n) \cr
+        0              & 0                    & 0                   & 1  \cr
+        \end{bmatrix} \bullet \begin{bmatrix} 
+        x \cr 
+        y \cr
+        z \cr
+        1 \cr
+        \end{bmatrix}
+        $`
+        </p>
+        <p class="fragment" data-fragment-index="2">
+        `$P'= Ortho(r,t,n,f) \bullet P$`
+        </p>
+    </ul>
+</div>
 
 V:
 
