@@ -1901,32 +1901,50 @@ V:
     <figcaption>[Perspective Frustum and Normalized Device Coordinates (NDC)](http://www.songho.ca/opengl/gl_projectionmatrix.html#perspective)</figcaption>
 </figure>
 
+Let $P_e$ be a point in *eye* space and $P_n$ a point in NDC, we seek:
+
+$$P_e = [x_e,y_e,z_e,w_e(=1)]\xrightarrow{\text{map}}P_c = [x_c,y_c,z_c,w_c(\neq 1)]$$<!-- .element: class="fragment" data-fragment-index="1"-->
+
+$$P_c = [x_c,y_c,z_c,w_c(\neq 1)]\xrightarrow[\text{divide}]{\text{perspective}}P_n = [x_n(=x_c/w_c),y_n(=y_c/w_c),z_n(=z_c/w_c),1]$$<!-- .element: class="fragment" data-fragment-index="2"-->
+
 V:
 
 ## Projections: Perspective
-### Near plane projection
+### Near plane projection of `$x_e,y_e \xrightarrow {\text{onto}} x_p,y_p$`
 
 <figure>
     <img height='400' src='fig/proj_x.png' />
-    <figcaption>Top view frustum</figcaption>
+    <figcaption>Top view of frustum</figcaption>
 </figure>
+
+`$${x_p\above 1pt x_e}= {-n\above 1pt z_e}$$`
+`$$x_p= {nx_e\above 1pt -z_e}$$`<!-- .element: class="fragment" data-fragment-index="2"-->
 
 V:
 
 ## Projections: Perspective
-### Near plane projection
+### Near plane projection of `$x_e,y_e \xrightarrow {\text{onto}} x_p,y_p$`
 
 <figure>
     <img height='400' src='fig/proj_y.png' />
-    <figcaption>Top view frustum</figcaption>
+    <figcaption>Side view of frustum</figcaption>
 </figure>
+
+`$${y_p\above 1pt y_e}= {-n\above 1pt z_e}$$`
+`$$y_p= {ny_e\above 1pt -z_e}$$`<!-- .element: class="fragment" data-fragment-index="2"-->
 
 V:
 
 ## Projections: Perspective
-### Matrix form: X and Y coordinate mapping
+### Near plane projection of `$x_e,y_e \xrightarrow {\text{onto}} x_p,y_p$`
 
-`$\begin{bmatrix} 
+<blockquote>
+`$$x_p= {nx_e\above 1pt -z_e},y_p= {ny_e\above 1pt -z_e}$$`
+</blockquote>
+
+which means<!-- .element: class="fragment" data-fragment-index="1"--> `${\color{red} {w_c}}=-z_e$`<!-- .element: class="fragment" data-fragment-index="1"-->
+
+`$$\begin{bmatrix} 
 x_c \cr 
 y_c \cr
 z_c \cr
@@ -1937,44 +1955,100 @@ w_c \cr
 . & . & .  & . \cr
 . & . & .  & . \cr
 . & . & .  & . \cr
-0 & 0 & -1 & 0 \cr
+0 & 0 & {\color{red} {-1}} & 0 \cr
 \end{bmatrix} \bullet \begin{bmatrix} 
 x_e \cr 
 y_e \cr
 z_e \cr
 w_e(=1) \cr
 \end{bmatrix}
-$`
+$$`
+<!-- .element: class="fragment" data-fragment-index="2"-->
 
 V:
 
 ## Projections: Perspective
-### Matrix form: X and Y coordinate mapping
+### `$x_p$,$y_p$` coordinate mapping
 
-`$\begin{bmatrix} 
-x_c \cr 
-y_c \cr
+<blockquote>
+`$${\color{green} {x_p}}= {nx_e\above 1pt -z_e},{\color{green} {y_p}}= {ny_e\above 1pt -z_e},w_c=-z_e$$`
+</blockquote>
+
+we use our ortho projection matrix:<!-- .element: class="fragment" data-fragment-index="1"-->
+
+`$$\begin{bmatrix} 
+{\color{blue} {x_n}} \cr 
+{\color{blue} {y_n}} \cr
 z_c \cr
 w_c \cr
 \end{bmatrix}
 = 
 \begin{bmatrix}
-2 \above 1pt (r-l) & 0                  & 0                   & -(r+l) \above 1pt (r-l) \cr
-0                  & 2 \above 1pt (t-b) & 0                     & -(t+b) \above 1pt (t-b) \cr
+2 \above 1pt (r-l) & 0                  & 0 & -(r+l) \above 1pt (r-l) \cr
+0                  & 2 \above 1pt (t-b) & 0 & -(t+b) \above 1pt (t-b) \cr
 . & . & .  & . \cr
-0 & 0 & -1 & 0 \cr
+. & . & .  & . \cr
 \end{bmatrix} \bullet \begin{bmatrix} 
 {\color{green} {x_p}} \cr 
 {\color{green} {y_p}} \cr
 z_e \cr
 w_e(=1) \cr
 \end{bmatrix}
-$`
+$$`
+<!-- .element: class="fragment" data-fragment-index="2"-->
 
 V:
 
 ## Projections: Perspective
-### Matrix form: Z coordinate mapping
+### `$x_e$,$y_e$` coordinate mapping
+
+<blockquote>
+`$${\color{green} {x_p}}= {nx_e\above 1pt -z_e},{\color{green} {y_p}}= {ny_e\above 1pt -z_e},w_c=-z_e$$`
+</blockquote>
+
+`$$\begin{bmatrix} 
+{\color{blue} {x_n}} \cr 
+{\color{blue} {y_n}} \cr
+z_c \cr
+w_c \cr
+\end{bmatrix}
+= 
+\begin{bmatrix}
+2 \above 1pt (r-l) & 0                  & 0 & -(r+l) \above 1pt (r-l) \cr
+0                  & 2 \above 1pt (t-b) & 0 & -(t+b) \above 1pt (t-b) \cr
+. & . & .  & . \cr
+. & . & .  & . \cr
+\end{bmatrix} \bullet \begin{bmatrix} 
+{\color{green} {x_p}} \cr 
+{\color{green} {y_p}} \cr
+z_e \cr
+w_e(=1) \cr
+\end{bmatrix}
+$$`
+
+solving for <!-- .element: class="fragment" data-fragment-index="1"--> `${\color{blue} {x_n,y_n}}$` <!-- .element: class="fragment" data-fragment-index="1"--> we get:<!-- .element: class="fragment" data-fragment-index="1"-->
+`${\color{blue} {x_n}}= {2{\color{green} {x_p}}\above 1pt r-l}-{r+l\above 1pt r-l},{\color{blue} {y_n}} = {2{\color{green} {y_p}}\above 1pt t-b}-{t+b\above 1pt t-b}$`
+<!-- .element: class="fragment" data-fragment-index="2"-->
+
+since <!-- .element: class="fragment" data-fragment-index="3"-->
+`${{\color{blue} {x_n}}={x_c\above 1pt w_c}}$`<!-- .element: class="fragment" data-fragment-index="3"-->
+and <!-- .element: class="fragment" data-fragment-index="3"-->
+`${{\color{blue} {x_n}}={y_c\above 1pt w_c}}$`<!-- .element: class="fragment" data-fragment-index="3"-->
+, solving for <!-- .element: class="fragment" data-fragment-index="3"-->
+`${\color{red} {x_c,y_c}}$` <!-- .element: class="fragment" data-fragment-index="3"-->
+in terms of <!-- .element: class="fragment" data-fragment-index="3"-->
+`$x_e,y_e,z_e$` <!-- .element: class="fragment" data-fragment-index="3"-->
+, we get: <!-- .element: class="fragment" data-fragment-index="3"-->
+`${\color{red} {x_c}}= {2nx_e\above 1pt r-l}+{(r+l)z_e\above 1pt r-l},{\color{red} {y_c}}= {2ny_e\above 1pt t-b}+{(t+b)z_e\above 1pt t-b}$`<!-- .element: class="fragment" data-fragment-index="3"-->
+
+V:
+
+## Projections: Perspective
+### `$x_e$,$y_e$` coordinate mapping
+
+<blockquote>
+`$${\color{red} {x_c}}= {2nx_e\above 1pt r-l}+{(r+l)z_e\above 1pt r-l},{\color{red} {y_c}}= {2ny_e\above 1pt t-b}+{(t+b)z_e\above 1pt t-b},w_c=-z_e$$`
+</blockquote>
 
 `$\begin{bmatrix} 
 x_c \cr 
@@ -1999,7 +2073,7 @@ $`
 V:
 
 ## Projections: Perspective
-### Matrix form: Z coordinate mapping
+### `$z_e$` coordinate mapping
 
 `$\begin{bmatrix} 
 x_c \cr 
@@ -2032,7 +2106,7 @@ To find $A$ and $B$, use the map relation `$z_e \in [n,f] \rightarrow z_n \in [-
 V:
 
 ## Projections: Perspective
-### Matrix form: Z coordinate mapping
+### `$z_e$` coordinate mapping
 
 `$\begin{bmatrix} 
 x_c \cr 
