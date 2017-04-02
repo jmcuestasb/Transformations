@@ -1728,23 +1728,26 @@ V:
 H:
 
 ## Projections: Orthographic
-### View volume
+### View volume: Eye and Clip spaces
 
 <figure>
     <img height='400' src='fig/pimage6.png' />
     <figcaption>[Orthographic Volume and Normalized Device Coordinates (NDC)](http://www.songho.ca/opengl/gl_projectionmatrix.html#ortho)</figcaption>
 </figure>
 
+Let $P_e$ be a point in *eye* space and $P_c$ a point in clip space, we seek:
+
+$$P_e = [x_e,y_e,z_e]\xrightarrow{\text{map}}P_c = [x_c,y_c,z_c]$$<!-- .element: class="fragment" data-fragment-index="1"-->
+
+$$x_e \in [l,r] \rightarrow x_c \in [-1,1], y_e \in [b,t] \rightarrow y_c \in [-1,1], z_e \in [n,f] \rightarrow z_c \in [-1,1]$$<!-- .element: class="fragment" data-fragment-index="2"-->
+
 V:
 
 ## Projections: Orthographic
-### View volume: [Re-mapping a variable among ranges](http://stackoverflow.com/questions/929103/convert-a-number-range-to-another-range-maintaining-ratio)
+### View volume: [Re-mapping a variable among ranges (general case)](http://stackoverflow.com/questions/929103/convert-a-number-range-to-another-range-maintaining-ratio)
 
-                |---------------*---------|
-               min              u        max
-
-        |-------------------*--------------|
-       min'                 u'            max'
+                |---------------*---------|          ->           |-------------------*--------------|
+               min              u        max                     min'                 u'            max'
     
 The linear conversion is given by:
 
@@ -1756,103 +1759,158 @@ which may be re-written as:<!-- .element: class="fragment" data-fragment-index="
 
 `$$u' = uS_u + T_u$$`<!-- .element: class="fragment" data-fragment-index="2"-->
 `$$S_u=\Delta u'/\Delta u$$`<!-- .element: class="fragment" data-fragment-index="3"-->
-`$$T_u=min'max-max'min/\Delta u$$`<!-- .element: class="fragment" data-fragment-index="4"-->
+`$$T_u=(min'\Delta u - min\Delta u')/\Delta u$$`<!-- .element: class="fragment" data-fragment-index="4"-->
+
+V:
+
+## Projections: Orthographic
+### View volume: Re-mapping a variable among ranges (our case)
+
+                |---------------*---------|          ->           |-------------------*--------------|
+               min              u        max                     -1                   u'             1
+
+`$$u' = uS_u + T_u$$`
+`$$S_u=2/(max-min)$$`
+`$$T_u=-(max+min)/(max-min)$$`
 
 V:
 
 ## Projections: Orthographic
 ### Matrix form
 
-<div class="ulist">
-    <img src="fig/pimage7.JPG" alt="orthographic projection" width="30%" style="float: left">
-    <ul style="width: 67%;">
-        <blockquote>
-        `$$u' = uS_u + T_u$$`
-        `$$S_u=\Delta u'/\Delta u$$`
-        `$$T_u=min'max-max'min/\Delta u$$`
-        </blockquote>
+<blockquote>
+`$$u' = uS_u + T_u$$`
+</blockquote>
+
+<p class="fragment" data-fragment-index="1">
+$$[x_e,y_e,z_e]\xrightarrow{\text{map}}[x_c,y_c,z_c]$$
+$$x_e \in [l,r] \rightarrow x_c \in [-1,1], y_e \in [b,t] \rightarrow y_c \in [-1,1], z_e \in [n,f] \rightarrow z_c \in [-1,1]$$
+</p>
         
-        <p class="fragment" data-fragment-index="1">
-        Remap $x: [l,r] \rightarrow [-1,1]$, $y: [b,t] \rightarrow [-1,1]$, $z: [n,f] \rightarrow [-1,1]$
-        </p>
-        
-        <p class="fragment" data-fragment-index="2">
-        `$\begin{bmatrix} 
-        x' \cr 
-        y' \cr
-        z' \cr
-        w' \cr
-        \end{bmatrix}
-        = 
-        \begin{bmatrix}
-        S_x & 0 &   0   & T_x \cr
-        0   & S_y & 0   & T_y \cr
-        0   & 0   & S_z & T_z \cr
-        0   & 0   & 0   & 1  \cr
-        \end{bmatrix} \bullet \begin{bmatrix} 
-        x \cr 
-        y \cr
-        z \cr
-        w(=1) \cr
-        \end{bmatrix}
-        $`
-        </p>
-        <p class="fragment" data-fragment-index="2">
-        `$P'= Ortho(S_{x/y/z},T_{x/y/z}) \bullet P$`
-        </p>
-    </ul>
-</div>
+<p class="fragment" data-fragment-index="2">
+`$\begin{bmatrix} 
+x_c \cr 
+y_c \cr
+z_c \cr
+w_c \cr
+\end{bmatrix}
+= 
+\begin{bmatrix}
+S_{x_e} & 0       & 0       & T_{x_e} \cr
+0       & S_{y_e} & 0       & T_{y_e} \cr
+0       & 0       & S_{z_e} & T_{z_e} \cr
+0       & 0       & 0       & 1  \cr
+\end{bmatrix} \bullet \begin{bmatrix} 
+x_e \cr 
+y_e \cr
+z_e \cr
+w_e(=1) \cr
+\end{bmatrix}
+$`
+</p>
+<p class="fragment" data-fragment-index="3">
+`$P_c = Ortho(S_{x_e/y_e/z_e},T_{x_e/y_e/z_e}) \bullet P_e$`
+</p>
 
 V:
 
 ## Projections: Orthographic
 ### Matrix form
 
-<div class="ulist">
-    <img src="fig/pimage7.JPG" alt="orthographic projection" width="30%" style="float: left">
-    <ul style="width: 67%;">
-        <blockquote>
-        `$$u' = uS_u + T_u$$`
-        `$$S_u=\Delta u'/\Delta u$$`
-        `$$T_u=min'max-max'min/\Delta u$$`
-        </blockquote>
+<blockquote>
+`$$u' = uS_u + T_u$$`
+`$$S_u=2/(max-min)$$`
+`$$T_u=-(max+min)/(max-min)$$`
+</blockquote>
+
+<p class="fragment" data-fragment-index="1">
+$$[x_e,y_e,z_e]\xrightarrow{\text{map}}[x_c,y_c,z_c]$$
+$$x_e \in [l,r] \rightarrow x_c \in [-1,1], y_e \in [b,t] \rightarrow y_c \in [-1,1], z_e \in [n,f] \rightarrow z_c \in [-1,1]$$
+</p>
         
-        Remap $x: [l,r] \rightarrow [-1,1]$, $y: [b,t] \rightarrow [-1,1]$, $z: [n,f] \rightarrow [-1,1]$
-        
-        <p class="fragment" data-fragment-index="1">
-        `$\begin{bmatrix} 
-        x' \cr 
-        y' \cr
-        z' \cr
-        w' \cr
-        \end{bmatrix}
-        = 
-        \begin{bmatrix}
-        2 \above 1pt (r-l) & 0                    & 0                   & -(r+l) \above 1pt (r-l) \cr
-        0                  & 2 \above 1pt (t-b) & 0                     & -(t+b) \above 1pt (t-b) \cr
-        0                  & 0                    & -2 \above 1pt (f-n) & -(f+n) \above 1pt (f-n) \cr
-        0                  & 0                    & 0                   & 1  \cr
-        \end{bmatrix} \bullet \begin{bmatrix} 
-        x \cr 
-        y \cr
-        z \cr
-        w(=1) \cr
-        \end{bmatrix}
-        $`
-        </p>
-        <p class="fragment" data-fragment-index="2">
-        `$P'= Ortho(l,r,b,t,n,f) \bullet P$`
-        </p>
-    </ul>
-</div>
+<p class="fragment" data-fragment-index="2">
+`$\begin{bmatrix} 
+x_c \cr 
+y_c \cr
+z_c \cr
+w_c \cr
+\end{bmatrix}
+= 
+\begin{bmatrix}
+2 \above 1pt (r-l) & 0                    & 0                   & -(r+l) \above 1pt (r-l) \cr
+0                  & 2 \above 1pt (t-b) & 0                     & -(t+b) \above 1pt (t-b) \cr
+0                  & 0                    & -2 \above 1pt (f-n) & -(f+n) \above 1pt (f-n) \cr
+0                  & 0                    & 0                   & 1  \cr
+\end{bmatrix} \bullet \begin{bmatrix} 
+x_e \cr 
+y_e \cr
+z_e \cr
+w_e(=1) \cr
+\end{bmatrix}
+$`
+</p>
+<p class="fragment" data-fragment-index="3">
+`$P_c = Ortho(l,r,b,t,n,f) \bullet P_e$`
+</p>
 
 V:
 
 ## Projections: Orthographic
 ### Matrix form
 
+<blockquote>
+`$$u' = uS_u + T_u$$`
+`$$S_u=2/(max-min)$$`
+`$$T_u=-(max+min)/(max-min)$$`
+</blockquote>
+
+$$[x_e,y_e,z_e]\xrightarrow{\text{map}}[x_c,y_c,z_c]$$
+$$x_e \in [l,r] \rightarrow x_c \in [-1,1], y_e \in [b,t] \rightarrow y_c \in [-1,1], z_e \in [n,f] \rightarrow z_c \in [-1,1]$$
+        
+<p class="fragment" data-fragment-index="1">
+If the viewing volume is symmetrical: `$r=-l$` and `$t=-b$`
+        
+`$\begin{bmatrix} 
+x' \cr 
+y' \cr
+z' \cr
+w' \cr
+\end{bmatrix}
+= 
+\begin{bmatrix}
+1 \above 1pt r & 0                    & 0                   & 0 \cr
+0              & 1 \above 1pt t       & 0                   & 0 \cr
+0              & 0                    & -2 \above 1pt (f-n) & -(f+n) \above 1pt (f-n) \cr
+0              & 0                    & 0                   & 1  \cr
+\end{bmatrix} \bullet \begin{bmatrix} 
+x \cr 
+y \cr
+z \cr
+w(=1) \cr
+\end{bmatrix}
+$`
+</p>
+<p class="fragment" data-fragment-index="2">
+`$P_c= Ortho(r,t,n,f) \bullet P_e$`
+</p>
+
+V:
+
+## Projections: Perspective
+### View volume
+
+<figure>
+    <img height='400' src='fig/perspvolume.png' />
+    <figcaption>[Perspective Frustum and Normalized Device Coordinates (NDC)](http://www.songho.ca/opengl/gl_projectionmatrix.html#perspective)</figcaption>
+</figure>
+
+V:
+
+## Projections: Perspective
+### Near plane projection
+
 <div class="ulist">
-    <img src="fig/pimage7.JPG" alt="orthographic projection" width="30%" style="float: left">
+    <img src="fig/pimage11.JPG" alt="perspective near plane projection" width="30%" style="float: left">
     <ul style="width: 67%;">
         <blockquote>
         `$$u' = uS_u + T_u$$`
@@ -1894,6 +1952,23 @@ V:
 V:
 
 ## Projections: Perspective
+### Matrix form: X and Y coordinate mapping
+
+V:
+
+## Projections: Perspective
+### Matrix form: Z coordinate mapping
+
+V:
+
+## Projections: Perspective
+### Matrix form: FOV
+
+V:
+
+## Projections: Perspective
+
+res mes
 
 <p align ="left"><font color="blue"> Frustum</font></p>
 <img height="400" src="fig/pimage9.JPG">
