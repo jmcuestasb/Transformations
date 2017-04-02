@@ -1776,7 +1776,7 @@ V:
 V:
 
 ## Projections: Orthographic
-### Matrix form
+### Matrix form: formulation
 
 <blockquote>
 `$$u' = uS_u + T_u$$`
@@ -1815,7 +1815,7 @@ $`
 V:
 
 ## Projections: Orthographic
-### Matrix form
+### Matrix form: solution
 
 <blockquote>
 `$$u' = uS_u + T_u$$`
@@ -1856,7 +1856,7 @@ $`
 V:
 
 ## Projections: Orthographic
-### Matrix form
+### Matrix form: Symmetrical viewing volume (`$l=-r$` and `$b=-t$`)
 
 <blockquote>
 `$$u' = uS_u + T_u$$`
@@ -1865,16 +1865,13 @@ V:
 </blockquote>
 
 $$[x_e,y_e,z_e]\xrightarrow{\text{map}}[x_c,y_c,z_c]$$
-$$x_e \in [l,r] \rightarrow x_c \in [-1,1], y_e \in [b,t] \rightarrow y_c \in [-1,1], z_e \in [n,f] \rightarrow z_c \in [-1,1]$$
-        
-<p class="fragment" data-fragment-index="1">
-If the viewing volume is symmetrical: `$r=-l$` and `$t=-b$`
+$$x_e \in [-r,r] \rightarrow x_c \in [-1,1], y_e \in [-t,t] \rightarrow y_c \in [-1,1], z_e \in [n,f] \rightarrow z_c \in [-1,1]$$
         
 `$\begin{bmatrix} 
-x' \cr 
-y' \cr
-z' \cr
-w' \cr
+x_c \cr 
+y_c \cr
+z_c \cr
+w_c \cr
 \end{bmatrix}
 = 
 \begin{bmatrix}
@@ -1883,10 +1880,10 @@ w' \cr
 0              & 0                    & -2 \above 1pt (f-n) & -(f+n) \above 1pt (f-n) \cr
 0              & 0                    & 0                   & 1  \cr
 \end{bmatrix} \bullet \begin{bmatrix} 
-x \cr 
-y \cr
-z \cr
-w(=1) \cr
+x_e \cr 
+y_e \cr
+z_e \cr
+w_e(=1) \cr
 \end{bmatrix}
 $`
 </p>
@@ -1954,10 +1951,111 @@ V:
 ## Projections: Perspective
 ### Matrix form: X and Y coordinate mapping
 
+`$\begin{bmatrix} 
+x_c \cr 
+y_c \cr
+z_c \cr
+w_c \cr
+\end{bmatrix}
+= 
+\begin{bmatrix}
+. & . & .  & . \cr
+. & . & .  & . \cr
+. & . & .  & . \cr
+0 & 0 & -1 & 0 \cr
+\end{bmatrix} \bullet \begin{bmatrix} 
+x_e \cr 
+y_e \cr
+z_e \cr
+w_e(=1) \cr
+\end{bmatrix}
+$`
+
+V:
+
+## Projections: Perspective
+### Matrix form: X and Y coordinate mapping
+
+`$\begin{bmatrix} 
+x_c \cr 
+y_c \cr
+z_c \cr
+w_c \cr
+\end{bmatrix}
+= 
+\begin{bmatrix}
+2 \above 1pt (r-l) & 0                  & 0                   & -(r+l) \above 1pt (r-l) \cr
+0                  & 2 \above 1pt (t-b) & 0                     & -(t+b) \above 1pt (t-b) \cr
+. & . & .  & . \cr
+0 & 0 & -1 & 0 \cr
+\end{bmatrix} \bullet \begin{bmatrix} 
+x_p \cr 
+y_p \cr
+z_e \cr
+w_e(=1) \cr
+\end{bmatrix}
+$`
+
 V:
 
 ## Projections: Perspective
 ### Matrix form: Z coordinate mapping
+
+`$\begin{bmatrix} 
+x_c \cr 
+y_c \cr
+z_c \cr
+w_c \cr
+\end{bmatrix}
+= 
+\begin{bmatrix}
+2n \above 1pt r-l   & 0                 & r+l \above 1pt r-l    & 0                   \cr
+0                   & 2n \above 1pt t-b & t+b \above 1pt t-b    & 0                   \cr
+0                   & 0                 & A                     & B                   \cr
+0                   & 0                 & -1                    & 0                   \cr
+\end{bmatrix} \bullet \begin{bmatrix} 
+x_e \cr 
+y_e \cr
+z_e \cr
+w_e(=1) \cr
+\end{bmatrix}
+$`
+
+<p class="fragment" data-fragment-index="1">
+`$z_n=z_c/w_c={Az_e+Bw_e\above 1pt -z_e}={Az_e+B\above 1pt -z_e}$`
+</p>
+
+<p class="fragment" data-fragment-index="2">
+To find $A$ and $B$, use the map relation `$z_e \in [n,f] \rightarrow z_n \in [-1,1]$` and replace them above (twice)
+</p>
+
+V:
+
+## Projections: Perspective
+### Matrix form: Z coordinate mapping
+
+`$\begin{bmatrix} 
+x_c \cr 
+y_c \cr
+z_c \cr
+w_c \cr
+\end{bmatrix}
+= 
+\begin{bmatrix}
+2n \above 1pt r-l & 0                   & r+l \above 1pt r-l    & 0                   \cr
+0                   & 2n \above 1pt t-b & t+b \above 1pt t-b    & 0                   \cr
+0                   & 0                 & -(f+n) \above 1pt f-n & -2fn \above 1pt f-n \cr
+0                   & 0                 & -1                    & 0                   \cr
+\end{bmatrix} \bullet \begin{bmatrix} 
+x_e \cr 
+y_e \cr
+z_e \cr
+w_e(=1) \cr
+\end{bmatrix}
+$`
+<p class="fragment" data-fragment-index="1">
+`$P_c = Persp(l,r,b,t,n,f) \bullet P_e$`
+</p>
 
 V:
 
