@@ -1906,45 +1906,20 @@ V:
 ## Projections: Perspective
 ### Near plane projection
 
-<div class="ulist">
-    <img src="fig/pimage11.JPG" alt="perspective near plane projection" width="30%" style="float: left">
-    <ul style="width: 67%;">
-        <blockquote>
-        `$$u' = uS_u + T_u$$`
-        `$$S_u=\Delta u'/\Delta u$$`
-        `$$T_u=min'max-max'min/\Delta u$$`
-        </blockquote>
-        
-        Remap $x: [l,r] \rightarrow [-1,1]$, $y: [b,t] \rightarrow [-1,1]$, $z: [n,f] \rightarrow [-1,1]$
-        
-        <p class="fragment" data-fragment-index="1">
-        If the viewing volume is symmetrical: `$r=-l$` and `$t=-b$`
-        
-        `$\begin{bmatrix} 
-        x' \cr 
-        y' \cr
-        z' \cr
-        w' \cr
-        \end{bmatrix}
-        = 
-        \begin{bmatrix}
-        1 \above 1pt r & 0                    & 0                   & 0 \cr
-        0              & 1 \above 1pt t       & 0                   & 0 \cr
-        0              & 0                    & -2 \above 1pt (f-n) & -(f+n) \above 1pt (f-n) \cr
-        0              & 0                    & 0                   & 1  \cr
-        \end{bmatrix} \bullet \begin{bmatrix} 
-        x \cr 
-        y \cr
-        z \cr
-        w(=1) \cr
-        \end{bmatrix}
-        $`
-        </p>
-        <p class="fragment" data-fragment-index="2">
-        `$P'= Ortho(r,t,n,f) \bullet P$`
-        </p>
-    </ul>
-</div>
+<figure>
+    <img height='400' src='fig/proj_x.png' />
+    <figcaption>Top view frustum</figcaption>
+</figure>
+
+V:
+
+## Projections: Perspective
+### Near plane projection
+
+<figure>
+    <img height='400' src='fig/proj_y.png' />
+    <figcaption>Top view frustum</figcaption>
+</figure>
 
 V:
 
@@ -1989,8 +1964,8 @@ w_c \cr
 . & . & .  & . \cr
 0 & 0 & -1 & 0 \cr
 \end{bmatrix} \bullet \begin{bmatrix} 
-x_p \cr 
-y_p \cr
+{\color{green} {x_p}} \cr 
+{\color{green} {y_p}} \cr
 z_e \cr
 w_e(=1) \cr
 \end{bmatrix}
@@ -2011,7 +1986,32 @@ w_c \cr
 \begin{bmatrix}
 2n \above 1pt r-l   & 0                 & r+l \above 1pt r-l    & 0                   \cr
 0                   & 2n \above 1pt t-b & t+b \above 1pt t-b    & 0                   \cr
-0                   & 0                 & A                     & B                   \cr
+.                   & .                 & .                     & .                   \cr
+0                   & 0                 & -1                    & 0                   \cr
+\end{bmatrix} \bullet \begin{bmatrix} 
+x_e \cr 
+y_e \cr
+z_e \cr
+w_e(=1) \cr
+\end{bmatrix}
+$`
+
+V:
+
+## Projections: Perspective
+### Matrix form: Z coordinate mapping
+
+`$\begin{bmatrix} 
+x_c \cr 
+y_c \cr
+z_c \cr
+w_c \cr
+\end{bmatrix}
+= 
+\begin{bmatrix}
+2n \above 1pt r-l   & 0                 & r+l \above 1pt r-l    & 0                   \cr
+0                   & 2n \above 1pt t-b & t+b \above 1pt t-b    & 0                   \cr
+0                   & 0                 & {\color{green} A}     & {\color{green} B}   \cr
 0                   & 0                 & -1                    & 0                   \cr
 \end{bmatrix} \bullet \begin{bmatrix} 
 x_e \cr 
@@ -2022,7 +2022,7 @@ w_e(=1) \cr
 $`
 
 <p class="fragment" data-fragment-index="1">
-`$z_n=z_c/w_c={Az_e+Bw_e\above 1pt -z_e}={Az_e+B\above 1pt -z_e}$`
+`$z_n=z_c/w_c={{\color{green} A}z_e+{\color{green} B}w_e\above 1pt -z_e}={{\color{green} A}z_e+{\color{green} B}\above 1pt -z_e}$`
 </p>
 
 <p class="fragment" data-fragment-index="2">
