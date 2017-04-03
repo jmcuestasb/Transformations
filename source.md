@@ -2097,7 +2097,6 @@ $`
 
 <p class="fragment" data-fragment-index="1">
 `$z_n=z_c/w_c={Az_e+Bw_e\above 1pt -z_e}={Az_e+B\above 1pt -z_e}$`
-`$z_n=z_c/w_c={{\color{green} A}z_e+{\color{green} B}w_e\above 1pt -z_e}={{\color{green} A}z_e+{\color{green} B}\above 1pt -z_e}$`
 </p>
 
 <p class="fragment" data-fragment-index="2">
