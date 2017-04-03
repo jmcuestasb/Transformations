@@ -1968,39 +1968,7 @@ $$`
 V:
 
 ## Projections: Perspective
-### `$x_p$,$y_p$` coordinate mapping
-
-<blockquote>
-`$${\color{green} {x_p}}= {nx_e\above 1pt -z_e},{\color{green} {y_p}}= {ny_e\above 1pt -z_e},w_c=-z_e$$`
-</blockquote>
-
-we use our ortho projection matrix:<!-- .element: class="fragment" data-fragment-index="1"-->
-
-`$$\begin{bmatrix} 
-{\color{blue} {x_n}} \cr 
-{\color{blue} {y_n}} \cr
-z_c \cr
-w_c \cr
-\end{bmatrix}
-= 
-\begin{bmatrix}
-2 \above 1pt (r-l) & 0                  & 0 & -(r+l) \above 1pt (r-l) \cr
-0                  & 2 \above 1pt (t-b) & 0 & -(t+b) \above 1pt (t-b) \cr
-. & . & .  & . \cr
-. & . & .  & . \cr
-\end{bmatrix} \bullet \begin{bmatrix} 
-{\color{green} {x_p}} \cr 
-{\color{green} {y_p}} \cr
-z_e \cr
-w_e(=1) \cr
-\end{bmatrix}
-$$`
-<!-- .element: class="fragment" data-fragment-index="2"-->
-
-V:
-
-## Projections: Perspective
-### `$x_e$,$y_e$` coordinate mapping
+### `$x_e$,$y_e$` coordinate mapping (using our ortho matrix)
 
 <blockquote>
 `$${\color{green} {x_p}}= {nx_e\above 1pt -z_e},{\color{green} {y_p}}= {ny_e\above 1pt -z_e},w_c=-z_e$$`
