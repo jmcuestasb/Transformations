@@ -2031,9 +2031,9 @@ solving for <!-- .element: class="fragment" data-fragment-index="1"--> `${\color
 <!-- .element: class="fragment" data-fragment-index="2"-->
 
 since <!-- .element: class="fragment" data-fragment-index="3"-->
-`${{\color{blue} {x_n}}={x_c\above 1pt w_c}}$`<!-- .element: class="fragment" data-fragment-index="3"-->
+`${\color{blue} {x_n}}={x_c\above 1pt w_c}$`<!-- .element: class="fragment" data-fragment-index="3"-->
 and <!-- .element: class="fragment" data-fragment-index="3"-->
-`${{\color{blue} {x_n}}={y_c\above 1pt w_c}}$`<!-- .element: class="fragment" data-fragment-index="3"-->
+`${\color{blue} {y_n}}={y_c\above 1pt w_c}$`<!-- .element: class="fragment" data-fragment-index="3"-->
 , solving for <!-- .element: class="fragment" data-fragment-index="3"-->
 `${\color{red} {x_c,y_c}}$` <!-- .element: class="fragment" data-fragment-index="3"-->
 in terms of <!-- .element: class="fragment" data-fragment-index="3"-->
