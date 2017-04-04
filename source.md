@@ -46,7 +46,7 @@ V:
  5. Projections<!-- .element: class="fragment" data-fragment-index="5"-->
     * Orthogonal
     * Perspective
- 
+
 H:
 
 ## Intro: Active vs pasive transformations
@@ -123,7 +123,7 @@ void main() {
 ```
 
 1. `transform = projection`
-  
+
 V:
 
 ## Intro: Shaders
@@ -405,7 +405,7 @@ Observation 1:<!-- .element: class="fragment" data-fragment-index="3"-->
 
 Observation 2:<!-- .element: class="fragment" data-fragment-index="4"-->
    Translation is a nonlinear transformation
-   
+
 V:
 
 ## Linear transformations: 2d scaling
@@ -420,16 +420,16 @@ V:
         `$y'= sy*y$`
         </p>
         <p class="fragment" data-fragment-index="3">
-        `$\begin{bmatrix} 
-        x' \cr 
+        `$\begin{bmatrix}
+        x' \cr
         y' \cr
         \end{bmatrix}
-        = 
+        =
         \begin{bmatrix}
         sx & 0 \cr
         0 & sy \cr
-        \end{bmatrix} \bullet \begin{bmatrix} 
-        x \cr 
+        \end{bmatrix} \bullet \begin{bmatrix}
+        x \cr
         y \cr
         \end{bmatrix}
         $`
@@ -461,18 +461,18 @@ V:
         `$z'= sz*z$`
         </p>
         <p class="fragment" data-fragment-index="4">
-        `$\begin{bmatrix} 
-        x' \cr 
+        `$\begin{bmatrix}
+        x' \cr
         y' \cr
         z' \cr
         \end{bmatrix}
-        = 
+        =
         \begin{bmatrix}
         sx & 0 & 0 \cr
         0 & sy & 0 \cr
         0 & 0 & sz \cr
-        \end{bmatrix} \bullet \begin{bmatrix} 
-        x \cr 
+        \end{bmatrix} \bullet \begin{bmatrix}
+        x \cr
         y \cr
         z \cr
         \end{bmatrix}
@@ -520,16 +520,16 @@ V:
     <img src="fig/image7.png" alt="2d rotations" width="38%" style="float: left">
     <ul style="width: 57%;">        
         <p class="fragment" data-fragment-index="1">
-        `$\begin{bmatrix} 
-        x' \cr 
+        `$\begin{bmatrix}
+        x' \cr
         y' \cr
         \end{bmatrix}
-        = 
+        =
         \begin{bmatrix}
         cos\beta & -sin \beta \cr
         sin\beta & cos \beta \cr
-        \end{bmatrix} \bullet \begin{bmatrix} 
-        x \cr 
+        \end{bmatrix} \bullet \begin{bmatrix}
+        x \cr
         y \cr
         \end{bmatrix}
         $`
@@ -552,18 +552,18 @@ V:
         $z' = z$
         </p>
         <p class="fragment" data-fragment-index="2">
-        `$\begin{bmatrix} 
-        x' \cr 
+        `$\begin{bmatrix}
+        x' \cr
         y' \cr
         z' \cr
         \end{bmatrix}
-        = 
+        =
         \begin{bmatrix}
         cos\beta & -sin \beta & 0 \cr
         sin\beta & cos \beta & 0 \cr
         0 & 0 & 1 \cr
-        \end{bmatrix} \bullet \begin{bmatrix} 
-        x \cr 
+        \end{bmatrix} \bullet \begin{bmatrix}
+        x \cr
         y \cr
         z \cr
         \end{bmatrix}
@@ -587,18 +587,18 @@ V:
         $x' = x$
         </p>
         <p class="fragment" data-fragment-index="2">
-        `$\begin{bmatrix} 
-        x' \cr 
+        `$\begin{bmatrix}
+        x' \cr
         y' \cr
         z' \cr
         \end{bmatrix}
-        = 
+        =
         \begin{bmatrix}
         1 & 0 & 0 \cr
         0 & cos\beta & -sin \beta \cr
         0 & sin\beta & cos \beta \cr
-        \end{bmatrix} \bullet \begin{bmatrix} 
-        x \cr 
+        \end{bmatrix} \bullet \begin{bmatrix}
+        x \cr
         y \cr
         z \cr
         \end{bmatrix}
@@ -622,18 +622,18 @@ V:
         $y' = y$
         </p>
         <p class="fragment" data-fragment-index="2">
-        `$\begin{bmatrix} 
-        x' \cr 
+        `$\begin{bmatrix}
+        x' \cr
         y' \cr
         z' \cr
         \end{bmatrix}
-        = 
+        =
         \begin{bmatrix}
         cos\beta & 0 & sin \beta \cr
         0 & 1 & 0 \cr
         -sin\beta & 0 & cos \beta \cr
-        \end{bmatrix} \bullet \begin{bmatrix} 
-        x \cr 
+        \end{bmatrix} \bullet \begin{bmatrix}
+        x \cr
         y \cr
         z \cr
         \end{bmatrix}
@@ -659,16 +659,16 @@ V:
         `$y'=y$`
         </p>
         <p class="fragment" data-fragment-index="3">
-        `$\begin{bmatrix} 
-        x' \cr 
+        `$\begin{bmatrix}
+        x' \cr
         y' \cr
         \end{bmatrix}
-        = 
+        =
         \begin{bmatrix}
         1 & h \cr
         0 & 1 \cr
-        \end{bmatrix} \bullet \begin{bmatrix} 
-        x \cr 
+        \end{bmatrix} \bullet \begin{bmatrix}
+        x \cr
         y \cr
         \end{bmatrix}
         $`
@@ -693,16 +693,16 @@ V:
         `$y'=y + h*x$`
         </p>
         <p class="fragment" data-fragment-index="3">
-        `$\begin{bmatrix} 
-        x' \cr 
+        `$\begin{bmatrix}
+        x' \cr
         y' \cr
         \end{bmatrix}
-        = 
+        =
         \begin{bmatrix}
         1 & 0 \cr
         h & 1 \cr
-        \end{bmatrix} \bullet \begin{bmatrix} 
-        x \cr 
+        \end{bmatrix} \bullet \begin{bmatrix}
+        x \cr
         y \cr
         \end{bmatrix}
         $`
@@ -730,18 +730,18 @@ V:
         `$z'=z$`
         </p>
         <p class="fragment" data-fragment-index="4">
-        `$\begin{bmatrix} 
-        x' \cr 
+        `$\begin{bmatrix}
+        x' \cr
         y' \cr
         z' \cr
         \end{bmatrix}
-        = 
+        =
         \begin{bmatrix}
         1 & 0 & a \cr
         0 & 1 & b \cr
         0 & 0 & 1 \cr
-        \end{bmatrix} \bullet \begin{bmatrix} 
-        x \cr 
+        \end{bmatrix} \bullet \begin{bmatrix}
+        x \cr
         y \cr
         z \cr
         \end{bmatrix}
@@ -774,16 +774,16 @@ H:
         `$y'=y + dy$`
         </p>
         <p class="fragment" data-fragment-index="3">
-        `$\begin{bmatrix} 
-        x' \cr 
+        `$\begin{bmatrix}
+        x' \cr
         y' \cr
         \end{bmatrix}
-        = 
+        =
         \begin{bmatrix}
         dx \cr
         dy \cr
-        \end{bmatrix} + \begin{bmatrix} 
-        x \cr 
+        \end{bmatrix} + \begin{bmatrix}
+        x \cr
         y \cr
         \end{bmatrix}
         $`
@@ -852,18 +852,18 @@ V:
         `$w=1$`
         </p>
         <p class="fragment" data-fragment-index="4">
-        `$\begin{bmatrix} 
-        x' \cr 
+        `$\begin{bmatrix}
+        x' \cr
         y' \cr
         w \cr
         \end{bmatrix}
-        = 
+        =
         \begin{bmatrix}
         1 & 0 & dx \cr
         0 & 1 & dy \cr
         0 & 0 & 1 \cr
-        \end{bmatrix} \bullet \begin{bmatrix} 
-        x \cr 
+        \end{bmatrix} \bullet \begin{bmatrix}
+        x \cr
         y \cr
         1 \cr
         \end{bmatrix}
@@ -892,20 +892,20 @@ V:
         `$z'=z + dz$`
         </p>
         <p class="fragment" data-fragment-index="4">
-        `$\begin{bmatrix} 
-        x' \cr 
+        `$\begin{bmatrix}
+        x' \cr
         y' \cr
         z' \cr
         w \cr
         \end{bmatrix}
-        = 
+        =
         \begin{bmatrix}
         1 & 0 & 0 & dx \cr
         0 & 1 & 0 & dy \cr
         0 & 0 & 1 & dz \cr
         0 & 0 & 0 & 1 \cr
-        \end{bmatrix} \bullet \begin{bmatrix} 
-        x \cr 
+        \end{bmatrix} \bullet \begin{bmatrix}
+        x \cr
         y \cr
         z \cr
         1 \cr
@@ -938,20 +938,20 @@ V:
         `$w=1$`
         </p>
         <p>
-        `$\begin{bmatrix} 
-        x' \cr 
+        `$\begin{bmatrix}
+        x' \cr
         y' \cr
         z' \cr
         w \cr
         \end{bmatrix}
-        = 
+        =
         \begin{bmatrix}
         1 & 0 & a & 0 \cr
         0 & 1 & b & 0 \cr
         0 & 0 & 1 & 0 \cr
         0 & 0 & 0 & 1 \cr
-        \end{bmatrix} \bullet \begin{bmatrix} 
-        x \cr 
+        \end{bmatrix} \bullet \begin{bmatrix}
+        x \cr
         y \cr
         z \cr
         1 \cr
@@ -984,20 +984,20 @@ V:
         `$w=1$`
         </p>
         <p>
-        `$\begin{bmatrix} 
-        x' \cr 
+        `$\begin{bmatrix}
+        x' \cr
         y' \cr
         z' \cr
         w \cr
         \end{bmatrix}
-        = 
+        =
         \begin{bmatrix}
         sx & 0 & 0 & 0 \cr
         0 & sy & 0 & 0 \cr
         0 & 0 & sz & 0 \cr
         0 & 0 & 0 & 1 \cr
-        \end{bmatrix} \bullet \begin{bmatrix} 
-        x \cr 
+        \end{bmatrix} \bullet \begin{bmatrix}
+        x \cr
         y \cr
         z \cr
         1 \cr
@@ -1026,20 +1026,20 @@ V:
         `$w=1$`
         </p>
         <p>
-        `$\begin{bmatrix} 
-        x' \cr 
+        `$\begin{bmatrix}
+        x' \cr
         y' \cr
         z' \cr
         w \cr
         \end{bmatrix}
-        = 
+        =
         \begin{bmatrix}
         cos\beta & -sin \beta & 0 & 0 \cr
         sin\beta & cos \beta & 0 & 0 \cr
         0 & 0 & 1 & 0 \cr
         0 & 0 & 0 & 1 \cr
-        \end{bmatrix} \bullet \begin{bmatrix} 
-        x \cr 
+        \end{bmatrix} \bullet \begin{bmatrix}
+        x \cr
         y \cr
         z \cr
         1 \cr
@@ -1067,20 +1067,20 @@ V:
         `$w=1$`
         </p>
         <p>
-        `$\begin{bmatrix} 
-        x' \cr 
+        `$\begin{bmatrix}
+        x' \cr
         y' \cr
         z' \cr
         w \cr
         \end{bmatrix}
-        = 
+        =
         \begin{bmatrix}
         1 & 0 & 0 & 0 \cr
         0 & cos\beta & -sin \beta & 0 \cr
         0 & sin\beta & cos \beta & 0 \cr
         0 & 0 & 0 & 1 \cr
-        \end{bmatrix} \bullet \begin{bmatrix} 
-        x \cr 
+        \end{bmatrix} \bullet \begin{bmatrix}
+        x \cr
         y \cr
         z \cr
         1 \cr
@@ -1108,20 +1108,20 @@ V:
         `$w=1$`
         </p>
         <p>
-        `$\begin{bmatrix} 
-        x' \cr 
+        `$\begin{bmatrix}
+        x' \cr
         y' \cr
         z' \cr
         w \cr
         \end{bmatrix}
-        = 
+        =
         \begin{bmatrix}
         cos\beta & 0 & sin \beta & 0 \cr
         0 & 1 & 0 & 0 \cr
         -sin\beta & 0 & cos \beta & 0 \cr
         0 & 0 & 0 & 1 \cr
-        \end{bmatrix} \bullet \begin{bmatrix} 
-        x \cr 
+        \end{bmatrix} \bullet \begin{bmatrix}
+        x \cr
         y \cr
         z \cr
         1 \cr
@@ -1225,13 +1225,13 @@ V:
 ### [Rodrigues' rotation formula](https://en.wikipedia.org/wiki/Rodrigues'_rotation_formula)
 Is an efficient algorithm for rotating a vector in space, given:
 
-* An angle of rotation `$\theta$`
+* An angle of rotation `$\beta$`
 * A vector `$v$` in `$R^3$`
 * A unit vector `$n$` in `$R^3$` describing the axis of rotation
 
 The algorithm will search for a matrix that describes
 
-`$v * R(n, \theta) = v'$`
+`$v * R(n, \beta) = v'$`
 
 V:
 
@@ -1244,24 +1244,22 @@ V:
         <p class="fragment" data-fragment-index="1">
         	`$v = v_\parallel + v_\bot$`
         </p>
-        <p class="fragment" data-fragment-index="2">
+        <p class="fragment" data-fragment-index="1">
         	`$v' = v_\parallel + v'_\bot$`
         </p>
-        <p class="fragment" data-fragment-index="3">
+        <p class="fragment" data-fragment-index="1">
         	`$v_\parallel = (v \cdot n) * n$`
         </p>
-        <p class="fragment" data-fragment-index="4">
+        <p class="fragment" data-fragment-index="1">
         	`$v_\bot = v - v_\parallel$`
         </p>
-        <p class="fragment" data-fragment-index="5">
+        <p class="fragment" data-fragment-index="1">
         	`$w = n \times v_\bot$`
         </p>
-        <p class="fragment" data-fragment-index="6">
+        <p class="fragment" data-fragment-index="1">
         	`$v_\bot = v - (v \cdot n) * n$`
         </p>
-        <p class="fragment" data-fragment-index="7">
-        	`$w = n \times v$`
-        </p>
+
     </ul>
 </div>
 
@@ -1273,17 +1271,20 @@ V:
 <div class="ulist">
     <img src="fig/rodrigues.png" alt="Rodrigues rotation" width="30%" style="float: left">
     <ul style="width: 65%;">
+				<p class="fragment" data-fragment-index="1">
+					`$w = n \times v$`
+				</p>
         <p class="fragment" data-fragment-index="1">
             `$v_\bot = v - (v \cdot n) * n$`
         </p>
         <p class="fragment" data-fragment-index="1">
             `$w = n \times v$`
         </p>
-        <p class="fragment" data-fragment-index="2">
-        	`$v'_\bot = v_\bot \, cos(\theta) + w \, sin(\theta)$`
+        <p class="fragment" data-fragment-index="1">
+        	`$v'_\bot = v_\bot \, cos(\beta) + w \, sin(\beta)$`
         </p>
-        <p class="fragment" data-fragment-index="3">
-        	`$v' = (v - (v \cdot n) * n) cos(\theta) + (n \times v) sin(\theta)$`
+        <p class="fragment" data-fragment-index="1">
+        	`$v' = (v - (v \cdot n) * n) cos(\beta) + (n \times v) sin(\beta)$`
         </p>
     </ul>
 </div>
@@ -1293,16 +1294,16 @@ V:
 ## Affine transformations: Rotation
 ### Rodrigues' rotation formula
 
-Based on the fact that the rotation is an orthogonal matrix and that the base vectors are orthonormals, in order to get the rotation matrix it's just necessary to replace each value into the formula `$v' = v - (v \cdot n) * n \, cos(\theta) + n \times v \, sin(\theta)$`.
+Based on the fact that the rotation is an orthogonal matrix and that the base vectors are orthonormals, in order to get the rotation matrix it's just necessary to replace each value into the formula `$v' = v - (v \cdot n) * n \, cos(\beta) + n \times v \, sin(\beta)$`.
 
 <div class="ulist">
    <p>
-        `$R(n, \theta)
+        `$R(n, \beta)
         =
         \begin{bmatrix}
-        n_x^2(1-cos(\theta))+cos(\theta) & n_xn_y(1-cos(\theta))+n_zsin(\theta) & n_xn_z(1-cos(\theta))-n_ysin(\theta) \cr
-        n_xn_y(1-cos(\theta))-n_zsin(\theta) & n_y^2(1-cos(\theta))+cos(\theta) & n_yn_z(1-cos(\theta))+n_xsin(\theta) \cr
-        n_xn_z(1-cos(\theta))+n_ysin(\theta) & n_yn_z(1-cos(\theta))-n_xsin(\theta) & n_z^2(1-cos(\theta))+cos(\theta) \cr
+        n_x^2(1-cos(\beta))+cos(\beta) & n_xn_y(1-cos(\beta))+n_zsin(\beta) & n_xn_z(1-cos(\beta))-n_ysin(\beta) \cr
+        n_xn_y(1-cos(\beta))-n_zsin(\beta) & n_y^2(1-cos(\beta))+cos(\beta) & n_yn_z(1-cos(\beta))+n_xsin(\beta) \cr
+        n_xn_z(1-cos(\beta))+n_ysin(\beta) & n_yn_z(1-cos(\beta))-n_xsin(\beta) & n_z^2(1-cos(\beta))+cos(\beta) \cr
         \end{bmatrix}
         $`
    </p>
@@ -1316,8 +1317,16 @@ V:
 
 A rotation matrix for any axis that does not coincide with a coordinate axis can be set up as a composite transformation involving combinations of translations and the coordinate-axes rotations.
 
-In the special case where an object is to be rotated about an axis that is parallel to one of the coordinate axes:
+<div align "center" class="ulist">
+    <img src="fig/translation_rotation.jpg" alt="Parallel axis rotation" width="40%">
 
+</div>
+
+
+V:
+## Affine transformations: Rotation
+### Euler angles Rodrigues' rotation relationship
+In the special case where an object is to be rotated about an axis that is parallel to one of the coordinate axes:
 1. Translate the object so that the rotation axis coincides with the parallel coordinate axis.
 2. Perform the specified rotation about that axis.
 3. Translate the object so that the rotation axis is moved back to its original position.
@@ -1327,68 +1336,51 @@ V:
 ## Affine transformations: Rotation
 ### Euler angles Rodrigues' rotation relationship
 
+<div align "center" class="ulist">
+    <img src="fig/paralelAxis.png" alt="Parallel axis rotation" width="30%">
+
+</div>
+
+
+V:
+
+## Affine transformations: Rotation
+### Euler angles Rodrigues' rotation relationship
 <div class="ulist">
-    <img src="fig/paralelAxis.png" alt="Parallel axis rotation" width="30%" style="float: left">
+    <img src="fig/zyplane.jpg" width="25%" style="float: left">
     <ul style="width: 65%;">
-        <p class="fragment" data-fragment-index="1">
-            Any coordinate position `$P$` on the object in this figure is transformed with the sequence shown as
-            <br/>
-            `$P' = T^{-1} * R_x(\theta) * T * P$`
-        </p>
-        <p class="fragment" data-fragment-index="2">
-            The composite matrix for the transformantion is
-            <br/>
-            `$R(\theta) = T^{-1} * R_x(\theta) * T$`
-        </p>
+				<p>
+					Represent the projection of `$u$` in the `$zy$` plane as the vector  `$u = \frac{V}{\|V\|} = (0, b, c)$`
+				</p>
+
     </ul>
 </div>
 
-V:
 
+
+V:
 ## Affine transformations: Rotation
 ### Euler angles Rodrigues' rotation relationship
 
-When an object is to be rotated about an axis that is not parallel to one of the coordinate axes, we need to perform some additional transformations. In this case, we also need rotations lo align the axis with a selected coordinate axis and to bring the axis hack to its original orientation. Given the specifications for the rotation axis and the rotation angle
 
-1. Translate the object so that the rotation axis pass through the coordinate origin.
-2. Rotate the object so that the axis of rotation coincides with one of the coordinate axes.
-3. Perform thc specified rotation about that coordinate axis.
-4. Apply inverse rotations to bring the rotation axes back to its original orientation.
-5. Apply the inverse translation to bring the rotation axis back to its original position.
-
-We can transform the rotation axis onto any of the three coordinate axes.
-
-V:
-
-## Affine transformations: Rotation
-### Euler angles Rodrigues' rotation relationship
-
-<div class="ulist">
-    <img src="fig/arbitraryAxis.png" alt="Arbitrary axis rotation" width="30%" style="float: left">
-    <ul style="width: 65%;">
-        <p class="fragment" data-fragment-index="1">
-            The rotation axis is defined by two points and that the direction of rotation is to be counterclockwise
-            <br/>
-            `$V = P_2 - P_1$`
-            <br/>
-            `$u = \frac{V}{\|V\|} = (a, b, c)$`
-            <br/>
-            `$d = \sqrt{b^2 + c^2}$`
-        </p>
-        <p class="fragment" data-fragment-index="2">
-            The matrix for rotation of u about the x axis
-            <br/>
-            `$R_x(\alpha)
-            =
-            \begin{bmatrix}
-            1 & 0 & 0 & 0 \cr
-            0 & c/d & -b/d & 0 \cr
-            0 & b/d & c/d & 0 \cr
-            0 & 0 & 0 & 1 \cr
-            \end{bmatrix}
-            $`
-        </p>
-    </ul>
+<div>
+The matrix for rotation of u about the x axis
+		`$R_x(\alpha)
+		=
+		\begin{bmatrix}
+		1 & 0 & 0 & 0 \cr
+		0 & c/d & -b/d & 0 \cr
+		0 & b/d & c/d & 0 \cr
+		0 & 0 & 0 & 1 \cr
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+		1 & 0 & 0 & 0 \cr
+		0 & cos \alpha   & -sin \alpha  & 0 \cr
+		0 & sin \alpha  & cos \alpha  & 0 \cr
+		0 & 0 & 0 & 1 \cr
+		\end{bmatrix}
+		$`
 </div>
 
 V:
@@ -1397,41 +1389,110 @@ V:
 ### Euler angles Rodrigues' rotation relationship
 
 <div class="ulist">
-    <img src="fig/arbitraryAxis.png" alt="Arbitrary axis rotation" width="30%" style="float: left">
+
     <ul style="width: 65%;">
-        <p class="fragment" data-fragment-index="1">
+        <p>
             The matrix for rotation of u about the y axis
             <br/>
-            `$R_y(\beta)
+            `$R_y(\theta)
             =
             \begin{bmatrix}
-            d & 0 & -a & 0 \cr
+            d & 0 & a & 0 \cr
             0 & 1 & 0 & 0 \cr
-            a & 0 & d & 0 \cr
+            -a & 0 & d & 0 \cr
             0 & 0 & 0 & 1 \cr
             \end{bmatrix}
-            $`
-        </p>
-        <p class="fragment" data-fragment-index="2">
-            The matrix for rotation of u about the x axis
-            <br/>
-            `$R_z(\theta)
-            =
-            \begin{bmatrix}
-            cos(\theta) & -sin(\theta) & 0 & 0 \cr
-            sin(\theta) & cos(\theta) & 0 & 0 \cr
-            0 & 0 & 1 & 0 \cr
-            0 & 0 & 0 & 1 \cr
-            \end{bmatrix}
-            $`
-        </p>
-        <p class="fragment" data-fragment-index="3">
-            Finishing as
-            <br/>
-            `$R(\theta) = T^{-1} * R^{-1}_x(\alpha) * R^{-1}_y(\beta) * R_z(\theta) * R_y(\beta)  * R_x(\alpha) * T$`
-        </p>
+						=
+						\begin{bmatrix}
+						cos \theta & 0 & -sin \theta & 0 \cr
+						0 & 1 & 0 & 0 \cr
+						sin \theta & 0  & cos \theta  & 0 \cr
+						0 & 0 & 0 & 1 \cr
+						\end{bmatrix}
+						$`
     </ul>
 </div>
+
+
+V:
+## Affine transformations: Rotation
+### Euler angles Rodrigues' rotation relationship
+<div class="ulist">
+    <img src="fig/rotation_z.jpg" width="25%" style="float: left">
+    <ul style="width: 65%;">
+				<p>
+					Aligned the rotation axis with the positive z axis. The specified rotation angle `$\beta$` we can now be applied as a rotation about the z axis
+				</p>
+				<p>
+				`$
+				R_z(\beta)
+										=
+										\begin{bmatrix}
+										cos(\beta) & -sin(\beta) & 0 & 0 \cr
+										sin(\beta) & cos(\beta) & 0 & 0 \cr
+										0 & 0 & 1 & 0 \cr
+										0 & 0 & 0 & 1 \cr
+										\end{bmatrix}
+				$`
+				</p>
+    </ul>
+</div>
+
+V:
+
+## Affine transformations: Rotation
+### Euler angles Rodrigues' rotation relationship
+
+
+Rotating about an axis that is not parallel to one of the coordinate axes:
+Perform some additional transformations to align the axis with a selected coordinate axis and to bring the axis hack to its original orientation
+<div align "center" class="ulist">
+    <img src="fig/step_0.png" alt="Parallel axis rotation" width="25%">
+
+</div>
+
+V:
+## Affine transformations: Rotation
+### Euler angles Rodrigues' rotation relationship
+
+1) Translate the object so that the rotation axis pass through the coordinate origin.
+<div align "center" class="ulist">
+    <img src="fig/step_1.png" alt="Parallel axis rotation" width="25%">
+
+</div>
+V:
+## Affine transformations: Rotation
+### Euler angles Rodrigues' rotation relationship
+
+2) Rotate the object so that the axis of rotation coincides with one of the coordinate axes.
+<div align "center" class="ulist">
+    <img src="fig/step_2.png" alt="Parallel axis rotation" width="25%">
+
+</div>
+V:
+## Affine transformations: Rotation
+### Euler angles Rodrigues' rotation relationship
+3) Perform the specified rotation about that coordinate axis.
+<div align "center" class="ulist">
+    <img src="fig/step_3.png" alt="Parallel axis rotation" width="25%">
+
+</div>
+V:
+## Affine transformations: Rotation
+### Euler angles Rodrigues' rotation relationship
+4) Apply inverse rotations to bring the rotation axes back to its original orientation.
+<div align "center" class="ulist">
+    <img src="fig/step_4.png" alt="Parallel axis rotation" width="25%">
+
+</div>
+V:
+## Affine transformations: Rotation
+### Euler angles Rodrigues' rotation relationship
+5) Apply the inverse translation to bring the rotation axis back to its original position.
+<div align "center" class="ulist">
+    <img src="fig/step_5.png" alt="Parallel axis rotation" width="25%">
+</div>
+
 
 N:
 
@@ -1503,7 +1564,7 @@ Mnemonic 1:<!-- .element: class="fragment" data-fragment-index="8"-->
 
 Mnemonic 2:<!-- .element: class="fragment" data-fragment-index="9"-->
    The (left-to-right) $M_n,...M_2M_1$ transformation sequence is performed respect to a local (mutable) coordinate system
-   
+
 V:
 
 ## Affine transformations: Matrix operations
@@ -1546,22 +1607,22 @@ void draw() {
   background(0);
   // We do the rotation as: T(xr,yr)Rz(β)T(−xr,−yr)
   // 1. T(xr,yr)
-  applyMatrix(1, 0, 0, xr, 
-              0, 1, 0, yr, 
-              0, 0, 1, 0, 
+  applyMatrix(1, 0, 0, xr,
+              0, 1, 0, yr,
+              0, 0, 1, 0,
               0, 0, 0, 1);
   // 2. Rz(β)
-  applyMatrix(cos(beta), -sin(beta), 0, 0, 
-              sin(beta), cos(beta),  0, 0, 
-              0,         0,          1, 0, 
+  applyMatrix(cos(beta), -sin(beta), 0, 0,
+              sin(beta), cos(beta),  0, 0,
+              0,         0,          1, 0,
               0,         0,          0, 1);
   // 3. T(−xr,−yr)
-  applyMatrix(1, 0, 0, -xr, 
-              0, 1, 0, -yr, 
-              0, 0, 1, 0, 
+  applyMatrix(1, 0, 0, -xr,
+              0, 1, 0, -yr,
+              0, 0, 1, 0,
               0, 0, 0, 1);
   // drawing code follows
-} 
+}
 ```
 
 V:
@@ -1583,7 +1644,7 @@ void draw() {
   // 3. T(−xr,−yr)
   translate(-xr, -yr);
   // drawing code follows
-} 
+}
 ```
 
 Hence `translate()`, `rotate()`, applies the transformation to the current `modelview`
@@ -1602,7 +1663,7 @@ void setup() {
   // simple custom shader
   simpleShader = loadShader("simple_frag.glsl", "simple_vert.glsl");
   shader(simpleShader);
-} 
+}
 ```
 
 V:
@@ -1643,7 +1704,7 @@ void setup() {
   unalShader = loadShader("unal_frag.glsl", "unal_vert.glsl");
   shader(unalShader);
   modelview = new PMatrix3D();
-} 
+}
 ```
 
 V:
