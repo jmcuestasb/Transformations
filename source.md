@@ -1271,15 +1271,7 @@ V:
 <div class="ulist">
     <img src="fig/rodrigues.png" alt="Rodrigues rotation" width="30%" style="float: left">
     <ul style="width: 65%;">
-				<p class="fragment" data-fragment-index="1">
-					`$w = n \times v$`
-				</p>
-        <p class="fragment" data-fragment-index="1">
-            `$v_\bot = v - (v \cdot n) * n$`
-        </p>
-        <p class="fragment" data-fragment-index="1">
-            `$w = n \times v$`
-        </p>
+
         <p class="fragment" data-fragment-index="1">
         	`$v'_\bot = v_\bot \, cos(\beta) + w \, sin(\beta)$`
         </p>
