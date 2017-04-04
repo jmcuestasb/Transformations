@@ -1347,7 +1347,7 @@ V:
 ## Affine transformations: Rotation
 ### Euler angles Rodrigues' rotation relationship
 <div class="ulist">
-    <img src="fig/zyplane.jpg" width="25%" style="float: left">
+    <img src="fig/zyplane.JPG" width="25%" style="float: left">
     <ul style="width: 65%;">
 				<p>
 					Represent the projection of `$u$` in the `$zy$` plane as the vector  `$u = \frac{V}{\|V\|} = (0, b, c)$`
