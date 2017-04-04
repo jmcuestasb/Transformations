@@ -1418,7 +1418,7 @@ V:
 ## Affine transformations: Rotation
 ### Euler angles Rodrigues' rotation relationship
 <div class="ulist">
-    <img src="fig/rotation_z.jpg" width="25%" style="float: left">
+    <img src="fig/rotation_z.JPG" width="25%" style="float: left">
     <ul style="width: 65%;">
 				<p>
 					Aligned the rotation axis with the positive z axis. The specified rotation angle `$\beta$` we can now be applied as a rotation about the z axis
