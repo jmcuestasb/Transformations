@@ -1350,7 +1350,7 @@ V:
     <img src="fig/zyplane.JPG" width="25%" style="float: left">
     <ul style="width: 65%;">
 				<p>
-					Represent the projection of `$u$` in the `$zy$` plane as the vector  `$u = \frac{V}{\|V\|} = (0, b, c)$`
+					Represent the projection of `$u$` in the `$zy$` plane as the vector  `$u = (0, b, c)$`
 				</p>
 
     </ul>
