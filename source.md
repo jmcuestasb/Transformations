@@ -1421,7 +1421,7 @@ V:
     <img src="fig/rotate_z.JPG" width="25%" style="float: left">
     <ul style="width: 65%;">
 				<p>
-					Aligned the rotation axis with the positive z axis. The specified rotation angle `$\beta$` we can now be applied as a rotation about the z axis
+					Aligned the rotation axis with the positive `$z$` axis. And being `$\beta$` the specified rotation angle, we can now apply a rotation about the z axis
 				</p>
 				<p>
 				`$
